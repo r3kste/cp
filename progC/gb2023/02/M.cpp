@@ -40,11 +40,11 @@ int solve() {
         }
 
         if (i == 1) {
-            gc = gcd (a[1], a[0]);
+            gc = __gcd (a[1], a[0]);
         }
 
         if (i > 1) {
-            gc = gcd (gc, a[i]);
+            gc = __gcd (gc, a[i]);
         }
 
         sum += a[i];

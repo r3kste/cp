@@ -25,7 +25,7 @@ int solve() {
     fastio;
     ll a, b;
     cin >> a >> b;
-    ll g = gcd (a, b);
+    ll g = __gcd (a, b);
     a /= g;
     b /= g;
 

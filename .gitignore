@@ -1,1 +1,5 @@
 .directory
+*.out
+t.cpp
+t.py
+cmake-build-debug/

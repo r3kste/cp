@@ -29,7 +29,7 @@ int solve() {
     ll n, m;
     cin >> n >> m;
 
-    if (gcd (n, m) > 1) {
+    if (__gcd (n, m) > 1) {
         cout << "Sim";
     } else {
         cout << "Nao";

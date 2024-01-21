@@ -26,7 +26,7 @@ typedef vector<long long int> vll;
 
 int solve() {
     fastio;
-    ll n, m;
+ll n, m;
     cin >> n >> m;
     cout << n + m;
     return 0;
