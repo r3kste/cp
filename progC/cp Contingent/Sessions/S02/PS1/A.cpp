@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -24,11 +25,11 @@ typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
-int solve (vll dp, vector<bool> dp_done) {
+int solve(vll dp, vector<bool> dp_done) {
     fastio;
     int n, x;
     cin >> n >> x;
-    vi c (n);
+    vi c(n);
 
     for (int i = 0; i < n; i++) {
         cin >> c[i];
@@ -41,7 +42,7 @@ int solve (vll dp, vector<bool> dp_done) {
         for (int j = 0; j < n; j++) {
             if (!dp_done[i]) {
                 if (i - c[j] >= 0) {
-                    dp[i] = min (dp[i], dp[i - c[j]] + 1);
+                    dp[i] = min(dp[i], dp[i - c[j]] + 1);
                 }
             }
         }
@@ -49,7 +50,7 @@ int solve (vll dp, vector<bool> dp_done) {
         dp_done[i] = true;
     }
 
-    if (dp[x] == int (MOD)) {
+    if (dp[x] == int(MOD)) {
         cout << -1;
     } else {
         cout << dp[x];
@@ -61,11 +62,11 @@ int solve (vll dp, vector<bool> dp_done) {
 int main() {
     fastio;
     int t = 1;
-    vll dp (1000001, int (MOD));
-    vector<bool> dp_done (1000001, false);
+    vll dp(1000001, int(MOD));
+    vector<bool> dp_done(1000001, false);
 
     while (t--) {
-        solve (dp, dp_done);
+        solve(dp, dp_done);
         cout << "\n";
     }
 }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -33,7 +34,7 @@ int solve() {
     int n;
     ll o = 0;
     cin >> n;
-    vi a (n);
+    vi a(n);
     to (i, 0, n, 1) {
         cin >> a[i];
     }
@@ -43,7 +44,7 @@ int solve() {
         return 0;
     }
 
-    sort (begin (a), end (a));
+    sort(begin(a), end(a));
     int k = 1;
     o += (a[0] - 1);
     a[0] = 1;

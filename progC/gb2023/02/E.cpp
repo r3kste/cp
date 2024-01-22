@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,8 +29,8 @@ int solve() {
     fastio;
     int n, k;
     cin >> n >> k;
-    vll a (n);
-    vll cost (n / k, -1);
+    vll a(n);
+    vll cost(n / k, -1);
     ll mincost = MOD * MOD;
 
     for (int i = 0; i < n; i++) {
@@ -45,7 +46,7 @@ int solve() {
             sum += a[j];
         }
 
-        mincost = min (mincost, sum);
+        mincost = min(mincost, sum);
     }
 
     cout << mincost;

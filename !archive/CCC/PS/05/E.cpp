@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define for(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -37,7 +38,7 @@ void solve() {
     fastio;
     int n;
     cin >> n;
-    vi a (n);
+    vi a(n);
     map<int, ll> mp;
     ll c = 0;
     z (i, n) {

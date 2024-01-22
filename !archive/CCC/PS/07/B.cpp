@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -34,12 +35,12 @@ int solve() {
     cin >> a >> b >> c;
     ll o = 2 * c;
 
-    if (a == b || abs (a - b) == 1) {
+    if (a == b || abs(a - b) == 1) {
         cout << (o + a + b);
         return 0;
     }
 
-    ll mn = min (a, b);
+    ll mn = min(a, b);
     cout << o + mn + mn + 1;
     return 0;
 }

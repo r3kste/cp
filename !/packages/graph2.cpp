@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 /*
@@ -9,6 +10,7 @@ struct Graph {
     int n;
     vector<bool> visited;
     vector<int> roots;
+
     // vector<int> root_of;
     // vector<int> parent_of;
     // map<int, int> cluster_size;
@@ -20,10 +22,10 @@ struct Graph {
     // int timer;
     // vector<int> tin, tout;
     // int depth;
-    Graph (int no_of_nodes, int no_of_edges, bool fill = true) {
-        adj.resize (no_of_nodes);
+    Graph(int no_of_nodes, int no_of_edges, bool fill = true) {
+        adj.resize(no_of_nodes);
         n = no_of_nodes;
-        visited.assign (no_of_nodes, false);
+        visited.assign(no_of_nodes, false);
 
         // height.resize (no_of_nodes);
         // first.resize (no_of_nodes);
@@ -37,10 +39,10 @@ struct Graph {
             if (no_of_edges == -1) {
                 input();
             } else {
-                input (no_of_edges);
+                input(no_of_edges);
             }
 
-            DFS ();
+            DFS();
             // int m = eulerian.size();
             // segtree.resize (m * 4);
             // build (1, 0, m - 1);
@@ -60,16 +62,17 @@ struct Graph {
         // segtree.clear();
     }
 
-    void input (int no_of_edges) {
+    void input(int no_of_edges) {
         for (int i = 0; i < no_of_edges; i++) {
             int u, v;
             cin >> u >> v;
             u--;
             v--;
-            adj[u].push_back (v);
-            adj[v].push_back (u);
+            adj[u].push_back(v);
+            adj[v].push_back(u);
         }
     }
+
     void input() {
         for (int i = 0; i < n; i++) {
             int u;
@@ -77,26 +80,27 @@ struct Graph {
             u--;
 
             if (u == -2) {
-                roots.push_back (i);
+                roots.push_back(i);
             } else {
-                adj[u].push_back (i);
-                adj[i].push_back (u);
+                adj[u].push_back(i);
+                adj[i].push_back(u);
             }
         }
     }
 
-    void DFS () {
-        visited.assign (n, false);
+    void DFS() {
+        visited.assign(n, false);
 
-        if (roots.size() == 0) {
-            roots.push_back (0);
+        if (roots.empty()) {
+            roots.push_back(0);
         }
 
         for (int root : roots) {
-            dfs (root, 0, -1, root, true);
+            dfs(root, 0, -1, root, true);
         }
     }
-    void dfs (int node, int level = 0, int parent = -1, int root = 0, bool modify = false) {
+
+    void dfs(int node, int level = 0, int parent = -1, int root = 0, bool modify = false) {
         visited[node] = true;
 
         if (modify) {
@@ -112,7 +116,7 @@ struct Graph {
 
         for (int to : adj[node]) {
             if (!visited[to]) {
-                dfs (to, level + 1, node, root, modify);
+                dfs(to, level + 1, node, root, modify);
 
                 if (modify) {
                     // eulerian.push_back (node);
@@ -127,10 +131,9 @@ struct Graph {
         }
     }
 
-    void bfs (int root, int level = 0) {
+    void bfs(int root, int level = 0) {
         queue<int> q;
-        vector<bool> visited (n);
-        q.push (root);
+        q.push(root);
         visited[root] = true;
 
         while (!q.empty()) {
@@ -140,20 +143,20 @@ struct Graph {
             for (int u : adj[vertex]) {
                 if (!visited[u]) {
                     visited[u] = true;
-                    q.push (u);
+                    q.push(u);
                 }
             }
         }
     }
 
-    void clusters () {
-        fill (visited.begin(), visited.end(), false);
+    void clusters() {
+        fill(visited.begin(), visited.end(), false);
         roots.clear();
 
         for (int vertex = 0; vertex < n; ++vertex) {
             if (!visited[vertex]) {
-                roots.push_back (vertex);
-                dfs (vertex, 0, -1, vertex);
+                roots.push_back(vertex);
+                dfs(vertex, 0, -1, vertex);
             }
         }
     }
@@ -213,6 +216,7 @@ Weighted Graph
 */
 // #define INF LLONG_MAX
 #define INF 100000000000000000
+
 struct Graph_EV {
     using pii = pair<int, int>;
     vector<vector<pii>> adj;
@@ -222,10 +226,10 @@ struct Graph_EV {
     vector<int> roots;
     // vector<vector<long long int>> distances;
 
-    Graph_EV (int no_of_nodes, int no_of_edges, bool fill = true) {
-        adj.resize (no_of_nodes);
+    Graph_EV(int no_of_nodes, int no_of_edges, bool fill = true) {
+        adj.resize(no_of_nodes);
         n = no_of_nodes;
-        visited.assign (no_of_nodes, false);
+        visited.assign(no_of_nodes, false);
         // distances = vector<vector<long long int>> (no_of_nodes, vector<long long int> (no_of_nodes, INF));
         // mat = vector<vector<int>> (no_of_nodes, vector<int> (no_of_nodes, 0));
 
@@ -233,10 +237,10 @@ struct Graph_EV {
             if (no_of_edges == -1) {
                 input();
             } else {
-                input (no_of_edges);
+                input(no_of_edges);
             }
 
-            DFS ();
+            DFS();
         }
     }
 
@@ -244,16 +248,17 @@ struct Graph_EV {
         visited.clear();
     }
 
-    void input (int no_of_edges) {
+    void input(int no_of_edges) {
         for (int i = 0; i < no_of_edges; i++) {
             int u, v, w;
             cin >> u >> v >> w;
             u--;
             v--;
-            adj[u].push_back (make_pair (v, w));
-            adj[v].push_back (make_pair (u, w));
+            adj[u].emplace_back(v, w);
+            adj[v].emplace_back(u, w);
         }
     }
+
     void input() {
         for (int i = 0; i < n; i++) {
             int u, w;
@@ -261,10 +266,10 @@ struct Graph_EV {
             u--;
 
             if (u == -2) {
-                roots.push_back (i);
+                roots.push_back(i);
             } else {
-                adj[u].push_back (make_pair (i, w));
-                adj[i].push_back (make_pair (u, w));
+                adj[u].emplace_back(i, w);
+                adj[i].emplace_back(u, w);
             }
         }
     }
@@ -278,30 +283,31 @@ struct Graph_EV {
     //     }
     // }
 
-    void DFS () {
-        visited.assign (n, false);
+    void DFS() {
+        visited.assign(n, false);
 
-        if (roots.size() == 0) {
-            roots.push_back (0);
+        if (roots.empty()) {
+            roots.push_back(0);
         }
 
         for (int root : roots) {
-            dfs (root, 0, -1, root, true);
+            dfs(root, 0, -1, root, true);
         }
     }
-    void dfs (int node, int level = 0, int parent = -1, int root = 0, bool modify = false) {
+
+    void dfs(int node, int level = 0, int parent = -1, int root = 0, bool modify = false) {
         visited[node] = true;
 
         for (auto [to, weight] : adj[node]) {
             if (!visited[to]) {
-                dfs (to, level + 1, node, root, modify);
+                dfs(to, level + 1, node, root, modify);
             }
         }
     }
 
-    void bfs (int root) {
+    void bfs(int root) {
         queue<int> q;
-        q.push (root);
+        q.push(root);
         visited[root] = true;
 
         while (!q.empty()) {
@@ -311,31 +317,30 @@ struct Graph_EV {
             for (auto [next, weight] : adj[vertex]) {
                 if (!visited[next]) {
                     visited[next] = true;
-                    q.push (next);
+                    q.push(next);
                 }
             }
         }
     }
 
-    void find_components () {
-        visited.assign (n, false);
+    void find_components() {
+        visited.assign(n, false);
         roots.clear();
 
         for (int vertex = 0; vertex < n; ++vertex) {
             if (!visited[vertex]) {
-                roots.push_back (vertex);
-                dfs (vertex, 0, -1, vertex, false);
+                roots.push_back(vertex);
+                dfs(vertex, 0, -1, vertex, false);
             }
         }
     }
 
-    void dijkstra (int start, vector<long long int> &distances, vector<int> &parents) {
-        distances.assign (n, INF);
-        parents.assign (n, -1);
+    void dijkstra(int start, vector<long long int> &distances, vector<int> &parents) {
+        distances.assign(n, INF);
+        parents.assign(n, -1);
         distances[start] = 0;
-        using pii = pair<int, int>;
-        priority_queue<pii, vector<pii>, greater<pii>> q;
-        q.push ({0, start});
+        priority_queue<pii, vector<pii>, greater<>> q;
+        q.emplace(0, start);
 
         while (!q.empty()) {
             int node = q.top().second;
@@ -350,24 +355,25 @@ struct Graph_EV {
                 if (distances[node] + len < distances[to]) {
                     distances[to] = distances[node] + len;
                     parents[to] = node;
-                    q.push ({distances[to], to});
+                    q.emplace(distances[to], to);
                 }
             }
         }
     }
-    vector<int> path (int start, int target, vector<int> const & parents, int offset) {
+
+    static vector<int> path(int start, int target, vector<int> const &parents, int offset) {
         vector<int> path;
 
         for (int v = target; v != start; v = parents[v]) {
             if (v == -1) {
-                return vector<int> (1, -1);
+                return vector<int>(1, -1);
             }
 
-            path.push_back (v + offset);
+            path.push_back(v + offset);
         }
 
-        path.push_back (start + offset);
-        reverse (path.begin(), path.end());
+        path.push_back(start + offset);
+        reverse(path.begin(), path.end());
         return path;
     }
 
@@ -400,11 +406,11 @@ struct Graph_EV {
 };
 
 int solve() {
-    ios_base::sync_with_stdio (false);
-    cin.tie (NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
     int n, m;
     cin >> n >> m;
-    Graph g (n, m);
+    Graph g(n, m);
     return 0;
 }
 

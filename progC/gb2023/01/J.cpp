@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int solve() {
     fastio;
     ll n, m, k;
     cin >> n >> m >> k;
-    ll ans = max (0LL, ll (ceil (0.7 * n) - k));
+    ll ans = max(0LL, ll(ceil(0.7 * n) - k));
 
     if (ans > n - m) {
         cout << -1 << "\n";
@@ -39,7 +40,7 @@ int solve() {
     double num = (n - m + k) * 1.0;
     double den = 1.0 * n;
     ans = 100.0 * ((num / den * 1.0));
-    cout << ll (floor (ans)) ;
+    cout << ll(floor(ans));
     return 0;
 }
 

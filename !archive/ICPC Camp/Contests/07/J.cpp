@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -26,12 +27,13 @@ typedef vector<long long int> vll;
 
 typedef vector<vector<int>> matrix;
 ll order;
+
 int solve() {
     fastio;
     int n, m;
     cin >> n >> m;
-    matrix a (n, vector<int> (m, 0) );
-    matrix score (n, vector<int> (m, 0) );
+    matrix a(n, vector<int>(m, 0));
+    matrix score(n, vector<int>(m, 0));
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {

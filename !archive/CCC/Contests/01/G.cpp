@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -32,8 +33,8 @@ int solve() {
     fastio;
     ll x, n;
     cin >> x >> n;
-    vector<ll> a (n);
-    vector<ll> c (n);
+    vector<ll> a(n);
+    vector<ll> c(n);
     to (i, 0, n, 1) {
         ll temp;
         cin >> temp;
@@ -52,7 +53,7 @@ int solve() {
         to (j, i + 1, n, 1) {
             if ((a[i] + a[j]) >= x) {
                 flag = false;
-                cost = min (cost, (c[i] + c[j]));
+                cost = min(cost, (c[i] + c[j]));
             }
         }
     }

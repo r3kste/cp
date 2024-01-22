@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -24,7 +25,7 @@ typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
-bool is_beautiful (vi a) {
+bool is_beautiful(vi a) {
     int n = a.size();
 
     for (int i = 0; true;) {
@@ -38,8 +39,8 @@ bool is_beautiful (vi a) {
     }
 }
 
-ll f (vi a) {
-    if (is_beautiful (a)) {
+ll f(vi a) {
+    if (is_beautiful(a)) {
         return 0;
     } else {
         int n = a.size();
@@ -53,8 +54,8 @@ ll f (vi a) {
                 break;
             }
 
-            b.erase (b.begin() + i);
-            sum = min (sum, 1 + f (b));
+            b.erase(b.begin() + i);
+            sum = min(sum, 1 + f(b));
         }
 
         return sum;
@@ -65,8 +66,8 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vi a (n);
-    vi dp (n, -1);
+    vi a(n);
+    vi dp(n, -1);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -83,13 +84,15 @@ int solve() {
     dp[n - 1] = 1;
 
     for (int i = n - 2; i > -1; i--) {
-        dp[i] = (i + a[i] + 1 == n) ? 0 : (i + a[i] + 1 > n) ? (1 + dp [i + 1]) : (min (1 + dp [ (i + 1)], (dp [ (i + a[i] + 1)])));
+        dp[i] = (i + a[i] + 1 == n) ? 0 : (i + a[i] + 1 > n) ? (1 + dp[i + 1]) : (min(1 + dp[(i + 1)],
+                (dp[(i + a[i] + 1)])));
     }
 
     cout << dp[0];
     dp.clear();
     return 0;
 }
+
 int main() {
     fastio;
     int t = 1;

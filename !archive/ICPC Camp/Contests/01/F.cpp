@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -21,28 +22,24 @@ typedef vector<unsigned long long int> vLL;
 
 int solve();
 
-int main()
-{
+int main() {
     fastio;
-
     int t = 1;
-    if (false)
-        cin >> t;
 
-    while (t--)
-    {
+    if (false) {
+        cin >> t;
+    }
+
+    while (t--) {
         solve();
         cout << "\n";
     }
 }
 
-int solve()
-{
+int solve() {
     fastio;
-
     int n;
     cin >> n;
-
     ll ans = (n - 1) / 2;
     ans *= n;
     ans -= (n % 3 == 0) ? (2 * n / 3) : (0);

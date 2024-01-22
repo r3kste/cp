@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -46,12 +47,12 @@ vector<bool> dpd;
 vll subtree_size;
 ll ans = 0;
 
-void dfs (int node, int parent, int match) {
+void dfs(int node, int parent, int match) {
     if (subtree_size[node] == 1) {
         return;
     }
 
-    match = max (0, match - 1); //what?
+    match = max(0, match - 1); //what?
     int maxchild = -1;
 
     for (auto surr : adj[node]) {
@@ -74,14 +75,14 @@ void dfs (int node, int parent, int match) {
         ans += (subtree_size[node] - 1 - match) / 2;
     } else {
         ans += remaining;
-        dfs (maxchild, node, match + remaining);
+        dfs(maxchild, node, match + remaining);
     }
 }
 
-void subtrees (int node, int parent) {
+void subtrees(int node, int parent) {
     for (auto surr : adj[node]) {
         if (surr != parent) {
-            subtrees (surr, node);
+            subtrees(surr, node);
             subtree_size[node] += subtree_size[surr];
         }
     }
@@ -90,26 +91,27 @@ void subtrees (int node, int parent) {
 }
 
 int solve() {
-    ios_base::sync_with_stdio (false);
-    cin.tie (NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
-    adj = vector<vector<int>> (n);
-    visited = vector<bool> (n, false);
-    subtree_size = vll (n, 0);
+    adj = vector<vector<int>>(n);
+    visited = vector<bool>(n, false);
+    subtree_size = vll(n, 0);
     ans = 0;
 
     for (int i = 1; i < n; i++) {
         int u;
         in (u);
         u--;
-        adj[u].push_back (i);
-        adj[i].push_back (u);
+        adj[u].push_back(i);
+        adj[i].push_back(u);
     }
 
-    subtrees (0, -1);
-    dfs (0, -1, 0);
-    o (ans) br;
+    subtrees(0, -1);
+    dfs(0, -1, 0);
+    o (ans)
+    br;
     return 0;
 }
 

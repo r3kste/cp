@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,7 @@ int solve() {
     ll a, r1, r2;
     cin >> a >> r1 >> r2;
     ll x = (a * a + r1 * r1 - r2 * r2) / (2 * a);
-    ll y = -sqrt (abs (r1 * r1 - x * x));
+    ll y = -sqrt(abs(r1 * r1 - x * x));
     cout << x << "\n" << y;
     return 0;
 }

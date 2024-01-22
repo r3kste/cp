@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -40,10 +41,10 @@ int solve() {
     }
 
     for (int i = 97; i <= 104; i++) {
-        if (i == int (ch)) {
+        if (i == int(ch)) {
             continue;
         } else {
-            cout << char (i) << f << "\n";
+            cout << char(i) << f << "\n";
         }
     }
 

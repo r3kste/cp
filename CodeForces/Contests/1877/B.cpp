@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -33,7 +34,7 @@ int solve() {
     fastio;
     ll n, p;
     cin >> n >> p;
-    vector<ii> a (n);
+    vector<ii> a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i].first;
@@ -43,7 +44,7 @@ int solve() {
         cin >> a[i].second;
     }
 
-    sort (a.begin(), a.end(), [] (ii & a, ii & b) {
+    sort(a.begin(), a.end(), [](ii & a, ii & b) {
         return a.second < b.second;
     });
     // int ptr = -1;
@@ -81,10 +82,10 @@ int solve() {
         // cost += (min(a[i].first, n - np) * a[i].second);
         // np += a[i].first;
         if (a[i].first > n - np) {
-            cost += max ((ll)0, (n - np)) * min (p, (ll)a[i].second);
+            cost += max((ll) 0, (n - np)) * min(p, (ll) a[i].second);
             break;
         } else {
-            cost += a[i].first * min (p, (ll)a[i].second);
+            cost += a[i].first * min(p, (ll) a[i].second);
             np += a[i].first;
         }
     }

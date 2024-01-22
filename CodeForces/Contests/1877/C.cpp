@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -48,16 +49,16 @@ int solve() {
 
     for (int x = 0; x <= m; x++) {
         vi rem;
-        rem.push_back (x);
+        rem.push_back(x);
 
         for (int i = n; i >= 1; i--) {
             int last = rem.back();
             int next = last % i;
-            rem.push_back (next);
+            rem.push_back(next);
         }
 
-        sort (rem.begin(), rem.end());
-        rem.erase (unique (rem.begin(), rem.end()), rem.end());
+        sort(rem.begin(), rem.end());
+        rem.erase(unique(rem.begin(), rem.end()), rem.end());
 
         if (rem.size() == k) {
             ans++;

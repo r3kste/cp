@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -35,7 +36,7 @@ int main() {
     }
 }
 
-LL power (LL x, LL y, LL mod) {
+LL power(LL x, LL y, LL mod) {
     LL o = 1;
     x = x % mod;
 
@@ -55,6 +56,6 @@ int solve() {
     fastio;
     int w, h;
     cin >> w >> h;
-    cout << power (2, w + h, MOD); // kinda surprised it works, kinda guessed tho...
+    cout << power(2, w + h, MOD); // kinda surprised it works, kinda guessed tho...
     return 0;
 }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -40,13 +41,13 @@ int solve() {
     string ta = "";
 
     for (auto c : a) {
-        ta += tolower (c);
+        ta += tolower(c);
     }
 
     string tb = "";
 
     for (auto c : b) {
-        tb += tolower (c);
+        tb += tolower(c);
     }
 
     a = ta;

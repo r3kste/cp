@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -36,7 +37,7 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vi a (3);
+    vi a(3);
     a[0] = 1;
     a[1] = 3;
     int k = 2;

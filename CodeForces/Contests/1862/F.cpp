@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -41,7 +42,7 @@ int solve() {
     cin >> w >> f;
     ll n;
     cin >> n;
-    vi a (n);
+    vi a(n);
     to (i, 0, 100, i + 1) {
         ll t;
         cin >> t;

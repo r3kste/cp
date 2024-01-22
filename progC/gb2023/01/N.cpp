@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vector<pair<pair<ll, ll>, ll>> a (n);
+    vector<pair<pair<ll, ll>, ll>> a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i].F.F >> a[i].F.S >> a[i].S;
@@ -43,7 +44,7 @@ int solve() {
             auto center2 = c2.F;
             auto dx = center2.F - center1.F;
             auto dy = center2.S - center1.S;
-            auto dc = sqrt ((dx) * (dx) + (dy) * (dy));
+            auto dc = sqrt((dx) * (dx) + (dy) * (dy));
 
             if (dc - c1.S - c2.S <= 0) {
                 cout << i + 1 << " " << j + 1 << " ";

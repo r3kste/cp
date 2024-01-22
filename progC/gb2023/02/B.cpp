@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    cout << ll (floor ((sqrt (1 + 8 * n) - 1)) / 2);
+    cout << ll(floor((sqrt(1 + 8 * n) - 1)) / 2);
     return 0;
 }
 

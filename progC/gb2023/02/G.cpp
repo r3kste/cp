@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,25 +29,26 @@ int solve() {
     fastio;
     ll n;
     cin >> n;
-    vii a (n);
+    vii a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i].F;
         a[i].S = i + 1;
     }
 
-    sort (all (a));
+    sort(all (a));
     int top = a.back().F;
     int stop = a[n - 2].F;
 
     if (top - stop <= 1) {
         while (true) {
             // ll lb = lower_bound (all (a), a[n - 1]) - a.begin();
-            auto lb = distance (a.begin(), lower_bound (a.begin(), a.end(), make_pair (a[n - 1].F, numeric_limits<int>::min())) );
+            auto lb = distance(a.begin(),
+                               lower_bound(a.begin(), a.end(), make_pair(a[n - 1].F, numeric_limits<int>::min())));
             vi ans;
-            ans.pb (a[lb].S);
+            ans.pb(a[lb].S);
             a[lb].F--;
-            sort (all (a));
+            sort(all (a));
 
             for (auto wow : ans) {
                 cout << wow << " ";

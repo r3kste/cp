@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -39,25 +40,27 @@ typedef vector<vi> vvi;
 #define ono out("NO", "\n")
 
 #define double float
-bool valid (vi a, double x, int k) {
+
+bool valid(vi a, double x, int k) {
     ll n_ropes = 0;
 
     for (int i : a) {
-        n_ropes += floor ((1.0F * i) / x);
+        n_ropes += floor((1.0F * i) / x);
     }
 
     return n_ropes >= k;
 }
+
 int solve() {
     fastio;
     int n, k;
     in2 (n, k);
-    vi a (n);
+    vi a(n);
     vin (a);
     double l = 0.00000001F;
     double r = 0.001F;
 
-    while (valid (a, r, k)) {
+    while (valid(a, r, k)) {
         r *= 2;
     }
 
@@ -66,7 +69,7 @@ int solve() {
     while (n_iter--) {
         double m = l + (r - l) / 2.0;
 
-        if (valid (a, m, k)) {
+        if (valid(a, m, k)) {
             l = m;
         } else {
             r = m;

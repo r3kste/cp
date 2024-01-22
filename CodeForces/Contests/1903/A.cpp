@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,13 +29,13 @@ int solve() {
     fastio;
     int n, k;
     cin >> n >> k;
-    vi a (n);
+    vi a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
 
-    if (is_sorted (all (a))) {
+    if (is_sorted(all (a))) {
         cout << "YES";
     } else {
         yesno (k != 1)

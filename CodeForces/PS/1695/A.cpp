@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -30,8 +31,8 @@ int solve() {
     cin >> n >> m;
     int mr = -1;
     int mc = -1;
-    int maxa = -int (MOD);
-    vector<vector<int>> aa (n, vector<int> (m) );
+    int maxa = -int(MOD);
+    vector<vector<int>> aa(n, vector<int>(m));
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -49,9 +50,9 @@ int solve() {
     int b = mc + 1;
     int c = n - a + 1;
     int d = m - b + 1;
-    a = max (a, c);
-    b = max (b, d);
-    cout << a*b;
+    a = max(a, c);
+    b = max(b, d);
+    cout << a * b;
     // int h = max (mr + 1, n - mr);
     // int w = max (mc + 1, m - mc);
     // cout << h*w;

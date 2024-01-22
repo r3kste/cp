@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -24,7 +25,7 @@ typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
-int sum (int n) {
+int sum(int n) {
     int sum = 0;
 
     while (n) {
@@ -34,11 +35,12 @@ int sum (int n) {
 
     return sum;
 }
+
 int solve() {
     fastio;
     int n;
     cin >> n;
-    vector<string> a (n);
+    vector<string> a(n);
     map<ll, bool> mp;
 
     for (int i = 0; i < n; i++) {
@@ -69,16 +71,16 @@ int solve() {
                 continue;
             }
 
-            string a1 = t.substr (0, l / 2);
-            string b = t.substr (l / 2, l / 2);
-            int aa = stoi (a1);
-            int bb = stoi (b);
-            string a2 = t1.substr (0, l / 2);
-            string b1 = t1.substr (l / 2, l / 2);
-            int aa1 = stoi (a2);
-            int bb1 = stoi (b1);
+            string a1 = t.substr(0, l / 2);
+            string b = t.substr(l / 2, l / 2);
+            int aa = stoi(a1);
+            int bb = stoi(b);
+            string a2 = t1.substr(0, l / 2);
+            string b1 = t1.substr(l / 2, l / 2);
+            int aa1 = stoi(a2);
+            int bb1 = stoi(b1);
 
-            if (sum (aa) == sum (bb)) {
+            if (sum(aa) == sum(bb)) {
                 // if (aa == bb)
                 // {
                 //     c++;
@@ -88,7 +90,7 @@ int solve() {
                 // mp[x] = true;
             }
 
-            if (sum (aa1) == sum (bb1)) {
+            if (sum(aa1) == sum(bb1)) {
                 // if (aa == bb)
                 // {
                 //     c++;

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define for(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -36,11 +37,11 @@ void solve() {
     fastio;
     ll n, q;
     cin >> n >> q;
-    vi a (n);
+    vi a(n);
     z (i, n) {
         cin >> a[i];
     }
-    sort (a.begin(), a.end());
+    sort(a.begin(), a.end());
     ll ps[n + 1];
     ps[0] = 0;
     zr (i, 1, n + 1) {

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,8 +29,8 @@ int solve() {
     fastio;
     int a, b, c, d;
     cin >> a >> b >> c >> d;
-    int mx = max (a, max (b, c));
-    int mn = min (a, min (b, c));
+    int mx = max(a, max(b, c));
+    int mn = min(a, min(b, c));
     yesno (mx + (a + b + c - mx - mn) >= d);
     return 0;
 }

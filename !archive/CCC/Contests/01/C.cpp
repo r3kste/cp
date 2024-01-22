@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -35,7 +36,7 @@ int solve() {
     string s;
     cin >> s;
     int a[26];
-    fill (begin (a), end (a), 0);
+    fill(begin(a), end(a), 0);
     to (i, 0, n, 1) {
         a[s[i] - 97]++;
     }

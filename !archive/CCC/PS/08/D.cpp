@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -28,7 +29,7 @@ int main() {
     }
 }
 
-bool check (int a, int b, int n, int m) {
+bool check(int a, int b, int n, int m) {
     return (a * a + b == n && b * b + a == m);
 }
 
@@ -39,7 +40,7 @@ void solve() {
     int c = 0;
     to (i, 0, m + 1, 1) {
         to (j, 0, m + 1, 1) {
-            if (check (i, j, n, m)) {
+            if (check(i, j, n, m)) {
                 c++;
             }
         }

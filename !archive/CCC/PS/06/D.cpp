@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define FOR(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -17,7 +18,7 @@ typedef long long int ll;
 typedef vector<int> vi;
 typedef pair<int, int> ii;
 
-void solve (map<ll, bool> prims);
+void solve(map<ll, bool> prims);
 
 // bool isPrime(int n)
 // {
@@ -59,18 +60,17 @@ int main() {
         int n;
         ll o = 1;
         cin >> n;
-        vi a (n);
+        vi a(n);
         z (i, n) {
             cin >> a[i];
         }
-        vector<ll> ps (n + 1);
-        vector<ll> ss (n + 1);
+        vector<ll> ps(n + 1);
+        vector<ll> ss(n + 1);
         zr (i, 1, n + 1) {
             ps[i] = ps[i - 1] + a[i - 1];
             ss[n - i] = ss[n - i + 1] + a[n - i];
         }
-        zr (i, 1, n)
-        o = max (o, __gcd (ps[i], ss[i]));
+        zr (i, 1, n)o = max(o, __gcd(ps[i], ss[i]));
         // ll k = ps[n];
         // if (isPrime(ps[n]))
         // {

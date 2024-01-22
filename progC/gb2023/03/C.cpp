@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -32,7 +33,7 @@ int solve() {
     cin >> s;
 
     while (k > 0) {
-        if (s.find_first_not_of (s[0]) == string::npos) {
+        if (s.find_first_not_of(s[0]) == string::npos) {
             while (k--) {
                 s += s[0];
             }
@@ -42,7 +43,7 @@ int solve() {
         }
 
         string rs = s;
-        reverse (all (rs));
+        reverse(all (rs));
 
         if (rs == s) {
             s += s.back();
@@ -50,7 +51,7 @@ int solve() {
         }
 
         if (k > 0) {
-            s = s.substr (0, s.size() / 2);
+            s = s.substr(0, s.size() / 2);
         }
 
         k--;

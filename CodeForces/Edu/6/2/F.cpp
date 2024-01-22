@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -38,14 +39,14 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-bool find (vc s, string p, int n) {
+bool find(vc s, string p, int n) {
     map<char, deque<int>> l;
     rep (__, n) {
         if (s[__] == '.') {
             continue;
         }
 
-        l[s[__]].pb (__);
+        l[s[__]].pb(__);
     }
     int starti = l[p[0]].front();
     l[p[0]].pop_front();
@@ -55,7 +56,7 @@ bool find (vc s, string p, int n) {
             return false;
         }
 
-        int nexti = upper_bound (all (l[p[i]]), starti) - l[p[i]].begin();
+        int nexti = upper_bound(all (l[p[i]]), starti) - l[p[i]].begin();
 
         if (nexti >= sz (l[p[i]])) {
             return false;
@@ -71,20 +72,21 @@ bool find (vc s, string p, int n) {
     return true;
 }
 
-bool valid (vc s, string p, vi a, int x, int n) {
+bool valid(vc s, string p, vi a, int x, int n) {
     rep (__, x) {
         s[a[__] - 1] = '.';
     }
-    return find (s, p, n);
+    return find(s, p, n);
 }
+
 int solve() {
     fastio;
     string t, p;
     in2 (t, p);
     int n = sz (t);
-    vc s (n);
+    vc s(n);
     rep (__, n) s[__] = t[__];
-    vi a (n);
+    vi a(n);
     vin (a);
     int l = 0;
     int r = n;
@@ -93,7 +95,7 @@ int solve() {
     while (n_iter--) {
         int m = l + (r - l) / 2;
 
-        if (valid (s, p, a, m, n)) {
+        if (valid(s, p, a, m, n)) {
             l = m;
         } else {
             r = m;

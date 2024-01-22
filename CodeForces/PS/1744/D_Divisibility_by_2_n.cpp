@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,14 +31,15 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
 
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
-ll pow2 (ll n) {
+
+ll pow2(ll n) {
     ll ans = 0;
 
     while (n % 2 == 0) {
@@ -47,19 +49,21 @@ ll pow2 (ll n) {
 
     return ans;
 }
-bool comp (int a, int b) {
-    return pow2 (b) > pow2 (a);
+
+bool comp(int a, int b) {
+    return pow2(b) > pow2(a);
 }
+
 int solve() {
     fastio;
     int n;
     in (n);
-    vi a (n);
+    vi a(n);
     vin (a);
     ll already_pow2 = 0;
 
     for (int e : a) {
-        already_pow2 += pow2 (e);
+        already_pow2 += pow2(e);
     }
 
     if (n - already_pow2 <= 0) {
@@ -67,9 +71,9 @@ int solve() {
     } else {
         int req = n - already_pow2;
         int ans = 0;
-        vi nos (n);
-        iota (all (nos), 1);
-        sort (all (nos), comp);
+        vi nos(n);
+        iota(all (nos), 1);
+        sort(all (nos), comp);
 
         while (req > 0) {
             if (nos.empty()) {
@@ -77,7 +81,7 @@ int solve() {
             }
 
             ans++;
-            req -= pow2 (nos.back());
+            req -= pow2(nos.back());
             nos.pop_back();
         }
 

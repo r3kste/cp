@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -39,16 +40,16 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vi a (n), b;
+    vi a(n), b;
     to (i, 0, n, i + 1) {
         cin >> a[i];
     }
-    b.push_back (a[0]);
+    b.push_back(a[0]);
     to (i, 1, n, i + 1) {
-        b.push_back (a[i]);
+        b.push_back(a[i]);
 
-        if (! (a[i] >= a[i - 1])) {
-            b.push_back (a[i]);
+        if (!(a[i] >= a[i - 1])) {
+            b.push_back(a[i]);
         }
     }
     cout << b.size() << "\n";

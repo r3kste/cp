@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -27,14 +28,15 @@ typedef vector<long long int> vll;
 int n;
 vector<vi> dp;
 vector<vector<char>> a;
-ll f (int i, int j) {
+
+ll f(int i, int j) {
     if (i >= 0 && i < n && j >= 0 && j < n) {
         if (dp[i][j] != 0) {
             return dp[i][j] % MOD;
         } else {
-            ll aa = f (i - 1, j);
+            ll aa = f(i - 1, j);
             aa %= MOD;
-            ll b = f (i, j - 1);
+            ll b = f(i, j - 1);
             b %= MOD;
 
             if (a[i][j] == '*') {
@@ -52,11 +54,12 @@ ll f (int i, int j) {
 
     return 0;
 }
+
 int solve() {
     fastio;
     cin >> n;
-    a = vector<vector<char>> (n, vector<char> (n, '.'));
-    dp = vector<vi> (n, vi (n, 0));
+    a = vector<vector<char>>(n, vector<char>(n, '.'));
+    dp = vector<vi>(n, vi(n, 0));
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {

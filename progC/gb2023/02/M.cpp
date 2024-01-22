@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,7 @@ int solve() {
     int n;
     cin >> n;
     ll sum = 0;
-    vi a (n);
+    vi a(n);
     int gc = 0;
 
     for (int i = 0; i < n; i++) {
@@ -40,11 +41,11 @@ int solve() {
         }
 
         if (i == 1) {
-            gc = __gcd (a[1], a[0]);
+            gc = __gcd(a[1], a[0]);
         }
 
         if (i > 1) {
-            gc = __gcd (gc, a[i]);
+            gc = __gcd(gc, a[i]);
         }
 
         sum += a[i];

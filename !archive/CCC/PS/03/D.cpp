@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main() {
@@ -16,13 +17,13 @@ int main() {
             cin >> temp;
 
             if (temp.length() == n - 1) {
-                a.append (temp);
+                a.append(temp);
             }
         }
 
         string b = a;
-        reverse (a.begin(), a.end());
-        o.append ((a == b) ? "YES\n" : "NO\n");
+        reverse(a.begin(), a.end());
+        o.append((a == b) ? "YES\n" : "NO\n");
     }
 
     cout << o;

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -53,8 +54,8 @@ int solve() {
             }
         }
     }
-    int x = max ((mj - 1), (m - mj));
-    int y = max (mi - 1, n - mi);
+    int x = max((mj - 1), (m - mj));
+    int y = max(mi - 1, n - mi);
     cout << (x + 1) * (y + 1);
     return 0;
 }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -38,7 +39,7 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-int bsearch_l (vi a, int x) {
+int bsearch_l(vi a, int x) {
     int n = sz (a);
     int ptr = 0;
 
@@ -50,9 +51,10 @@ int bsearch_l (vi a, int x) {
 
     return (ptr);
 }
-int bsearch_r (vi a, int x) {
+
+int bsearch_r(vi a, int x) {
     vi b = a;
-    reverse (all (b));
+    reverse(all (b));
     int n = sz (b);
     int ptr = 0;
 
@@ -64,6 +66,7 @@ int bsearch_r (vi a, int x) {
 
     return (n - 1 - ptr);
 }
+
 int main() {
     return 0;
 }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,14 +29,14 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vector<vector<tuple<ll, ll, ll>>> data (n);
+    vector<vector<tuple<ll, ll, ll>>> data(n);
 
     for (int i = 0; i < n; i++) {
         int x, y, z;
         cin >> x >> y >> z;
         tuple<ll, ll, ll> t;
         t = {x, y, z};
-        data[i].pb (t);
+        data[i].pb(t);
     }
 
     int q;
@@ -55,7 +56,8 @@ int solve() {
 
             for (auto iii : data[i]) {
                 for (auto jjj : data[j]) {
-                    amax = max (amax, abs (get<0> (iii) - get<0> (jjj)) + abs (get<1> (iii) - get<1> (jjj)) + abs (get<2> (iii) - get<2> (jjj)));
+                    amax = max(amax, abs(get<0>(iii) - get<0>(jjj)) + abs(get<1>(iii) - get<1>(jjj)) +
+                               abs(get<2>(iii) - get<2>(jjj)));
                 }
             }
 
@@ -69,16 +71,16 @@ int solve() {
             int js = data[i].size();
 
             for (auto jjj : data[j]) {
-                data[i].pb (jjj);
+                data[i].pb(jjj);
             }
 
             for (auto iii : data[i]) {
-                data[j].pb (iii);
+                data[j].pb(iii);
             }
 
             // data[i].insert (data[i].end(), all (data[j]));
             // data[j].insert (data[j].end(), all (t));
-            op1.pb (mp (mp (i, is), mp (j, js)));
+            op1.pb(mp(mp(i, is), mp(j, js)));
         } else if (type == 2) {
             auto iii = op1.back().F;
             auto jjj = op1.back().S;

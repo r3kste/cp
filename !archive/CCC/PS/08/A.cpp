@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -32,8 +33,8 @@ void solve() {
     fastio;
     int n, c = 0;
     cin >> n;
-    vi h (n);
-    vi a (n);
+    vi h(n);
+    vi a(n);
     map<int, int> k;
     to (i, 0, n, 1) {
         cin >> h[i];

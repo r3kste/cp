@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,8 +30,8 @@ int solve() {
     int n;
     double m;
     cin >> n >> m;
-    int req = ceil (1.0 * n * m);
-    vi a (n);
+    int req = ceil(1.0 * n * m);
+    vi a(n);
     int suc = 0;
 
     for (int i = 0; i < n; i++) {

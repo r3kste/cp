@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -32,7 +33,7 @@ typedef vector<vi> vvi;
 #define vin(n) rep (_, n) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -44,7 +45,8 @@ int n;
 vvi adj;
 vb visited;
 int csz = 0;
-void dfs (int node, int parent) {
+
+void dfs(int node, int parent) {
     visited[node] = true;
     csz++;
 
@@ -53,9 +55,10 @@ void dfs (int node, int parent) {
             continue;
         }
 
-        dfs (surr, node);
+        dfs(surr, node);
     }
 }
+
 /* int bfs (int start, int end)
 {
     queue<tuple<int, bool>> q;
@@ -98,7 +101,7 @@ void dfs (int node, int parent) {
     return 0;
 } */
 
-ll power (ll x, int y, ll mod) { // Binary Exponentiation of x^y % mod
+ll power(ll x, int y, ll mod) { // Binary Exponentiation of x^y % mod
     ll o = 1;
     x = x % mod;
 
@@ -118,8 +121,8 @@ int solve() {
     fastio;
     ll n, k;
     in2 (n, k);
-    adj = vvi (n);
-    visited = vb (n, false);
+    adj = vvi(n);
+    visited = vb(n, false);
 
     for (int i = 0; i < n - 1; i++) {
         int u, v, x;
@@ -128,12 +131,12 @@ int solve() {
         v--;
 
         if (x == 0) {
-            adj[u].pb (v);
-            adj[v].pb (u);
+            adj[u].pb(v);
+            adj[v].pb(u);
         }
     }
 
-    ll ans = power (n, k, MOD);
+    ll ans = power(n, k, MOD);
 
     for (int root = 0; root < n; root++) {
         if (visited[root]) {
@@ -145,7 +148,7 @@ int solve() {
         set<int> cluster;
         cluster.insert (root)*/
         csz = 0;
-        dfs (root, -1);
+        dfs(root, -1);
         /* while (!todo.empty())
         {
             int node = todo.front();
@@ -165,7 +168,7 @@ int solve() {
             }
         }
         ans -= power (cluster.size(), k, MOD)*/
-        ans -= power (csz, k, MOD);
+        ans -= power(csz, k, MOD);
         ans += MOD * 2;
         ans %= MOD;
     }

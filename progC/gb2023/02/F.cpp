@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,9 +29,9 @@ int solve() {
     fastio;
     int n, k;
     cin >> n >> k;
-    ll log2k = (ll)floor (log2 (k))  + 1;
-    ll limitk = pow (2, log2k);
-    ll log2n = (ll)ceil (log2 (n));
+    ll log2k = (ll) floor(log2(k)) + 1;
+    ll limitk = pow(2, log2k);
+    ll log2n = (ll) ceil(log2(n));
 
     if (n <= limitk) {
         cout << log2n;

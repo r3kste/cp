@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -44,16 +45,16 @@ int solve() {
                 upper.pop_back();
             }
         } else {
-            if (isupper (ch)) {
-                upper.pb (i);
-            } else if (islower (ch)) {
-                lower.pb (i);
+            if (isupper(ch)) {
+                upper.pb(i);
+            } else if (islower(ch)) {
+                lower.pb(i);
             }
         }
     }
 
     for (int i = 0; i < s.size(); i++) {
-        if (binary_search (all (lower), i) || binary_search (all (upper), i)) {
+        if (binary_search(all (lower), i) || binary_search(all (upper), i)) {
             cout << s[i];
         }
     }

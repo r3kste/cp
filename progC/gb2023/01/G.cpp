@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -34,7 +35,7 @@ int solve() {
         cin >> temp;
     }
 
-    ll l = log2 (n);
+    ll l = log2(n);
     cout << l + 1;
     return 0;
 }

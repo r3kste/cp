@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -24,9 +25,10 @@ typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
-bool div (ll n) {
+bool div(ll n) {
     return (n % 4 == 0);
 }
+
 int solve() {
     fastio;
     string n;

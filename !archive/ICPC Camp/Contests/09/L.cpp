@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -40,8 +41,8 @@ int solve() {
         if (c == 'A' || c == 'P' || c == 'R' || c == 'O') {
             steps += (ptr);
             ptr = 0;
-        } else if ( (c == 'B' || c == 'M' || c == 'S')) {
-            steps += abs (ptr - 1);
+        } else if ((c == 'B' || c == 'M' || c == 'S')) {
+            steps += abs(ptr - 1);
             ptr = 1;
         } else {
             steps += (2 - ptr);

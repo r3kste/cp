@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -24,8 +25,8 @@ typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
-int getmaxdigit (ll n) {
-    auto m = to_string (n);
+int getmaxdigit(ll n) {
+    auto m = to_string(n);
     int max = 0;
 
     for (auto i : m) {
@@ -46,7 +47,7 @@ int solve() {
 
     while (n > 0) {
         ans++;
-        n -= getmaxdigit (n);
+        n -= getmaxdigit(n);
     }
 
     cout << ans;

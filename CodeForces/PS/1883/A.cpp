@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -43,7 +44,7 @@ int solve() {
             ptr = 10;
         }
 
-        sum += abs (temp - ptr) + 1;
+        sum += abs(temp - ptr) + 1;
         ptr = temp;
     }
 

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -34,8 +35,8 @@ int solve() {
     fastio;
     ll n, h;
     cin >> n >> h;
-    vll a (n);
-    vll diff (n - 1);
+    vll a(n);
+    vll diff(n - 1);
     to (i, 0, n, 1) {
         cin >> a[i];
 
@@ -52,7 +53,7 @@ int solve() {
         ll m = (f + e) / 2;
         ll dam = 0;
         to (i, 0, n - 1, 1) {
-            dam += min (m, diff[i]);
+            dam += min(m, diff[i]);
         }
         dam += m;
 

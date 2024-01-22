@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,7 @@ int solve() {
     int n, q;
     cin >> n >> q;
     ll max = 0;
-    vi a (n);
+    vi a(n);
 
     // vi log2a;
     for (int i = 0; i < n; i++) {
@@ -42,7 +43,7 @@ int solve() {
         // log2a.pb((a[i] % 2 == 0) ? int(floor(log2(a[i]))) : 0);
     }
 
-    ll qmax = ll (floor (log2 (max) ) );
+    ll qmax = ll(floor(log2(max)));
     int qmin = MOD;
     // ll oper = 0;
     vi x;
@@ -52,7 +53,7 @@ int solve() {
         cin >> temp;
 
         if (temp <= qmax && temp < qmin) {
-            x.push_back (temp);
+            x.push_back(temp);
             qmin = temp;
             // oper += pow(2, temp);
         }
@@ -77,7 +78,7 @@ int solve() {
     }
 
     for (int i = 0; i < x.size(); i++) {
-        ll what = pow (2, x[i]);
+        ll what = pow(2, x[i]);
 
         for (int j = 0; j < n; j++) {
             if (a[j] % 2 == 0) {

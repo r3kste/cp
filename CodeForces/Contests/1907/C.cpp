@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -42,11 +43,11 @@ int solve() {
             }
         }
 
-        k.pb (mp (s[i], c));
+        k.pb(mp(s[i], c));
         i += (c);
     }
 
-    k.pb (mp (s[s.size() - 1], c));
+    k.pb(mp(s[s.size() - 1], c));
     return 0;
 }
 

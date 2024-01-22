@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -19,8 +20,8 @@ int solve() {
     fastio;
     int n, m;
     cin >> n >> m;
-    vi a (n);
-    vll p (n + 1, 0);
+    vi a(n);
+    vll p(n + 1, 0);
     p[0] = 0;
     ll max = -1;
 

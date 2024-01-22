@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define for(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -46,11 +47,11 @@ int solve() {
     }
 
     bool a[26];
-    fill (begin (a), end (a), false);
+    fill(begin(a), end(a), false);
     z (i, n) {
         char temp;
         cin >> temp;
-        int t = int (temp);
+        int t = int(temp);
         t = t - 97;
 
         if (a[t]) {

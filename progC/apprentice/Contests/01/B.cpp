@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,8 +30,8 @@ int solve() {
     string n;
     cin >> n;
 
-    for (auto& i : n) {
-        i = tolower (i);
+    for (auto &i : n) {
+        i = tolower(i);
     }
 
     yesno (n == "yes")

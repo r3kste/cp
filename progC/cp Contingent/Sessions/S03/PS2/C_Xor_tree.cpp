@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { out (_,"\n") } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -50,6 +51,7 @@ struct Graph {
     vector<int> goal;
     int steps;
     vi ans;
+
     /*
     vector<int> root_of;
     vector<int> parent_of;
@@ -60,16 +62,16 @@ struct Graph {
     int depth;
     */
 
-    Graph (int no_of_nodes) {
-        adj.resize (no_of_nodes);
-        init.resize (no_of_nodes);
-        goal.resize (no_of_nodes);
+    Graph(int no_of_nodes) {
+        adj.resize(no_of_nodes);
+        init.resize(no_of_nodes);
+        goal.resize(no_of_nodes);
         steps = 0;
         n = no_of_nodes;
     }
 
-    void insit (bool fill = true) {
-        visited.assign (n, false);
+    void insit(bool fill = true) {
+        visited.assign(n, false);
         /*
         height.resize (n);
         first.resize (n);
@@ -81,7 +83,7 @@ struct Graph {
         */
 
         if (fill) {
-            DFS ();
+            DFS();
             /*
             int m = eulerian.size();
             segtree.resize (m * 4);
@@ -105,16 +107,17 @@ struct Graph {
         */
     }
 
-    void input (int m) {
+    void input(int m) {
         for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
             u--;
             v--;
-            adj[u].push_back (v);
-            adj[v].push_back (u);
+            adj[u].push_back(v);
+            adj[v].push_back(u);
         }
     }
+
     void input() {
         for (int i = 0; i < n; i++) {
             int u;
@@ -122,19 +125,20 @@ struct Graph {
             u--;
 
             if (u == -2) {
-                roots.push_back (i);
+                roots.push_back(i);
             } else {
-                adj[u].push_back (i);
-                adj[i].push_back (u);
+                adj[u].push_back(i);
+                adj[i].push_back(u);
             }
         }
     }
 
-    void DFS () {
-        visited.assign (n, false);
-        dfs (0, 0, -1, 0, 0, 0);
+    void DFS() {
+        visited.assign(n, false);
+        dfs(0, 0, -1, 0, 0, 0);
     }
-    void dfs (int node, int h, int parent, int root, int even_count, int odd_count) {
+
+    void dfs(int node, int h, int parent, int root, int even_count, int odd_count) {
         visited[node] = true;
 
         if (h % 2 == 0) {
@@ -145,7 +149,7 @@ struct Graph {
 
         if (goal[node] != init[node]) {
             steps++;
-            ans.pb (node + 1);
+            ans.pb(node + 1);
 
             if (h % 2 == 0) {
                 even_count++;
@@ -167,9 +171,9 @@ struct Graph {
         for (int to : adj[node]) {
             if (!visited[to]) {
                 if (h % 2 == 0) {
-                    dfs (to, h + 1, node, root, even_count, odd_count);
+                    dfs(to, h + 1, node, root, even_count, odd_count);
                 } else {
-                    dfs (to, h + 1, node, root, even_count, odd_count);
+                    dfs(to, h + 1, node, root, even_count, odd_count);
                 }
 
                 /*
@@ -185,10 +189,10 @@ struct Graph {
         */
     }
 
-    void bfs (int root, int h = 0) {
+    void bfs(int root, int h = 0) {
         queue<int> q;
-        vector<bool> visited (n);
-        q.push (root);
+        vector<bool> visited(n);
+        q.push(root);
         visited[root] = true;
 
         while (!q.empty()) {
@@ -198,7 +202,7 @@ struct Graph {
             for (int u : adj[vertex]) {
                 if (!visited[u]) {
                     visited[u] = true;
-                    q.push (u);
+                    q.push(u);
                 }
             }
         }
@@ -270,12 +274,13 @@ int solve() {
     fastio;
     int n;
     in (n);
-    Graph g (n);
-    g.input (n - 1);
+    Graph g(n);
+    g.input(n - 1);
     vin (g.init);
     vin (g.goal);
-    g.DFS ();
-    o (g.steps) br
+    g.DFS();
+    o (g.steps)
+    br
     vout (g.ans);
     return 0;
 }

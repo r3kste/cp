@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -42,7 +43,7 @@ int solve() {
         cin >> temp;
 
         if (temp != 0) {
-            a.push_back (temp);
+            a.push_back(temp);
         }
 
         // if (i == 0)
@@ -58,9 +59,9 @@ int solve() {
     }
     n = a.size();
     to (i, 0, n, 1) {
-        o += abs (a[i]);
+        o += abs(a[i]);
     }
-    a.push_back (1);
+    a.push_back(1);
     to (i, 0, n, 1) {
         if (a[i] < 0) {
             if (a[i + 1] < 0) {

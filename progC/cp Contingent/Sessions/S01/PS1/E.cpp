@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -26,8 +27,9 @@ typedef vector<long long int> vll;
 
 typedef vector<vector<ll>> matrix;
 ll order;
-matrix m_mul (matrix a, matrix b, ll m) {
-    matrix res (order, vector<ll> (order, 0));
+
+matrix m_mul(matrix a, matrix b, ll m) {
+    matrix res(order, vector<ll>(order, 0));
 
     for (int i = 0; i < order; i++) {
         for (int j = 0; j < order; j++) {
@@ -41,8 +43,8 @@ matrix m_mul (matrix a, matrix b, ll m) {
     return res;
 }
 
-matrix m_pow (matrix a, ll n, ll m) {
-    matrix res (order, vector<ll> (order, 0));
+matrix m_pow(matrix a, ll n, ll m) {
+    matrix res(order, vector<ll>(order, 0));
 
     for (ll i = 0; i < order; i++) {
         res[i][i] = 1;
@@ -50,15 +52,16 @@ matrix m_pow (matrix a, ll n, ll m) {
 
     while (n) {
         if (n & 1) {
-            res = m_mul (res, a, m);
+            res = m_mul(res, a, m);
         }
 
         n >>= 1;
-        a = m_mul (a, a, m);
+        a = m_mul(a, a, m);
     }
 
     return res;
 }
+
 int solve() {
     fastio;
     // int n;

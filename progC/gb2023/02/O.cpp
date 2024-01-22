@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -31,8 +32,8 @@ int solve() {
     int first = 1;
     int second = 1;
     int time = 0;
-    vi a (100000);
-    vi b (100000);
+    vi a(100000);
+    vi b(100000);
 
     while (true) {
         time++;

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -32,7 +33,7 @@ int solve() {
     fastio;
     int a, b;
     cin >> a >> b;
-    int g = __gcd (a, b);
+    int g = __gcd(a, b);
     cout << (a * b) / g;
     return 0;
 }

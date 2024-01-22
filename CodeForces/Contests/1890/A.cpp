@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -23,7 +24,7 @@ int solve() {
     int n;
     cin >> n;
     map<int, int> mp;
-    vi a (n);
+    vi a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -39,7 +40,7 @@ int solve() {
         int a = i->second;
         i++;
         int b = i->second;
-        cout << yesno ((abs (a - b)) <= 1);
+        cout << yesno ((abs(a - b)) <= 1);
     }
 
     return 0;

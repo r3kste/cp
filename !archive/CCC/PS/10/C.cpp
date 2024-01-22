@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -35,7 +36,7 @@ int solve() {
     int n, m;
     cin >> n >> m;
     ll s = 0;
-    vll a (n);
+    vll a(n);
     // vll ps(n + 1);
     // ps[0] = 0;
     to (i, 0, n, 1) {

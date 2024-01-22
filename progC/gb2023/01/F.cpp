@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,7 @@ int solve() {
     ll n, m;
     cin >> n >> m;
 
-    if (__gcd (n, m) > 1) {
+    if (__gcd(n, m) > 1) {
         cout << "Sim";
     } else {
         cout << "Nao";

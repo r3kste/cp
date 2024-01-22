@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -34,7 +35,8 @@ int main() {
         cout << "\n";
     }
 }
-LL power (LL x, LL y, LL mod) {
+
+LL power(LL x, LL y, LL mod) {
     LL o = 1;
     x = x % mod;
 
@@ -49,30 +51,32 @@ LL power (LL x, LL y, LL mod) {
 
     return o;
 }
-LL inv_m (LL n, LL mod) {
-    return power (n, mod - 2, mod); // n^(mod-2) % mod
+
+LL inv_m(LL n, LL mod) {
+    return power(n, mod - 2, mod); // n^(mod-2) % mod
 }
+
 int solve() {
     fastio;
     int n, m;
     cin >> n >> m;
-    vi a (n);
+    vi a(n);
     to (i, 0, n, i + 1) {
         cin >> a[i];
     }
-    vi b (n);
+    vi b(n);
     to (i, 0, n, i + 1) {
         cin >> b[i];
     }
     vi status;
     to (i, 0, n, i + 1) {
         if (a[i] == 0 || b[i] == 0) {
-            status.push_back (0);
+            status.push_back(0);
         } else {
-            status.push_back (1);
+            status.push_back(1);
         }
     }
-    status.push_back (0);
+    status.push_back(0);
     // LL num = 0;
     // LL den = 0;
     // for (int i = 0; i < n; i++)

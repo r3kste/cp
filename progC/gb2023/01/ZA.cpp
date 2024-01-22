@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,10 +30,10 @@ int solve() {
     int n;
     cin >> n;
     vector<char> a;
-    a.pb ('E');
-    a.pb ('N');
-    a.pb ('W');
-    a.pb ('S');
+    a.pb('E');
+    a.pb('N');
+    a.pb('W');
+    a.pb('S');
     int ptr = 0;
     string s;
     cin >> s;

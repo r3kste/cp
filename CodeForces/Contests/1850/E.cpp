@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -39,7 +40,7 @@ int solve() {
     fastio;
     ll n, c;
     cin >> n >> c;
-    vll a (n);
+    vll a(n);
     ll C = 0;
     ll S = 0;
     to (i, 0, n, i + 1) {
@@ -51,7 +52,7 @@ int solve() {
     ll a0 = 4 * n;
     ll co = C - c;
     ll D = (b * b) - (4 * a0 * co);
-    ll o = (sqrt (D) - b) / (2 * a0);
+    ll o = (sqrt(D) - b) / (2 * a0);
     cout << o;
     return 0;
 }

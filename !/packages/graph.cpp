@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int n;
@@ -8,7 +9,7 @@ vector<int> dp;
 vector<bool> dpd;
 vector<int> subtree_size;
 
-void dfs (int node) {
+void dfs(int node) {
     visited[node] = true;
 
     for (auto surr : adj[node]) {
@@ -16,13 +17,13 @@ void dfs (int node) {
             continue;
         }
 
-        dfs (surr);
+        dfs(surr);
     }
 }
 
-void bfs (int root) {
+void bfs(int root) {
     queue<int> todo;
-    todo.push (root);
+    todo.push(root);
 
     while (!todo.empty()) {
         int node = todo.front();
@@ -35,15 +36,15 @@ void bfs (int root) {
         visited[node] = true;
 
         for (auto surr : adj[node]) {
-            todo.push (surr);
+            todo.push(surr);
         }
     }
 }
 
-void populate_subtree_size (int node, int parent) {
+void populate_subtree_size(int node, int parent) {
     for (auto surr : adj[node]) {
         if (surr != parent) {
-            populate_subtree_size (surr, node);
+            populate_subtree_size(surr, node);
             subtree_size[node] += subtree_size[surr];
         }
     }
@@ -52,22 +53,22 @@ void populate_subtree_size (int node, int parent) {
 }
 
 int solve() {
-    ios_base::sync_with_stdio (false);
-    cin.tie (NULL);
-    int n, e;
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int e;
     cin >> n >> e;
-    adj = vector<vector<int>> (n);
-    visited = vector<bool> (n, false);
-    dp = vector<int> (n);
-    dpd = vector<bool> (n);
+    adj = vector<vector<int>>(n);
+    visited = vector<bool>(n, false);
+    dp = vector<int>(n);
+    dpd = vector<bool>(n);
 
     for (int i = 0; i < n - 1; i++) {
         int u, v;
         cin >> u >> v;
         u--;
         v--;
-        adj[u].push_back (v);
-        adj[v].push_back (u);
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
 
     return 0;

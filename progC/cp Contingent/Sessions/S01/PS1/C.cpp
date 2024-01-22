@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -26,8 +27,9 @@ typedef vector<long long int> vll;
 
 typedef vector<vector<double>> matrix;
 ll order;
-matrix m_mul (matrix a, matrix b) {
-    matrix res (order, vector<double> (order, 0) );
+
+matrix m_mul(matrix a, matrix b) {
+    matrix res(order, vector<double>(order, 0));
 
     for (int i = 0; i < order; i++) {
         for (int j = 0; j < order; j++) {
@@ -41,8 +43,8 @@ matrix m_mul (matrix a, matrix b) {
     return res;
 }
 
-matrix m_pow (matrix a, ll n) {
-    matrix res (order, vector<double> (order, 0) );
+matrix m_pow(matrix a, ll n) {
+    matrix res(order, vector<double>(order, 0));
 
     for (ll i = 0; i < order; i++) {
         res[i][i] = 1;
@@ -50,11 +52,11 @@ matrix m_pow (matrix a, ll n) {
 
     while (n) {
         if (n & 1) {
-            res = m_mul (res, a);
+            res = m_mul(res, a);
         }
 
         n >>= 1;
-        a = m_mul (a, a );
+        a = m_mul(a, a);
     }
 
     return res;
@@ -67,13 +69,13 @@ int solve() {
     double p;
     cin >> p;
     order = 2;
-    matrix a (order, vector<double> (order, p) );
+    matrix a(order, vector<double>(order, p));
     // matrix ini  (order, vector<double> (order, p) );
     // ini[0][0] = ini[1][1] = 0;
     // ini[0][1] = ini[1][0] = 1;
     a[0][1] = 1 - p;
     a[1][0] = 1 - p;
-    double ans = m_pow (a, n) [0][1];
+    double ans = m_pow(a, n)[0][1];
     // cout << m_mul (m_pow (a, n), m_pow (ini, n) ) [0][0] ;
 
     if (n % 2) {

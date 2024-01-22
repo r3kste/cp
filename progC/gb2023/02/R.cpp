@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,22 +29,24 @@ int n;
 vi a;
 vector<vi> dp;
 vector<vector<bool>> dpd;
-ll f (int i, int j) {
+
+ll f(int i, int j) {
     if (i > j) {
         return 0;
     } else if (dpd[i][j]) {
         return dp[i][j];
     } else {
         dpd[i][j] = true;
-        return dp[i][j] = max (a[i] + min (f (i + 2, j), f (i + 1, j - 1)), a[j] + min (f (i, j - 2), f (i + 1, j - 1)));
+        return dp[i][j] = max(a[i] + min(f(i + 2, j), f(i + 1, j - 1)), a[j] + min(f(i, j - 2), f(i + 1, j - 1)));
     }
 }
+
 int solve() {
     fastio;
     cin >> n;
-    a = vi (n, 0);
-    dp = vector<vi> (n, vi (n));
-    dpd = vector<vector<bool>> (n, vector<bool> (n, false));
+    a = vi(n, 0);
+    dp = vector<vi>(n, vi(n));
+    dpd = vector<vector<bool>>(n, vector<bool>(n, false));
     ll sum = 0;
 
     for (int i = 0; i < n; i++) {
@@ -54,7 +57,7 @@ int solve() {
     // f (i, j) = maximum score of ibraheen considering from index i to index j
     // ans = sum - 2*f (0, n - 1)
     //f (i, j) = max (a[i] + min (f (i + 2, j), f (i + 1, j - 1)), a[j] + min (f (i, j - 2), f (i + 1, j - 1)))
-    cout << 2 * f (0, n - 1) - sum;
+    cout << 2 * f(0, n - 1) - sum;
     return 0;
 }
 

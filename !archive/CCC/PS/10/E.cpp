@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -32,7 +33,7 @@ int main() {
     }
 }
 
-LL power (LL x, int y, ll mod) {
+LL power(LL x, int y, ll mod) {
     LL o = 1;
     x = x % mod;
 
@@ -47,16 +48,20 @@ LL power (LL x, int y, ll mod) {
 
     return o;
 }
-LL inv_m (LL n, ll mod) {
-    return power (n, mod - 2, mod);
+
+LL inv_m(LL n, ll mod) {
+    return power(n, mod - 2, mod);
 }
-LL mul (LL x, LL y, ll mod) {
+
+LL mul(LL x, LL y, ll mod) {
     return x * 1ull * y % mod;
 }
-LL divide_m (LL x, LL y, ll mod) {
-    return mul (x, inv_m (y, mod), mod);
+
+LL divide_m(LL x, LL y, ll mod) {
+    return mul(x, inv_m(y, mod), mod);
 }
-LL ncr_m (LL n, int r, ll mod) {
+
+LL ncr_m(LL n, int r, ll mod) {
     if (n < r) {
         return 0;
     }
@@ -66,13 +71,13 @@ LL ncr_m (LL n, int r, ll mod) {
     }
 
     if (n - r < r) {
-        return ncr_m (n, n - r, mod);
+        return ncr_m(n, n - r, mod);
     }
 
     LL o = 1;
 
     for (int i = r; i >= 1; i--) {
-        o = divide_m (mul (o, n - i + 1, mod), i, mod);
+        o = divide_m(mul(o, n - i + 1, mod), i, mod);
     }
 
     return o;
@@ -82,16 +87,16 @@ int solve() {
     fastio;
     ll n;
     cin >> n;
-    vll a (n);
-    vll b (n);
+    vll a(n);
+    vll b(n);
     to (i, 0, n, 1) {
         cin >> a[i];
     }
     to (i, 0, n, 1) {
         cin >> b[i];
     }
-    sort (begin (a), end (a));
-    sort (begin (b), end (b));
+    sort(begin(a), end(a));
+    sort(begin(b), end(b));
     ll no_fixed = 0;
     ll o = 1;
 
@@ -101,8 +106,8 @@ int solve() {
         }
 
         int c = j - i;
-        int in = lower_bound (b.begin(), b.end(), a[i]) - b.begin();
-        o = (o * ncr_m (in - no_fixed, c, MOD) % MOD);
+        int in = lower_bound(b.begin(), b.end(), a[i]) - b.begin();
+        o = (o * ncr_m(in - no_fixed, c, MOD) % MOD);
         no_fixed += c;
 
         if (o == 0) {

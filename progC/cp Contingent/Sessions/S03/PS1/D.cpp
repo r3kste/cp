@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,8 +29,9 @@ int n;
 vector<vector<int>> adj;
 vector<bool> visited;
 int maxdepth;
-void dfs (int node, int depth) {
-    maxdepth = max (maxdepth, depth);
+
+void dfs(int node, int depth) {
+    maxdepth = max(maxdepth, depth);
     visited[node] = true;
 
     for (auto surr : adj[node]) {
@@ -37,14 +39,15 @@ void dfs (int node, int depth) {
             continue;
         }
 
-        dfs (surr, depth + 1);
+        dfs(surr, depth + 1);
     }
 }
+
 int solve() {
     fastio;
     cin >> n;
-    adj = vector<vi> (n);
-    visited = vector<bool> (n, false);
+    adj = vector<vi>(n);
+    visited = vector<bool>(n, false);
     vi roots;
     maxdepth = (int) - MOD;
 
@@ -52,17 +55,17 @@ int solve() {
         int t;
         cin >> t;
         t--;
-        adj[i].pb (t);
+        adj[i].pb(t);
 
         if (t == -2) {
-            roots.pb (i);
+            roots.pb(i);
         } else {
-            adj[t].pb (i);
+            adj[t].pb(i);
         }
     }
 
     for (auto root : roots) {
-        dfs (root, 1);
+        dfs(root, 1);
     }
 
     cout << maxdepth;

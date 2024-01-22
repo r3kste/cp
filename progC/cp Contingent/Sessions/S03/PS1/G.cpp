@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -25,7 +26,8 @@ typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 vector<vector<int>> adj;
 vector<bool> visited;
-void dfs (int node, int parent) {
+
+void dfs(int node, int parent) {
     visited[node] = true;
 
     for (auto surr : adj[node]) {
@@ -33,9 +35,10 @@ void dfs (int node, int parent) {
             continue;
         }
 
-        dfs (surr, node);
+        dfs(surr, node);
     }
 }
+
 int solve() {
     fastio;
     int n;

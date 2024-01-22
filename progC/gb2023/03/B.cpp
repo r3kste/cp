@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -43,11 +44,11 @@ int solve() {
 
         if (correction > k) {
             // k is not sufficient
-            ns += (char (c - k));
+            ns += (char(c - k));
             k = 0;
         } else {
             // k is sufficient to convert to 'a'
-            ns += (char (97));
+            ns += (char(97));
             k -= (correction);
         }
     }
@@ -55,7 +56,7 @@ int solve() {
     if (k % 2) {
         char ch = ns.back();
         char newch = ch - 1;
-        ns = ns.substr (0, n - 1);
+        ns = ns.substr(0, n - 1);
 
         if (newch == 96) {
             newch = 'b';

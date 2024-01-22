@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -35,12 +36,12 @@ int solve() {
     for (int i = 0; i < n; i++) {
         char temp;
         cin >> temp;
-        inp.pb (temp);
+        inp.pb(temp);
 
         if (temp == 'A') {
-            a.pb (i);
+            a.pb(i);
         } else {
-            b.pb (i);
+            b.pb(i);
         }
     }
 
@@ -88,6 +89,7 @@ int solve() {
 
     return 0;
 }
+
 int main() {
     fastio;
     int t = 1;

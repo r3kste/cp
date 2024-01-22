@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -38,7 +39,7 @@ int solve() {
             cp = 0;
         }
 
-        cp *= temp / abs (temp);
+        cp *= temp / abs(temp);
     }
 
     if (cp <= 0) {

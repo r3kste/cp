@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int solve() {
     fastio;
     int n, m;
     cin >> n >> m;
-    vector<vector<int>> a (n, vector<int> (m, 0));
+    vector<vector<int>> a(n, vector<int>(m, 0));
     set<int> uselessr;
     set<int> uselessc;
 
@@ -37,8 +38,8 @@ int solve() {
             cin >> a[i][j];
 
             if (a[i][j] == 1) {
-                uselessr.insert (i);
-                uselessc.insert (j);
+                uselessr.insert(i);
+                uselessc.insert(j);
             }
         }
     }
@@ -47,7 +48,7 @@ int solve() {
     int uc = uselessc.size();
     ur = n - ur;
     uc = m - uc;
-    cout << ((min (ur, uc) % 2) ? "Ashish" : "Vivek");
+    cout << ((min(ur, uc) % 2) ? "Ashish" : "Vivek");
     return 0;
 }
 

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int n;
 vector<vii> adj;
 vector<bool> visited;
 
-ll f (int node) {
+ll f(int node) {
     visited[node] = true;
     ll maxx = 0;
 
@@ -37,7 +38,7 @@ ll f (int node) {
             continue;
         }
 
-        maxx = max (maxx, surr.S + f (surr.F));
+        maxx = max(maxx, surr.S + f(surr.F));
     }
 
     return maxx;
@@ -46,20 +47,20 @@ ll f (int node) {
 int solve() {
     fastio;
     cin >> n;
-    adj = vector<vii> (n);
-    visited.assign (n, false);
+    adj = vector<vii>(n);
+    visited.assign(n, false);
 
     for (int i = 0; i < n - 1; i++) {
         int u, v, w;
         cin >> u >> v >> w;
-        adj[u].pb (mp (v, w));
-        adj[v].pb (mp (u, w));
+        adj[u].pb(mp(v, w));
+        adj[v].pb(mp(u, w));
     }
 
     // f(i) = maximum cost starting from node 'i'
     // ans = f(0)
     // f(i) = maximum among surrounding except visited value of w+f(surr)
-    cout << f (0);
+    cout << f(0);
     return 0;
 }
 

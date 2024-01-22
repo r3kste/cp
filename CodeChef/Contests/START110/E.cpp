@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -35,7 +36,7 @@ int main() {
     // finally be false if i is Not a prime, else true.
     // bool prime[n + 1];
     // memset(prime, true, sizeof(prime));
-    vector<bool> prime (n + 1, true);
+    vector<bool> prime(n + 1, true);
 
     for (int p = 2; p * p <= n; p++) {
         // If prime[p] is not changed, then it is a prime
@@ -61,8 +62,8 @@ int main() {
         //
         ll ans = MOD;
         bool flag = false;
-        double temp = log2 (n + 1);
-        int inttemp = (int (log2 (n + 1)));
+        double temp = log2(n + 1);
+        int inttemp = (int(log2(n + 1)));
 
         if (prime[n]) {
             ans = 1;

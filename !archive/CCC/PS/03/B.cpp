@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main() {
@@ -12,9 +13,9 @@ int main() {
         int l = a.length();
 
         if (l <= 10) {
-            op.push_back (a);
+            op.push_back(a);
         } else {
-            op.push_back (a[0] + to_string (l - 2) + a[l - 1]);
+            op.push_back(a[0] + to_string(l - 2) + a[l - 1]);
         }
     }
 

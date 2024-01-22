@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int solve() {
     fastio;
     int n, m;
     cin >> n >> m;
-    cout << max (0, int (ceil ((m - (100 * n)) / 100.0)));
+    cout << max(0, int(ceil((m - (100 * n)) / 100.0)));
     return 0;
 }
 

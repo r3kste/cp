@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (auto _ : __) { o (_) } br
 #define vvout(___)  for (auto __ : ___) { vout (__); }
@@ -42,19 +43,19 @@ int solve() {
     fastio;
     int n, l;
     in2 (n, l);
-    vll a (n);
+    vll a(n);
     vin (a);
-    sort (all (a));
-    a.pb (l + (l - a.back()));
-    a.pb (-a.front());
-    sort (all (a));
+    sort(all (a));
+    a.pb(l + (l - a.back()));
+    a.pb(-a.front());
+    sort(all (a));
     ll max_dist = 0;
 
     for (int i = 0; i < n + 1; i++) {
-        max_dist = max (max_dist, a[i + 1] - a[i]);
+        max_dist = max(max_dist, a[i + 1] - a[i]);
     }
 
-    cout << fixed << setprecision (10);
+    cout << fixed << setprecision(10);
     o (max_dist / 2.0);
     return 0;
 }

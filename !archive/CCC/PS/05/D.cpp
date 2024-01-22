@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define for(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -37,25 +38,25 @@ void solve() {
     fastio;
     int n;
     cin >> n;
-    vi r (n);
+    vi r(n);
     int mr = 0;
     int psr[n + 1];
     psr[0] = 0;
     zr (i, 1, n + 1) {
         cin >> r[i - 1];
         psr[i] = r[i - 1] + psr[i - 1];
-        mr = max (psr[i], mr);
+        mr = max(psr[i], mr);
     }
     int m;
     cin >> m;
-    vi b (m);
+    vi b(m);
     int mb = 0;
     int psb[m + 1];
     psb[0] = 0;
     zr (i, 1, m + 1) {
         cin >> b[i - 1];
         psb[i] = b[i - 1] + psb[i - 1];
-        mb = max (psb[i], mb);
+        mb = max(psb[i], mb);
     }
     cout << mr + mb;
 }

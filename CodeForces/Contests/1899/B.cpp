@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,8 +29,8 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vll a (n, 0);
-    vll ps (n + 1, 0);
+    vll a(n, 0);
+    vll ps(n + 1, 0);
     ll amax = -MOD * MOD;
     ll amin = MOD * MOD;
 
@@ -48,7 +49,7 @@ int solve() {
 
     ll ans = amax - amin;
 
-    for (int k = 2; k <= sqrt (n); k++) {
+    for (int k = 2; k <= sqrt(n); k++) {
         if (n % k == 0) {
             ll max = -MOD * MOD;
             ll min = MOD * MOD;

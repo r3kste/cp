@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -20,7 +21,9 @@ typedef vector<long long int> vll;
 typedef vector<unsigned long long int> vLL;
 
 int solve();
+
 int c = 0;
+
 int main() {
     fastio;
     int t = 1;
@@ -57,10 +60,10 @@ int solve() {
         ll alt = MOD;
 
         if (a > 0) {
-            alt = ceil ((m - a) / double (ck));
+            alt = ceil((m - a) / double(ck));
         }
 
-        cout << min (alt, (ll) ((m / ck) + (m % ck)));
+        cout << min(alt, (ll) ((m / ck) + (m % ck)));
     }
 
     return 0;

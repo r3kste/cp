@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -47,14 +48,14 @@ int solve() {
             cin >> a[i][j];
 
             if (a[i][j] == 1) {
-                x.insert (i);
-                y.insert (j);
+                x.insert(i);
+                y.insert(j);
             }
         }
     }
     n = n - x.size();
     m = m - y.size();
-    int limit = min (n, m);
+    int limit = min(n, m);
 
     if (limit % 2 == 0) {
         cout << "Vivek";

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -48,7 +49,7 @@ int solve() {
         c1--;
         r2--;
         c2--;
-        inp.pb ({r1, c1, r2, c2, color});
+        inp.pb({r1, c1, r2, c2, color});
     }
 
     q = inp.size();
@@ -59,13 +60,13 @@ int solve() {
             bool flag = false;
 
             for (int k = q - 1; k >= 0; k--) {
-                r1 = get<0> (inp[k]);
-                c1 = get<1> (inp[k]);
-                r2 = get<2> (inp[k]);
-                c2 = get<3> (inp[k]);
+                r1 = get<0>(inp[k]);
+                c1 = get<1>(inp[k]);
+                r2 = get<2>(inp[k]);
+                c2 = get<3>(inp[k]);
 
                 if (i >= r1 && i <= r2 && j >= c1 && j <= c2) {
-                    cout << get<4> (inp[k]);
+                    cout << get<4>(inp[k]);
                     flag = true;
                     break;
                 }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vi a (n);
+    vi a(n);
     vi deck;
     ll pow = 0;
 
@@ -66,9 +67,9 @@ int solve() {
         int temp = a[i];
 
         if (temp > 0) {
-            deck.pb (temp);
+            deck.pb(temp);
         } else {
-            sort (all (deck));
+            sort(all (deck));
 
             if (deck.size() >= 1) {
                 pow += deck[deck.size() - 1];

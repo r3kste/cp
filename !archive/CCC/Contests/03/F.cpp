@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -71,10 +72,10 @@ int solve() {
     to (i, 0, n, i + 1) {
         char temp;
         cin >> temp;
-        in.push_back (temp);
+        in.push_back(temp);
     }
     to (i, 0, n - 1, i + 1) {
-        comp.push_back ('d');
+        comp.push_back('d');
         int t = n - i - 1;
 
         if (in[t] == 'u') {

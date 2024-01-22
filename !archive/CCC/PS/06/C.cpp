@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define FOR(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -33,8 +34,8 @@ int main() {
     testitr (true);
 }
 
-bool check (int l, int r, int x, int y) {
-    int g = __gcd (x, y);
+bool check(int l, int r, int x, int y) {
+    int g = __gcd(x, y);
     ll lc = x * y / g;
     return (lc <= r);
 }

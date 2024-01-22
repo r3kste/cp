@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -34,7 +35,8 @@ int main() {
         cout << "\n";
     }
 }
-int reverse (int n) {
+
+int reverse(int n) {
     int r = 0;
 
     for (; n > 0; n /= 10) {
@@ -43,10 +45,11 @@ int reverse (int n) {
 
     return r;
 }
+
 int solve() {
     fastio;
     int n;
     cin >> n;
-    cout << abs ((n - reverse (n)) / 9);
+    cout << abs((n - reverse(n)) / 9);
     return 0;
 }

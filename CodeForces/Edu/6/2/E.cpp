@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -38,9 +39,10 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-bool valid (long double x, long double c) {
-    return (x * x) + sqrt (x) >= c;
+bool valid(long double x, long double c) {
+    return (x * x) + sqrt(x) >= c;
 }
+
 int solve() {
     fastio;
     long double c;
@@ -52,7 +54,7 @@ int solve() {
     while (n_iter--) {
         long double m = l + (r - l) / 2.0;
 
-        if (valid (m, c)) {
+        if (valid(m, c)) {
             r = m;
         } else {
             l = m;

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -46,7 +47,7 @@ int solve() {
         ll a, q;
         cin >> a >> q;
         ll no = n / q;
-        no = min (a, no);
+        no = min(a, no);
 
         if (no > max) {
             max = no;

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -39,9 +40,9 @@ int solve() {
         cin >> l >> r;
         l--;
         r--;
-        minend = min (minend, r);
-        maxstart = max (maxstart, l);
-        inp.pb (mp (l, r));
+        minend = min(minend, r);
+        maxstart = max(maxstart, l);
+        inp.pb(mp(l, r));
     }
 
     if (maxstart > minend) {

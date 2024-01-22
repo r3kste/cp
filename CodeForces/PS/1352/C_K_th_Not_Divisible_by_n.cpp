@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -38,17 +39,18 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-ll valid (ll x, int n, int k) {
+ll valid(ll x, int n, int k) {
     return x - (x / n);
 }
+
 int solve() {
     fastio;
     int n, k;
     in2 (n, k);
     ll l = 1;
-    ll r = min ((ll)10e12, (ll)n * k);
+    ll r = min((ll) 10e12, (ll) n * k);
 
-    while (valid (r, n, k) < k) {
+    while (valid(r, n, k) < k) {
         r *= n;
     }
 
@@ -56,7 +58,7 @@ int solve() {
 
     while (true) {
         ll m = l + (r - l) / 2;
-        ll sup = valid (m, n, k);
+        ll sup = valid(m, n, k);
 
         if (sup == k) {
             ans = m;
@@ -72,7 +74,8 @@ int solve() {
         ans--;
     }
 
-    o (ans) br;
+    o (ans)
+    br;
     return 0;
 }
 

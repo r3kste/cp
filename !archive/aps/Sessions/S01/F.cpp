@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -35,7 +36,7 @@ int main() {
     }
 }
 
-LL power (LL x, LL y, LL mod) {
+LL power(LL x, LL y, LL mod) {
     LL o = 1;
     x = x % mod;
 
@@ -58,6 +59,6 @@ int solve() {
     // cout << (power(3, 3 * n, MOD) - power(7, n, MOD)) % MOD; // Inclusion - Exclusion
     // Wrong answer on T7
     // Ok i didnt think about this initially but the above expression could be negative. Now it just makes sense
-    cout << ((power (3, 3 * n, MOD) - power (7, n, MOD)) + MOD) % MOD; // Inclusion - Exclusion
+    cout << ((power(3, 3 * n, MOD) - power(7, n, MOD)) + MOD) % MOD; // Inclusion - Exclusion
     return 0;
 }

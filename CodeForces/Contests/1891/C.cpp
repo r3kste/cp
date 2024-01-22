@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -31,7 +32,7 @@ int solve() {
     ll moves = 0;
     ll x = 0;
     // ll sum = 0;
-    vi a (n);
+    vi a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -39,7 +40,7 @@ int solve() {
     }
 
     // cout << (ll)(ceil(sum / 2.0) + 1);
-    sort (all (a) );
+    sort(all (a));
     int l = 0;
     int r = n - 1;
 
@@ -89,7 +90,7 @@ int solve() {
                 break;
             }
 
-            moves += (ceil ( (a[l] - x) / 2.0) + 1);
+            moves += (ceil((a[l] - x) / 2.0) + 1);
             l++;
         }
     }

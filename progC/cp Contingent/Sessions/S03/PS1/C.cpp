@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,8 @@ string color;
 vector<bool> visited;
 vii dp;
 vector<bool> dpd;
-int count (int node, int parent) {
+
+int count(int node, int parent) {
     int c = 0;
 
     for (auto surr : dp) {
@@ -40,11 +42,12 @@ int count (int node, int parent) {
     cout << c;
     return 0;
 }
-ii f (int node, int parent) {
+
+ii f(int node, int parent) {
     if (dpd[node]) {
         return dp[node];
     } else {
-        ii sub = mp (0, 0);
+        ii sub = mp(0, 0);
         //           B  W
 
         if (color[node] == 'W') {
@@ -58,7 +61,7 @@ ii f (int node, int parent) {
                 continue;
             }
 
-            ii t = f (surr, node);
+            ii t = f(surr, node);
             sub.F += t.F;
             sub.S += t.S;
         }
@@ -66,26 +69,27 @@ ii f (int node, int parent) {
         return dp[node] = sub;
     }
 }
+
 int solve() {
     fastio;
     int n;
     cin >> n;
-    adj = vector<vi> (n);
-    visited = vector<bool> (n, false);
-    dp = vii (n);
-    dpd = vector<bool> (n);
+    adj = vector<vi>(n);
+    visited = vector<bool>(n, false);
+    dp = vii(n);
+    dpd = vector<bool>(n);
 
     for (int i = 1; i < n; i++) {
         int t;
         cin >> t;
         t--;
-        adj[i].pb (t);
-        adj[t].pb (i);
+        adj[i].pb(t);
+        adj[t].pb(i);
     }
 
     cin >> color;
-    f (0, -1);
-    count (0, -1);
+    f(0, -1);
+    count(0, -1);
     return 0;
 }
 

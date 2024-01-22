@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,7 @@ int solve() {
     int n;
     cin >> n;
     int k = 1;
-    int l = int ((n * n) / 2.0 + 1 + n % 2);
+    int l = int((n * n) / 2.0 + 1 + n % 2);
 
     if (n == 2) {
         cout << -1 << "\n";

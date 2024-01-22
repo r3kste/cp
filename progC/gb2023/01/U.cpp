@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,8 +29,8 @@ int solve() {
     fastio;
     ll n, m;
     cin >> n >> m;
-    double root3 = sqrt (3);
-    cout << max (int ((n << 1) / root3) * ((m << 1) - 1), int ((m << 1) / root3) * ((n << 1) - 1));
+    double root3 = sqrt(3);
+    cout << max(int((n << 1) / root3) * ((m << 1) - 1), int((m << 1) / root3) * ((n << 1) - 1));
     return 0;
 }
 

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -42,7 +43,8 @@ int n;
 vector<vector<int>> adj;
 vector<bool> visited;
 vll distances;
-void populate_distances (int node, int depth) {
+
+void populate_distances(int node, int depth) {
     visited[node] = true;
     distances[node] = depth;
 
@@ -51,13 +53,13 @@ void populate_distances (int node, int depth) {
             continue;
         }
 
-        populate_distances (surr, depth + 1);
+        populate_distances(surr, depth + 1);
     }
 }
 
-int farthest_from (int root) {
+int farthest_from(int root) {
     queue<int> todo;
-    todo.push (root);
+    todo.push(root);
     int far = root;
 
     while (!todo.empty()) {
@@ -75,7 +77,7 @@ int farthest_from (int root) {
         visited[node] = true;
 
         for (auto surr : adj[node]) {
-            todo.push (surr);
+            todo.push(surr);
         }
     }
 
@@ -86,41 +88,41 @@ int solve() {
     fastio;
     int n;
     in (n);
-    adj = vector<vector<int>> (n);
-    distances = vll (n);
+    adj = vector<vector<int>>(n);
+    distances = vll(n);
 
     for (int i = 0; i < n - 1; i++) {
         int u, v;
         cin >> u >> v;
         u--;
         v--;
-        adj[u].pb (v);
-        adj[v].pb (u);
+        adj[u].pb(v);
+        adj[v].pb(u);
     }
 
     vll dist;
-    visited = vector<bool> (n, false);
-    populate_distances (0, 0); //populate distances with distance from 0
+    visited = vector<bool>(n, false);
+    populate_distances(0, 0); //populate distances with distance from 0
     dist = distances;
-    visited = vector<bool> (n, false);
-    int a = farthest_from (0);
-    visited = vector<bool> (n, false);
-    int b = farthest_from (a);
-    visited = vector<bool> (n, false);
-    populate_distances (b, 0);
+    visited = vector<bool>(n, false);
+    int a = farthest_from(0);
+    visited = vector<bool>(n, false);
+    int b = farthest_from(a);
+    visited = vector<bool>(n, false);
+    populate_distances(b, 0);
     rep (__, n) {
-        dist[__] = max (dist[__], distances[__]);
+        dist[__] = max(dist[__], distances[__]);
     }
-    visited = vector<bool> (n, false);
-    populate_distances (a, 0);
+    visited = vector<bool>(n, false);
+    populate_distances(a, 0);
     rep (___, n) {
-        dist[___] = max (dist[___], distances[___]);
+        dist[___] = max(dist[___], distances[___]);
     }
-    sort (all (dist));
+    sort(all (dist));
 
     for (int k = 1; k <= n; k++) {
-        int ptr = lower_bound (all (dist), k) - begin (dist);
-        out (min (n, ptr + 1), " ");
+        int ptr = lower_bound(all (dist), k) - begin(dist);
+        out (min(n, ptr + 1), " ");
     }
 
     br;

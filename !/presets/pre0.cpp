@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -22,10 +23,10 @@ typedef vector<bool> vb;
 typedef vector<ll> vll;
 
 int solve() {
-    fastio;
+    fastio
     int n;
     cin >> n;
-    vi a (n);
+    vi a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -35,7 +36,7 @@ int solve() {
 }
 
 int main() {
-    fastio;
+    fastio
     int t = 1;
     cin >> t;
 

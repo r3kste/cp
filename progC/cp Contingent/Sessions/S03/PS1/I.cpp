@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(n) rep (_, n) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -43,13 +44,14 @@ int m;
 vector<vector<int>> adj;
 vector<bool> visited;
 vector<vector<int>> distances;
-int d (int start, int target) {
+
+int d(int start, int target) {
     if (distances[start][target] != MOD) {
         return distances[start][target];
     } else {
         queue<ii> todo;
-        visited = vb (n, false);
-        todo.push (mp (start, 0));
+        visited = vb(n, false);
+        todo.push(mp(start, 0));
 
         while (!todo.empty()) {
             int node = todo.front().F;
@@ -69,7 +71,7 @@ int d (int start, int target) {
             visited[node] = true;
 
             for (auto surr : adj[node]) {
-                todo.push (mp (surr, dist + 1));
+                todo.push(mp(surr, dist + 1));
             }
         }
     }
@@ -80,36 +82,38 @@ int d (int start, int target) {
 int solve() {
     fastio;
     int s, t;
-    in2 (n, m) in2 (s, t);
-    adj = vector<vector<int>> (n);
-    visited = vector<bool> (n, false);
-    distances = vector<vector<int>> (n, vector<int> (n, MOD));
+    in2 (n, m)
+    in2 (s, t);
+    adj = vector<vector<int>>(n);
+    visited = vector<bool>(n, false);
+    distances = vector<vector<int>>(n, vector<int>(n, MOD));
 
     for (int i = 0; i < m; i++) {
         int u, v;
         in2 (u, v);
         u--;
         v--;
-        adj[u].pb (v);
-        adj[v].pb (u);
+        adj[u].pb(v);
+        adj[v].pb(u);
     }
 
     s--;
     t--;
-    int cur_dist = d (s, t);
+    int cur_dist = d(s, t);
     ll ans = 0;
 
     for (int a = 0; a < n; a++) {
         for (int b = 0; b < n; b++) {
-            if (a == b || find (adj[a].begin(), adj[a].end(), b) != adj[a].end()) { //if b is already directly connected to a
+            if (a == b ||
+                    find(adj[a].begin(), adj[a].end(), b) != adj[a].end()) { //if b is already directly connected to a
                 continue;
             }
 
-            int dist1 = d (s, a) + d (b, t) + 1; // s->a->b->t
-            int dist2 = d (s, b) + d (a, t) + 1; // s->b->a->t
+            int dist1 = d(s, a) + d(b, t) + 1; // s->a->b->t
+            int dist2 = d(s, b) + d(a, t) + 1; // s->b->a->t
 
-            if (min (dist1, dist2) >= cur_dist) {
-                ans ++;
+            if (min(dist1, dist2) >= cur_dist) {
+                ans++;
             }
         }
     }

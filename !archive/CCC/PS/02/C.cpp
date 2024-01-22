@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main() {
@@ -11,7 +12,7 @@ int main() {
     }
 
     for (int i = 0; i < t; i++) {
-        cout << int (ceil (a[i] / 2.0) - 1) << endl;
+        cout << int(ceil(a[i] / 2.0) - 1) << endl;
     }
 
     return 0;

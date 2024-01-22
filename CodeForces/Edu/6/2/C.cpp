@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -38,39 +39,40 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-bool valid (int n, int x, int y, int t) {
+bool valid(int n, int x, int y, int t) {
     int first = t / x;
     int second = t / y;
     return first + second >= n;
 }
+
 int solve() {
     fastio;
     int n, x, y;
     in3 (n, x, y);
 
     if (n == 1) {
-        o (min (x, y));
+        o (min(x, y));
     } else {
         n--;
         int n_iter = 1000;
         int l = 0;
         int r = 1;
 
-        while (!valid (n, x, y, r)) {
+        while (!valid(n, x, y, r)) {
             r *= 2;
         }
 
         while (n_iter--) {
             int m = l + (r - l) / 2;
 
-            if (valid (n, x, y, m)) {
+            if (valid(n, x, y, m)) {
                 r = m;
             } else {
                 l = m;
             }
         }
 
-        o (min (x, y) + r);
+        o (min(x, y) + r);
     }
 
     br;

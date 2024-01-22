@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -32,7 +33,7 @@ int solve() {
     int n1 = n - k * (x / k) - k * (y / k);
     x = x - k * (x / k);
     y = y - k * (y / k);
-    int n2 = n1 - 2 * min (x, y);
+    int n2 = n1 - 2 * min(x, y);
     cout << n2;
     return 0;
 }

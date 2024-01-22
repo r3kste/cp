@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -49,7 +50,7 @@ int solve() {
     }
 
     bc /= 2;
-    cout << min (bc, min (kc, lc));
+    cout << min(bc, min(kc, lc));
     return 0;
 }
 

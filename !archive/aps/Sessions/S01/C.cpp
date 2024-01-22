@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -48,6 +49,7 @@ int solve() {
     //     }
     // }
     // TLE... rip
-    cout << int (floor ((n - y) / x)) * x + y; // lol ok just find the m such that it satisfies k=mx+y and maximum would be when k is nearest to n.
+    cout << int(floor((n - y) / x)) * x +
+         y; // lol ok just find the m such that it satisfies k=mx+y and maximum would be when k is nearest to n.
     return 0;
 }

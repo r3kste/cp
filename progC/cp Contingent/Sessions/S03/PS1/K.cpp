@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) {rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -42,9 +43,9 @@ int n;
 vector<vector<ii>> adj;
 vector<bool> visited;
 
-ll bfs (int root) {
+ll bfs(int root) {
     queue<int> todo;
-    todo.push (root);
+    todo.push(root);
     bool flag = false;
 
     while (!todo.empty()) {
@@ -62,7 +63,7 @@ ll bfs (int root) {
                 flag = true;
             }
 
-            todo.push (surr.F);
+            todo.push(surr.F);
         }
     }
 
@@ -72,9 +73,9 @@ ll bfs (int root) {
 int solve() {
     fastio;
     in (n);
-    adj = vector<vector<ii>> (n);
-    visited = vector<bool> (n, false);
-    vi a (n), b (n), c (n);
+    adj = vector<vector<ii>>(n);
+    visited = vector<bool>(n, false);
+    vi a(n), b(n), c(n);
     vin (a);
     vin (b);
     vin (c);
@@ -86,8 +87,8 @@ int solve() {
         C = c[i] - 1;
 
         if (B != A) {
-            adj[A].pb (mp (B, C));
-            adj[B].pb (mp (A, C));
+            adj[A].pb(mp(B, C));
+            adj[B].pb(mp(A, C));
         }
     }
 
@@ -102,7 +103,7 @@ int solve() {
             continue;
         }
 
-        count *= bfs (root);
+        count *= bfs(root);
         count %= MOD;
     }
 

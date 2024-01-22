@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(n) rep (_, n) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -44,9 +45,9 @@ vector<bool> visited;
 vll position;
 vb positiond;
 
-bool bfs (ll root, ll spos) {
+bool bfs(ll root, ll spos) {
     queue<ii> todo;
-    todo.push (mp (root, spos));
+    todo.push(mp(root, spos));
 
     while (!todo.empty()) {
         ll node = todo.front().F;
@@ -67,7 +68,7 @@ bool bfs (ll root, ll spos) {
                     return false;
                 }
             } else {
-                todo.push (mp (surr.F, pos + d));
+                todo.push(mp(surr.F, pos + d));
                 position[surr.F] = pos + d;
                 positiond[surr.F] = true;
             }
@@ -81,18 +82,18 @@ int solve() {
     fastio;
     ll m;
     in2 (n, m);
-    adj = vector<vector<ii>> (n);
-    visited = vector<bool> (n, false);
-    position = vll (n);
-    positiond = vb (n);
+    adj = vector<vector<ii>>(n);
+    visited = vector<bool>(n, false);
+    position = vll(n);
+    positiond = vb(n);
 
     for (int i = 0; i < m; i++) {
         ll u, v, d;
         in3 (u, v, d);
         u--;
         v--;
-        adj[u].pb (mp (v, d));
-        adj[v].pb (mp (u, -d));
+        adj[u].pb(mp(v, d));
+        adj[v].pb(mp(u, -d));
     }
 
     for (ll root = 0; root < n; root++) {
@@ -100,7 +101,7 @@ int solve() {
             continue;
         }
 
-        if (!bfs (root, 0)) {
+        if (!bfs(root, 0)) {
             ono;
             return 0;
         }
@@ -109,6 +110,7 @@ int solve() {
     oyes;
     return 0;
 }
+
 int main() {
     fastio;
     int t = 1;

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -40,6 +41,6 @@ int solve() {
             e++;
         }
     }
-    cout << min (e, n - e);
+    cout << min(e, n - e);
     return 0;
 }

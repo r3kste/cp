@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -23,6 +24,7 @@ typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
+
 int solve() {
     fastio;
     int n, m;

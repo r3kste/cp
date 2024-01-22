@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -46,7 +47,7 @@ int solve() {
 
         if (c == '.') {
             coins++;
-            maxcoins = max (maxcoins, coins);
+            maxcoins = max(maxcoins, coins);
         }
 
         if (c == 'L') {

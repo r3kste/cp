@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -31,7 +32,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -39,26 +40,27 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-bool valid (vector<tuple<int, int, int, int>> p, int m, int T) {
+bool valid(vector<tuple<int, int, int, int>> p, int m, int T) {
     int n = sz (p);
     ll no_balloons = 0;
     rep (_, n) {
-        int t = get<0> (p[_]);
-        int z = get<1> (p[_]);
-        int y = get<2> (p[_]);
+        int t = get<0>(p[_]);
+        int z = get<1>(p[_]);
+        int y = get<2>(p[_]);
         int cT = T;
         int cycle = z * t + y;
-        no_balloons += z * floor (cT / cycle);
+        no_balloons += z * floor(cT / cycle);
         cT %= cycle;
-        no_balloons += min (z, (ll)floor (cT / t));
+        no_balloons += min(z, (ll) floor(cT / t));
     }
     return no_balloons >= m;
 }
+
 int solve() {
     fastio;
     int req, n;
     in2 (req, n);
-    vector<tuple<int, int, int, int>> p (n);
+    vector<tuple<int, int, int, int>> p(n);
     rep (__, n) {
         int t, z, y;
         in3 (t, z, y);
@@ -67,7 +69,7 @@ int solve() {
     int l = 0;
     int r = 10e9;
 
-    while (!valid (p, req, r)) {
+    while (!valid(p, req, r)) {
         r *= 2;
     }
 
@@ -76,7 +78,7 @@ int solve() {
     while (n_iter--) {
         int m = l + (r - l) / 2;
 
-        if (valid (p, req, m)) {
+        if (valid(p, req, m)) {
             r = m;
         } else {
             l = m;
@@ -85,21 +87,21 @@ int solve() {
 
     o (r);
     br;
-    sort (all (p));
+    sort(all (p));
     int tno_balloons = 0;
     int T = r;
-    vi ans (n, 0);
+    vi ans(n, 0);
     rep (_, n) {
         int no_balloons = 0;
-        int t = get<0> (p[_]);
-        int z = get<1> (p[_]);
-        int y = get<2> (p[_]);
-        int index = get<3> (p[_]);
+        int t = get<0>(p[_]);
+        int z = get<1>(p[_]);
+        int y = get<2>(p[_]);
+        int index = get<3>(p[_]);
         int cT = T;
         int cycle = z * t + y;
-        no_balloons += z * floor (cT / cycle);
+        no_balloons += z * floor(cT / cycle);
         cT %= cycle;
-        no_balloons += min (z, (ll)floor (cT / t));
+        no_balloons += min(z, (ll) floor(cT / t));
         ans[index] = no_balloons;
         tno_balloons += no_balloons;
 

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,11 +29,11 @@ int solve() {
     fastio;
     int x, y;
     cin >> x >> y;
-    cout << abs (x - y) * 2 << "\n";
+    cout << abs(x - y) * 2 << "\n";
     int a = (x + y) / 2;
     int c = 1;
 
-    for (int i = 0; i < 2 * abs (x - y); i++) {
+    for (int i = 0; i < 2 * abs(x - y); i++) {
         cout << a << " ";
 
         if (a == x) {

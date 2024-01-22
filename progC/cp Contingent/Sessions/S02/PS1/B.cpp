@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,13 +29,13 @@ int solve() {
     fastio;
     int n, x;
     cin >> n >> x;
-    vi c (n);
+    vi c(n);
 
     for (int i = 0; i < n; i++) {
         cin >> c[i];
     }
 
-    vector<vector<int>> dp (n + 1, vector<int> (x + 1, 0));
+    vector<vector<int>> dp(n + 1, vector<int>(x + 1, 0));
 
     //dp[a][b] = number of ways to get a sum of b using a distinct (ordered?) coins
     for (int i = 0; i <= x; i++) {

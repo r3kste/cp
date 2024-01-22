@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -34,7 +35,8 @@ int main() {
         cout << "\n";
     }
 }
-LL power (LL x, LL y, LL mod) {
+
+LL power(LL x, LL y, LL mod) {
     LL o = 1;
     x = x % mod;
 
@@ -49,10 +51,12 @@ LL power (LL x, LL y, LL mod) {
 
     return o;
 }
-LL inv_m (LL n, LL mod) {
-    return power (n, mod - 2, mod); // n^(mod-2) % mod
+
+LL inv_m(LL n, LL mod) {
+    return power(n, mod - 2, mod); // n^(mod-2) % mod
 }
-LL ncr_m (LL n, LL r, LL mod) {
+
+LL ncr_m(LL n, LL r, LL mod) {
     if (n < r) {
         return 0;
     }
@@ -62,7 +66,7 @@ LL ncr_m (LL n, LL r, LL mod) {
     }
 
     if (n - r < r) {
-        return ncr_m (n, n - r, mod);    // make sure r is the lower r
+        return ncr_m(n, n - r, mod);    // make sure r is the lower r
     }
 
     LL o = 1;
@@ -82,7 +86,7 @@ LL ncr_m (LL n, LL r, LL mod) {
 
     for (int i = r; i > 0; i--) {
         o = (o * (n - i + 1)) % mod;   // calculates n!/(n-r)! together
-        o = (o * inv_m (i, mod)) % mod; // divides the above by r!
+        o = (o * inv_m(i, mod)) % mod; // divides the above by r!
     }
 
     return o;
@@ -92,6 +96,6 @@ int solve() {
     fastio;
     LL a, b;
     cin >> a >> b;
-    cout << ncr_m (a, b, MOD);
+    cout << ncr_m(a, b, MOD);
     return 0;
 }

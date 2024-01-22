@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -32,7 +33,7 @@ int main() {
     }
 }
 
-ll sumtill (ll n) {
+ll sumtill(ll n) {
     return (n * (n + 1)) / 2;
 }
 
@@ -46,8 +47,8 @@ int solve() {
     // }
     // else
     // {
-    ll max = sumtill (n) - sumtill (n - k);
-    ll min = sumtill (k);
+    ll max = sumtill(n) - sumtill(n - k);
+    ll min = sumtill(k);
 
     if (x <= max && x >= min) {
         cout << "YES";

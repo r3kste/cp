@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define for(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -33,13 +34,13 @@ int main() {
     testitr (true);
 }
 
-int calc (int n, int m) {
+int calc(int n, int m) {
     if (m == 1) {
         return n - 1;
     } else if (n == 1) {
         return m - 1;
     } else {
-        return n + m - 1 + calc (n - 1, m - 1);
+        return n + m - 1 + calc(n - 1, m - 1);
     }
 }
 
@@ -47,5 +48,5 @@ void solve() {
     fastio;
     int n, m, k;
     cin >> n >> m >> k;
-    cout << ((k == calc (n, m)) ? "YES" : "NO");
+    cout << ((k == calc(n, m)) ? "YES" : "NO");
 }

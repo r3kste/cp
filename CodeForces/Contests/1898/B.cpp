@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -42,7 +43,7 @@ int solve() {
     //         }
     //     }
     // }
-    vi a (n);
+    vi a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -52,7 +53,7 @@ int solve() {
 
     for (int i = n - 2; i > -1; i--) {
         if (a[i] > a[i + 1]) {
-            ll nn = int (ceil  ((a[i] * 1.0) / (a[i + 1] * 1.0)));
+            ll nn = int(ceil((a[i] * 1.0) / (a[i + 1] * 1.0)));
             c += nn - 1; // idk why the -1 came, just yet...
             a[i] /= nn;
         }

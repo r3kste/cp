@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -30,7 +31,7 @@ int solve() {
     cin >> n;
     string s;
     cin >> s;
-    vector<vll> dp (n + 1, vll (10, 0));
+    vector<vll> dp(n + 1, vll(10, 0));
 
     for (int i = 0; i <= n; i++)
         for (int j = 0; j <= 10; j++) {
@@ -42,7 +43,7 @@ int solve() {
     }
 
     for (int i = 1; i <= n; i++) {
-        if (s[i] >= '1'  &&  s[i] <= '9') {
+        if (s[i] >= '1' && s[i] <= '9') {
             dp[i][s[i] - '0'] = dp[i - 1][s[i] - '0'];
         } else {
             for (int j = 1; j < 10; j++) {

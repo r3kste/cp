@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,7 +29,7 @@ int solve() {
     fastio;
     ll n;
     cin >> n;
-    cout << floor (log10 (n)) + 1;
+    cout << floor(log10(n)) + 1;
     return 0;
 }
 

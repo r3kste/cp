@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,13 +29,13 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vi x (n);
+    vi x(n);
 
     for (int i = 0; i < n; i++) {
         cin >> x[i];
     }
 
-    vi z (n);
+    vi z(n);
 
     for (int i = 0; i < n; i++) {
         int temp;
@@ -42,7 +43,7 @@ int solve() {
         z[i] = temp - x[i];
     }
 
-    sort (all (z) );
+    sort(all (z));
     int l = 0;
     int r = n - 1;
     int ans = 0;

@@ -1,5 +1,6 @@
 
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,8 @@ int n;
 vector<vll> grid;
 vll dp;
 vector<bool> dpd;
-ll f (int i) {
+
+ll f(int i) {
     if (i > n - 2 || i < 0) {
         return 0;
     }
@@ -42,15 +44,16 @@ ll f (int i) {
         ll b = sum - grid[1][i];
         ll c = sum - grid[0][i + 1];
         ll d = sum - grid[1][i + 1];
-        ll mx = max (a, max (b, max (c, d)));
+        ll mx = max(a, max(b, max(c, d)));
         dpd[i] = true;
-        return dp[i] = max (mx + f (i + 2), f (i + 1));
+        return dp[i] = max(mx + f(i + 2), f(i + 1));
     }
 }
+
 int solve() {
     fastio;
     cin >> n;
-    grid = vector<vll> (2, vll (n));
+    grid = vector<vll>(2, vll(n));
 
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < n; j++) {
@@ -58,12 +61,12 @@ int solve() {
         }
     }
 
-    dp = vll (n, 0);
-    dpd = vector<bool> (n, false);
+    dp = vll(n, 0);
+    dpd = vector<bool>(n, false);
     // f(i) = maximum sum starting from i'th index
     // ans = f(0)
     // f (i) = max (max (L, 7, J, F) + f (i + 2), f (i + 1))
-    cout << f (0);
+    cout << f(0);
     return 0;
 }
 

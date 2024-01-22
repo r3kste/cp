@@ -3,7 +3,7 @@ seen = set()
 
 
 def f(s):
-    print('',end='')
+    print('', end='')
 
 
 t = int(input())

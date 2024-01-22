@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -20,7 +21,7 @@ typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 typedef vector<unsigned long long int> vLL;
 
-bool checkk (string s) {
+bool checkk(string s) {
     int n = s.length();
 
     for (int i = 1; i < n; i++) {
@@ -41,7 +42,7 @@ int solve() {
     string t;
     cin >> t;
 
-    if (checkk (s)) {
+    if (checkk(s)) {
         cout << "YES";
     } else {
         char a = t[0];
@@ -50,7 +51,7 @@ int solve() {
         if (a != b) {
             cout << "NO";
         } else {
-            if (checkk (t)) {
+            if (checkk(t)) {
                 for (int i = 1; i < n; i++) {
                     if (s[i] == s[i - 1]) {
                         if (s[i] == a) {

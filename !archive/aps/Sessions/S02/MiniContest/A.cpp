@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -19,7 +20,7 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vi a (n);
+    vi a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -46,9 +47,9 @@ int solve() {
 
     while (l <= r) {
         if (i % 2 == 0) {
-            c += max (a[l], a[r]);
+            c += max(a[l], a[r]);
         } else {
-            b += max (a[l], a[r]);
+            b += max(a[l], a[r]);
         }
 
         i++;

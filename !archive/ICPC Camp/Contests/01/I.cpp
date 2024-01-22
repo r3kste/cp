@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -21,103 +22,73 @@ typedef vector<unsigned long long int> vLL;
 
 int solve();
 
-int main()
-{
+int main() {
     fastio;
-
     int t = 1;
-    if (true)
-        cin >> t;
 
-    while (t--)
-    {
+    if (true) {
+        cin >> t;
+    }
+
+    while (t--) {
         solve();
         cout << "\n";
     }
 }
 
-int solve()
-{
+int solve() {
     fastio;
-
     bool dot = false;
     string a;
     cin >> a;
-
-    to(i, 1, 3, i + 1)
-    {
-        if (a[i] == '.')
-        {
+    to(i, 1, 3, i + 1) {
+        if (a[i] == '.') {
             dot = true;
-        }
-        else if (a[i] == '/')
-        {
+        } else if (a[i] == '/') {
             break;
         }
     }
-
     a = a + ".";
-
     string build = "";
     int k[3] = {2, 2, 4};
     int c = 0;
     string date = "", month = "", year = "";
-
-    to(i, 0, a.size() + 1, i + 1)
-    {
-        if (a[i] == '.' || a[i] == '/')
-        {
-            if (build.length() != k[c])
-            {
+    to(i, 0, a.size() + 1, i + 1) {
+        if (a[i] == '.' || a[i] == '/') {
+            if (build.length() != k[c]) {
                 string st = "";
-                to(j, 0, k[c] - build.length(), j + 1)
-                {
+                to(j, 0, k[c] - build.length(), j + 1) {
                     st.append("0");
                 }
                 st.append(build);
                 build = st;
             }
-            if (dot)
-            {
-                if (c == 0)
-                {
+
+            if (dot) {
+                if (c == 0) {
                     date = build;
-                }
-                else if (c == 1)
-                {
+                } else if (c == 1) {
                     month = build;
+                } else {
+                    year = build;
                 }
-                else
-                {
+            } else {
+                if (c == 0) {
+                    month = build;
+                } else if (c == 1) {
+                    date = build;
+                } else {
                     year = build;
                 }
             }
-            else
-            {
-                if (c == 0)
-                {
-                    month = build;
-                }
-                else if (c == 1)
-                {
-                    date = build;
-                }
-                else
-                {
-                    year = build;
-                }
-            }
+
             c++;
             build = "";
-        }
-        else
-        {
+        } else {
             build = build + "" + a[i];
         }
     }
-
     cout << date << "." << month << "." << year;
     cout << " " << month << "/" << date << "/" << year;
-
     return 0;
 }

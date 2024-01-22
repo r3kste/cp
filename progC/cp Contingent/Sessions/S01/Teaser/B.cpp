@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (ll)(1e9 + 7)
@@ -26,7 +27,8 @@ typedef vector<long long int> vll;
 
 struct matrix2 {
     ll mat[2][2];
-    matrix2 friend operator* (matrix2 &a, matrix2 &b) {
+
+    matrix2 friend operator*(matrix2 &a, matrix2 &b) {
         matrix2 c;
 
         for (int i = 0; i < 2; i++)
@@ -44,7 +46,8 @@ struct matrix2 {
 
 struct matrix3 {
     ll mat[3][3];
-    matrix3 friend operator* (matrix3 &a, matrix3 &b) {
+
+    matrix3 friend operator*(matrix3 &a, matrix3 &b) {
         matrix3 c;
 
         for (int i = 0; i < 3; i++)
@@ -60,7 +63,7 @@ struct matrix3 {
     }
 };
 
-matrix2 matpow (matrix2 a, ll n) { // binexp of matrices
+matrix2 matpow(matrix2 a, ll n) { // binexp of matrices
     matrix2 i = {1, 0, 0, 1};
 
     while (n) {
@@ -75,7 +78,7 @@ matrix2 matpow (matrix2 a, ll n) { // binexp of matrices
     return i;
 }
 
-matrix3 matpow (matrix3 a, ll n) { // binexp of matrices
+matrix3 matpow(matrix3 a, ll n) { // binexp of matrices
     matrix3 i = {1, 0, 0, 0, 1, 0, 0, 0, 1};
 
     while (n) {
@@ -90,7 +93,7 @@ matrix3 matpow (matrix3 a, ll n) { // binexp of matrices
     return i;
 }
 
-double binpow (double a, ll b) {
+double binpow(double a, ll b) {
     double res = 1;
 
     while (b > 0) {
@@ -105,7 +108,7 @@ double binpow (double a, ll b) {
     return res;
 }
 
-long pisano (long m) {
+long pisano(long m) {
     long p = 0;
     long c = 1;
     long n = 0;
@@ -124,7 +127,7 @@ long pisano (long m) {
     return m;
 }
 
-ll m_fib (ll n, ll m) {
+ll m_fib(ll n, ll m) {
     ll pisanoPeriod = 2000000016;
     n = n % pisanoPeriod;
     ll p = 0;

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -39,9 +40,9 @@ int solve() {
             int cnt = 0;
 
             if (minindex == 0) {
-                cnt = abs (a - n);
+                cnt = abs(a - n);
             } else {
-                cnt = abs (b - m);
+                cnt = abs(b - m);
             }
 
             if (cnt < ans) {

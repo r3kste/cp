@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -27,7 +28,8 @@ int n;
 vi a;
 map<ii, int> dp;
 map<ii, bool> dpd;
-ll fact2 (int n) {
+
+ll fact2(int n) {
     int k = 0;
 
     while (n % 2 == 0) {
@@ -37,37 +39,37 @@ ll fact2 (int n) {
 
     return k;
 }
-ll f (int pos, int ene) {
+
+ll f(int pos, int ene) {
     if (pos == n - 1) {
         if (a[pos] > ene) {
-            return fact2 (a[pos]);
+            return fact2(a[pos]);
         } else {
             return 0;
         }
     }
 
-    if (dpd[mp (pos, ene)]) {
-        return dp[mp (pos, ene)];
+    if (dpd[mp(pos, ene)]) {
+        return dp[mp(pos, ene)];
     } else {
-        dpd[mp (pos, ene)] = true;
+        dpd[mp(pos, ene)] = true;
 
         if (a[pos] > ene) {
-            dp[mp (pos, ene)] = max (fact2 (a[pos]) + f (pos + 1, a[pos]), f (pos + 1, ene));
+            dp[mp(pos, ene)] = max(fact2(a[pos]) + f(pos + 1, a[pos]), f(pos + 1, ene));
         } else {
-            dp[mp (pos, ene)] = f (pos + 1, ene);
+            dp[mp(pos, ene)] = f(pos + 1, ene);
         }
 
-        return dp[mp (pos, ene)];
+        return dp[mp(pos, ene)];
     }
 }
-int solve()
 
-{
+int solve() {
     fastio;
     cin >> n;
     dp.clear();
     dpd.clear();
-    a = vi (n);
+    a = vi(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -76,7 +78,7 @@ int solve()
     // f (i, s) = maximum energy from i to end, with s as current maximum
     // ans = f (0, 0)
     // f (i, s) = max (f (i + 1, a[i]), f (i + 1, s))
-    cout << f (0, 0);
+    cout << f(0, 0);
     return 0;
 }
 

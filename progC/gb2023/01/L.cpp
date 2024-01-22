@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,9 +29,9 @@ int solve() {
     fastio;
     int n;
     cin >> n;
-    vi floor (n);
-    vi foot (n);
-    vi chain (n);
+    vi floor(n);
+    vi foot(n);
+    vi chain(n);
 
     for (int i = 0; i < n; i++) {
         cin >> floor[i];
@@ -54,7 +55,7 @@ int solve() {
         dfc += (fc * fc);
     }
 
-    if (! (dff > dfc)) {
+    if (!(dff > dfc)) {
         cout << "Yan";
     } else {
         cout << "MaratonIME";

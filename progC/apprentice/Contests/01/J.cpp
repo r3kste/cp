@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -23,10 +24,11 @@ typedef pair<int, int> ii;
 typedef vector<int> vi;
 typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
-ll tonum (vll a) {
+
+ll tonum(vll a) {
     ll ans = 0;
     vll b = a;
-    reverse (all (b));
+    reverse(all (b));
     ll m = 1;
 
     for (auto i : b) {
@@ -38,11 +40,12 @@ ll tonum (vll a) {
 
     return ans;
 }
+
 int solve() {
     fastio;
     ll n, d;
     cin >> n >> d;
-    vll a (n);
+    vll a(n);
     vector<pair<ll, ll>> b;
 
     for (int i = 0; i < n; i++) {
@@ -51,10 +54,10 @@ int solve() {
         // {
         //     flag = true;
         // }
-        b.pb (mp (a[i], i));
+        b.pb(mp(a[i], i));
     }
 
-    ll mmm = tonum (a);
+    ll mmm = tonum(a);
     // if (flag)
     // {
     //     for (auto i : a)
@@ -64,15 +67,15 @@ int solve() {
     // }
     // else
     // {}
-    sort (all (b));
-    reverse (all (b));
+    sort(all (b));
+    reverse(all (b));
     ll i = 0;
 
     while (i < b.size()) {
         a[b[i].S] = -1;
-        a.pb (d);
+        a.pb(d);
         i++;
-        ll wow = tonum (a);
+        ll wow = tonum(a);
 
         if (wow < mmm) {
             mmm = wow;

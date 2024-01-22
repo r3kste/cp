@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int main() {
@@ -9,7 +10,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         int temp = 0;
         cin >> temp;
-        a.push_back (temp);
+        a.push_back(temp);
     }
 
     for (int i = 0; i < n - 1; i++)

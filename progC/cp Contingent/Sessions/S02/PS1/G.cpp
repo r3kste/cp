@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -28,8 +29,8 @@ int solve() {
     fastio;
     ll n, c = 0;
     cin >> n;
-    vll inp (n + 1);
-    vll ps (n + 1, 0);
+    vll inp(n + 1);
+    vll ps(n + 1, 0);
     vector<pair<ll, ll>> neg;
 
     for (int i = 0; i < n; i++) {
@@ -39,12 +40,12 @@ int solve() {
             ps[i + 1] = ps[i] + inp[i];
             c++;
         } else {
-            neg.pb (mp (inp[i], i));
+            neg.pb(mp(inp[i], i));
             ps[i + 1] = ps[i];
         }
     }
 
-    sort (rall (neg));
+    sort(rall (neg));
 
     for (int i = 0; i < neg.size(); i++) { //go through the neg elements
         bool flag = true;

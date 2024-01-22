@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + n-1)
@@ -154,8 +155,8 @@ int solve() {
     }
 
     // bow to no goose
-    for (int i = max (0, r - 1); i <= min (r + 1, n - 1); i++) {
-        for (int j = max (0, c - 1); j <= min (c + 1, n - 1); j++) {
+    for (int i = max(0, r - 1); i <= min(r + 1, n - 1); i++) {
+        for (int j = max(0, c - 1); j <= min(c + 1, n - 1); j++) {
             if (i == r && j == c) {
                 continue;
             }

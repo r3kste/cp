@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define nmod(m) n % m == 0
@@ -44,7 +45,7 @@ int solve() {
             cin >> a[i][j];
 
             if (a[i][j] != '.') {
-                o.push_back (a[i][j]);
+                o.push_back(a[i][j]);
             }
         }
     }

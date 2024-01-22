@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -26,8 +27,9 @@ typedef vector<long long int> vll;
 
 typedef vector<vector<ll>> matrix;
 ll order;
-matrix m_mul (matrix a, matrix b, ll m) {
-    matrix res (order, vector<ll> (order, 0));
+
+matrix m_mul(matrix a, matrix b, ll m) {
+    matrix res(order, vector<ll>(order, 0));
 
     for (int i = 0; i < order; i++) {
         for (int j = 0; j < order; j++) {
@@ -41,8 +43,8 @@ matrix m_mul (matrix a, matrix b, ll m) {
     return res;
 }
 
-matrix m_pow (matrix a, ll n, ll m) {
-    matrix res (order, vector<ll> (order, 0));
+matrix m_pow(matrix a, ll n, ll m) {
+    matrix res(order, vector<ll>(order, 0));
 
     for (ll i = 0; i < order; i++) {
         res[i][i] = 1;
@@ -50,11 +52,11 @@ matrix m_pow (matrix a, ll n, ll m) {
 
     while (n) {
         if (n & 1) {
-            res = m_mul (res, a, m);
+            res = m_mul(res, a, m);
         }
 
         n >>= 1;
-        a = m_mul (a, a, m);
+        a = m_mul(a, a, m);
     }
 
     return res;
@@ -67,15 +69,15 @@ int solve() {
     order = k;
     ll m;
     cin >> m;
-    vi a (k);
+    vi a(k);
 
     for (int i = 0; i < k; i++) {
         cin >> a[i];
     }
 
-    matrix e (k, vector<ll> (k, 0));
+    matrix e(k, vector<ll>(k, 0));
     e[0][0] = 1;
-    matrix t (k, vector<ll> (k, 0));
+    matrix t(k, vector<ll>(k, 0));
 
     for (int i = 0; i < k; i++) {
         t[i][0] = a[i];
@@ -85,7 +87,7 @@ int solve() {
         t[i][i + 1] = 1;
     }
 
-    cout << m_mul (e, m_pow (t, m, MOD), MOD)[0][0];
+    cout << m_mul(e, m_pow(t, m, MOD), MOD)[0][0];
     return 0;
 }
 

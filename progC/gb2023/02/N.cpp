@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,7 @@ int solve() {
     string a, b;
     cin >> a >> b;
 
-    if (a.find (b) != string::npos) {
+    if (a.find(b) != string::npos) {
         cout << "good";
         return 0;
     } else {
@@ -42,7 +43,7 @@ int solve() {
                 }
             }
 
-            if (a.find (tb) != string::npos) {
+            if (a.find(tb) != string::npos) {
                 cout << "almost good";
                 return 0;
             }

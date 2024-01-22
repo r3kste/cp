@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define for(i, a, b, c) for (int(i) = ((c > 0) ? (a) : (b - 1)); ((c > 0) ? (i < b) : (i > a - 1)); (i) += c)
@@ -33,14 +34,14 @@ int main() {
     testitr (true);
 }
 
-ll lcm (int a, int b) {
+ll lcm(int a, int b) {
     ll p = a * b;
-    ll g = __gcd (a, b);
+    ll g = __gcd(a, b);
     return p / g;
 }
 
-bool check (int a, int b, int n) {
-    return lcm (a, b) <= n / 2.0;
+bool check(int a, int b, int n) {
+    return lcm(a, b) <= n / 2.0;
 }
 
 void solve() {

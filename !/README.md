@@ -1,5 +1,5 @@
 Formatter: astyle <br>
 `
-astyle "*.cpp" -p -f -xj -xg -xe -xd --style=attach --recursive -n
+astyle "*.cpp" -p -f -j -xg -xe --style=attach --recursive -n -Q
 `
 

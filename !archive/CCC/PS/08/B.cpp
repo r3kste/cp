@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -28,8 +29,8 @@ int main() {
     }
 }
 
-bool check (int n) {
-    string s = to_string (n);
+bool check(int n) {
+    string s = to_string(n);
     map<char, int> k;
     int l = s.length();
     to (i, 0, l, 1) {
@@ -47,7 +48,7 @@ void solve() {
     int n;
     cin >> n;
     to (i, n + 1, 9877, 1) {
-        if (check (i)) {
+        if (check(i)) {
             cout << i;
             break;
         }

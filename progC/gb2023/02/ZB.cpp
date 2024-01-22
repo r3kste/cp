@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -29,7 +30,7 @@ int solve() {
     int a, b, c, d;
     cin >> a >> b >> c >> d;
 
-    if (b * log10 (a) < d * log10 (c)) {
+    if (b * log10(a) < d * log10(c)) {
         cout << "<";
     } else {
         cout << ">";

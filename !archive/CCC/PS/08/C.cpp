@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
@@ -32,5 +33,5 @@ void solve() {
     fastio;
     int a, b, c;
     cin >> a >> b >> c;
-    cout << max (a + b + c, max (a * b * c, max (a * (b + c), (a + b) * c)));
+    cout << max(a + b + c, max(a * b * c, max(a * (b + c), (a + b) * c)));
 }

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MOD (LL)(1e9 + 7)
@@ -27,7 +28,8 @@ typedef vector<long long int> vll;
 int n;
 vector<set<int>> adj;
 vector<bool> visited;
-void dfs (int node, int parent) {
+
+void dfs(int node, int parent) {
     visited[node] = true;
     cout << node + 1 << " ";
 
@@ -40,27 +42,28 @@ void dfs (int node, int parent) {
             continue;
         }
 
-        dfs (surr, node);
+        dfs(surr, node);
     }
 }
+
 int solve() {
     fastio;
     cin >> n;
     int e;
     cin >> e;
-    adj = vector<set<int>> (n);
-    visited = vector<bool> (n, false);
+    adj = vector<set<int>>(n);
+    visited = vector<bool>(n, false);
 
     for (int i = 0; i < e; i++) {
         int u, v;
         cin >> u >> v;
         u--;
         v--;
-        adj[u].insert (v);
-        adj[v].insert (u);
+        adj[u].insert(v);
+        adj[v].insert(u);
     }
 
-    dfs (0, -1);
+    dfs(0, -1);
     return 0;
 }
 
