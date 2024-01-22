@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -38,39 +39,41 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-vi slicing (vector<int>& arr, int X, int Y) {
+vi slicing(vector<int> &arr, int X, int Y) {
     auto start = arr.begin() + X;
     auto end = arr.begin() + Y;
-    vi result (Y - X);
-    copy (start, end, result.begin());
+    vi result(Y - X);
+    copy(start, end, result.begin());
     return result;
 }
-bool f (vi a, int distance) {
+
+bool f(vi a, int distance) {
     if (sz (a) == 1) {
         return a[0] == distance;
     } else {
         vi ifh, efh, ish, esh;
         int n = sz (a);
-        efh = slicing (a, 0, n / 2);
-        ifh = slicing (a, 0, (1 + n) / 2);
-        esh = slicing (a, (1 + n) / 2, n);
-        ish = slicing (a, n / 2, n);
-        return ((f (efh, distance) && f (ish, distance + 1)) || (f (efh, distance + 1) && f (ish, distance))
-                || (f (ifh, distance) && f (esh, distance + 1)) || (f (ifh, distance + 1) && f (esh, distance)));
+        efh = slicing(a, 0, n / 2);
+        ifh = slicing(a, 0, (1 + n) / 2);
+        esh = slicing(a, (1 + n) / 2, n);
+        ish = slicing(a, n / 2, n);
+        return ((f(efh, distance) && f(ish, distance + 1)) || (f(efh, distance + 1) && f(ish, distance))
+                || (f(ifh, distance) && f(esh, distance + 1)) || (f(ifh, distance + 1) && f(esh, distance)));
     }
 }
+
 int solve() {
     fastio;
     int n;
     in (n);
-    vi a (n);
+    vi a(n);
     vin (a);
     //f(a,i) = is a possible or not giving i (0 or 1) to that subtree
     //ans = f(a,0)
     //f(a,i) = f(a.firsthalf, i) and f(a.secondhalf, i+1) or f(a.firsthalf,i+1) and f(secondhalf, i)
     //f(a,i) when a is one node: if node==i, true else false
 
-    if (f (a, 0)) {
+    if (f(a, 0)) {
         oyes;
     } else {
         ono;

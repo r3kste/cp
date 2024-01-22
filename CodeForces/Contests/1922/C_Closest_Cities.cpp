@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (auto _ : __) { o (_) } br
 #define vvout(___)  for (auto __ : ___) { vout (__); }
@@ -40,17 +41,19 @@ typedef vector<vi> vvi;
 
 int n;
 vvi dp;
-int f (int from, int to) {
+
+int f(int from, int to) {
     if (from == to) {
         return 0;
     }
 }
+
 int solve() {
     fastio;
     in (n);
-    vi a (n);
+    vi a(n);
     vin (a);
-    vi dp (n - 1);
+    vi dp(n - 1);
 
     for (int i = 0; i < n - 1; i++) {
         if (i == 0) {
@@ -64,7 +67,7 @@ int solve() {
         }
     }
 
-    vi dp2 (n - 1);
+    vi dp2(n - 1);
 
     for (int i = n - 2; i >= 0; i--) {
         if (i == n - 2) {
@@ -79,13 +82,13 @@ int solve() {
     }
 
     vi ps;
-    ps.pb (0);
+    ps.pb(0);
 
     for (auto e : dp) {
-        ps.pb (ps.back() + e);
+        ps.pb(ps.back() + e);
     }
 
-    vi ps2 (n, 0);
+    vi ps2(n, 0);
 
     for (int i = n - 2; i >= 0; i--) {
         ps2[i] = (ps2[i + 1] + dp2[i]);

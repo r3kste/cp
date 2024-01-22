@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,7 +31,7 @@ typedef vector<vi> vvi;
 #define vin(a) rep (_, sz (a)) { in (a[_]) }
 #define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (int _ : __) { o (_) } br
 #define vvout(___)  for (vi __ : ___) { vout (__); }
@@ -42,7 +43,7 @@ int solve() {
     fastio;
     int n;
     in (n);
-    vi a (n);
+    vi a(n);
     int c = 0;
     int s = MOD;
     int t = MOD;
@@ -50,8 +51,8 @@ int solve() {
     for (int i = 0; i < n; i++) {
         cin >> a[i];
         int tt = s;
-        s = min (s, t);
-        t = max (tt, t);
+        s = min(s, t);
+        t = max(tt, t);
 
         if (a[i] <= s) {
             s = a[i];

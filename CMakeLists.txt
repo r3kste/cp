@@ -5,7 +5,7 @@ project(cp)
 file(GLOB_RECURSE SOURCES "*.cpp")
 
 # Loop over each source file and create an executable
-foreach(SOURCE_FILE ${SOURCES})
+foreach (SOURCE_FILE ${SOURCES})
     # Extract the file name without extension (e.g., A.cpp -> A)
     get_filename_component(EXECUTABLE_NAME ${SOURCE_FILE} NAME_WE)
 
@@ -17,4 +17,4 @@ foreach(SOURCE_FILE ${SOURCES})
 
     # Create an executable for each source file using a fixed prefix and unique name
     add_executable(${RELATIVE_PATH}_${EXECUTABLE_NAME} ${SOURCE_FILE})
-endforeach()
+endforeach ()

@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 typedef long long int ll;
@@ -30,26 +31,29 @@ typedef vector<vi> vvi;
 #define vin(a) { rep (_, sz (a)) { in (a[_]) }}
 #define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
-#define out(_,__) cout << _ << __;
+#define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
 #define vout(__) for (auto _ : __) { o (_) } br
 #define vvout(___)  for (auto __ : ___) { vout (__); }
 
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
-ll nc3 (ll n) {
+
+ll nc3(ll n) {
     return ((unsigned long long int) (n * (n - 1) * (n - 2))) / 6;
 }
-ll nc2 (ll n) {
+
+ll nc2(ll n) {
     return ((unsigned long long int) (n * (n - 1))) / 2;
 }
+
 int solve() {
     fastio;
     ll n;
     in (n);
-    vi a (n);
+    vi a(n);
     vin (a);
-    sort (all (a));
+    sort(all (a));
     map<ll, ll> freq;
 
     for (ll e : a) {
@@ -65,15 +69,16 @@ int solve() {
         if (count < 2) {
             continue;
         } else if (count == 2) {
-            ll m = lower_bound (all (a), no) - begin (a);
+            ll m = lower_bound(all (a), no) - begin(a);
             ans += (m);
         } else if (count >= 3) {
-            ll m = lower_bound (all (a), no) - begin (a);
-            ans += nc3 (count) + nc2 (count) * m;
+            ll m = lower_bound(all (a), no) - begin(a);
+            ans += nc3(count) + nc2(count) * m;
         }
     }
 
-    o (ans)br
+    o (ans)
+    br
     return 0;
 }
 
