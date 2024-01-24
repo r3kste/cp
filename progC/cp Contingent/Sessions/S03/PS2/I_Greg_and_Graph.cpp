@@ -148,7 +148,7 @@ struct Graph_EV {
         }
     }
 
-    void find_components() {
+    void clusters() {
         visited.assign(n, false);
         roots.clear();
 

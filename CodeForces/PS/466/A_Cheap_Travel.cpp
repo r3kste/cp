@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-#include <utility>
-
 using namespace std;
 
 typedef long long int ll;
@@ -30,45 +28,39 @@ typedef vector<vi> vvi;
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) rep (_, sz (a)) { in (a[_]) }
-#define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
+#define vin(a) { rep (_, sz (a)) { in (a[_]) }}
+#define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (int _ : __) { o (_) } br
-#define vvout(___)  for (vi __ : ___) { vout (__); }
+#define vout(__) for (auto _ : __) { o (_) } br
+#define vvout(___)  for (auto __ : ___) { vout (__); }
 
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-int bsearch_l(vi &a, int x) {
-    int n = sz (a);
-    int ptr = 0;
+int solve() {
+    fastio
+    int n, m, a, b;
+    in2(n, m);
+    in2(a, b);
 
-    for (int jump = n / 2; jump >= 1; jump /= 2) {
-        while (ptr + jump < n && a[ptr + jump] <= x) {
-            ptr += jump;
-        }
+    if (m * a <= b) {
+        out(n * a, "\n");
+    } else {
+        int ans = (n / m) * b + min((n % m) * a, b);
+        out(ans, "\n");
     }
 
-    return (ptr);
-}
-
-int bsearch_r(vi &a, int x) {
-    vi b = std::move(a);
-    reverse(all (b));
-    int n = sz (b);
-    int ptr = 0;
-
-    for (int jump = n / 2; jump >= 1; jump /= 2) {
-        while (ptr + jump < n && b[ptr + jump] >= x) {
-            ptr += jump;
-        }
-    }
-
-    return (n - 1 - ptr);
+    return 0;
 }
 
 int main() {
-    return 0;
+    fastio;
+    int t = 1;
+    // in (t);
+
+    while (t--) {
+        solve();
+    }
 }

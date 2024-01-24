@@ -100,36 +100,7 @@ struct Graph {
         }
     }
 
-    void dfs(int node, int level = 0, int parent = -1, int root = 0, bool modify = false) {
-        visited[node] = true;
-
-        if (modify) {
-            // root_of[node] = root;
-            // parent_of[node] = parent;
-            // cluster_size[root]++;
-            // tin[node] = ++timer;
-            // height[node] = level;
-            // first[node] = eulerian.size();
-            // eulerian.push_back (node);
-            // depth = max (depth, level);
-        }
-
-        for (int to : adj[node]) {
-            if (!visited[to]) {
-                dfs(to, level + 1, node, root, modify);
-
-                if (modify) {
-                    // eulerian.push_back (node);
-                    // subtree_size[node] += subtree_size[to];
-                }
-            }
-        }
-
-        if (modify) {
-            // subtree_size[node]++;
-            // tout[node] = ++timer;
-        }
-    }
+    void dfs(int node, int level = 0, int parent = -1, int root = 0, bool modify = false);
 
     void bfs(int root, int level = 0) {
         queue<int> q;
@@ -150,13 +121,13 @@ struct Graph {
     }
 
     void clusters() {
-        fill(visited.begin(), visited.end(), false);
+        visited.assign(n, false);
         roots.clear();
 
         for (int vertex = 0; vertex < n; ++vertex) {
             if (!visited[vertex]) {
                 roots.push_back(vertex);
-                dfs(vertex, 0, -1, vertex);
+                dfs(vertex, 0, -1, vertex, false);
             }
         }
     }
@@ -210,13 +181,42 @@ struct Graph {
     }
     */
 };
+void Graph::dfs(int node, int level, int parent, int root, bool modify) {
+    visited[node] = true;
+
+    if (modify) {
+        // root_of[node] = root;
+        // parent_of[node] = parent;
+        // cluster_size[root]++;
+        // tin[node] = ++timer;
+        // height[node] = level;
+        // first[node] = eulerian.size();
+        // eulerian.push_back (node);
+        // depth = max (depth, level);
+    }
+
+    for (int to : adj[node]) {
+        if (!visited[to]) {
+            dfs(to, level + 1, node, root, modify);
+
+            if (modify) {
+                // eulerian.push_back (node);
+                // subtree_size[node] += subtree_size[to];
+            }
+        }
+    }
+
+    if (modify) {
+        // subtree_size[node]++;
+        // tout[node] = ++timer;
+    }
+}
 
 /*
 Weighted Graph
 */
 // #define INF LLONG_MAX
 #define INF 100000000000000000
-
 struct Graph_EV {
     using pii = pair<int, int>;
     vector<vector<pii>> adj;
@@ -295,15 +295,7 @@ struct Graph_EV {
         }
     }
 
-    void dfs(int node, int level = 0, int parent = -1, int root = 0, bool modify = false) {
-        visited[node] = true;
-
-        for (auto [to, weight] : adj[node]) {
-            if (!visited[to]) {
-                dfs(to, level + 1, node, root, modify);
-            }
-        }
-    }
+    void dfs(int node, int level = 0, int parent = -1, int root = 0, bool modify = false);
 
     void bfs(int root) {
         queue<int> q;
@@ -314,16 +306,16 @@ struct Graph_EV {
             int vertex = q.front();
             q.pop();
 
-            for (auto [next, weight] : adj[vertex]) {
-                if (!visited[next]) {
-                    visited[next] = true;
-                    q.push(next);
+            for (auto [to, weight] : adj[vertex]) {
+                if (!visited[to]) {
+                    visited[to] = true;
+                    q.push(to);
                 }
             }
         }
     }
 
-    void find_components() {
+    void clusters() {
         visited.assign(n, false);
         roots.clear();
 
@@ -404,6 +396,16 @@ struct Graph_EV {
     }
     */
 };
+
+void Graph_EV::dfs(int node, int level, int parent, int root, bool modify) {
+    visited[node] = true;
+
+    for (auto [to, weight] : adj[node]) {
+        if (!visited[to]) {
+            dfs(to, level + 1, node, root, modify);
+        }
+    }
+}
 
 int solve() {
     ios_base::sync_with_stdio(false);
