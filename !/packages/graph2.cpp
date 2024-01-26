@@ -50,7 +50,7 @@ struct Graph {
     }
 
     void clear() {
-        // visited.clear();
+        visited.clear();
         // height.clear();
         // first.clear();
         // eulerian.clear();
@@ -119,7 +119,7 @@ struct Graph {
             }
         }
     }
-
+    /*
     void clusters() {
         visited.assign(n, false);
         roots.clear();
@@ -131,7 +131,7 @@ struct Graph {
             }
         }
     }
-    /*
+
     bool is_ancestor (int parents, int child) {
         return tin[parents] <= tin[child] && tout[parents] >= tout[child];
     }
@@ -315,22 +315,21 @@ struct Graph_EV {
         }
     }
 
-    void clusters() {
-        visited.assign(n, false);
-        roots.clear();
+    // void clusters() {
+    //     visited.assign(n, false);
+    //     roots.clear();
+    //     for (int vertex = 0; vertex < n; ++vertex) {
+    //         if (!visited[vertex]) {
+    //             roots.push_back(vertex);
+    //             dfs(vertex, 0, -1, vertex, false);
+    //         }
+    //     }
+    // }
 
-        for (int vertex = 0; vertex < n; ++vertex) {
-            if (!visited[vertex]) {
-                roots.push_back(vertex);
-                dfs(vertex, 0, -1, vertex, false);
-            }
-        }
-    }
-
-    void dijkstra(int start, vector<long long int> &distances, vector<int> &parents) {
-        distances.assign(n, INF);
+    void dijkstra(int start, vector<long long int> &distance, vector<int> &parents) {
+        distance.assign(n, INF);
         parents.assign(n, -1);
-        distances[start] = 0;
+        distance[start] = 0;
         priority_queue<pii, vector<pii>, greater<>> q;
         q.emplace(0, start);
 
@@ -339,15 +338,15 @@ struct Graph_EV {
             int dist = q.top().first;
             q.pop();
 
-            if (dist != distances[node]) {
+            if (dist != distance[node]) {
                 continue;
             }
 
             for (auto [to, len] : adj[node]) {
-                if (distances[node] + len < distances[to]) {
-                    distances[to] = distances[node] + len;
+                if (distance[node] + len < distance[to]) {
+                    distance[to] = distance[node] + len;
                     parents[to] = node;
-                    q.emplace(distances[to], to);
+                    q.emplace(distance[to], to);
                 }
             }
         }
@@ -356,12 +355,12 @@ struct Graph_EV {
     static vector<int> path(int start, int target, vector<int> const &parents, int offset) {
         vector<int> path;
 
-        for (int v = target; v != start; v = parents[v]) {
-            if (v == -1) {
+        for (int vertex = target; vertex != start; vertex = parents[vertex]) {
+            if (vertex == -1) {
                 return vector<int>(1, -1);
             }
 
-            path.push_back(v + offset);
+            path.push_back(vertex + offset);
         }
 
         path.push_back(start + offset);
@@ -396,7 +395,6 @@ struct Graph_EV {
     }
     */
 };
-
 void Graph_EV::dfs(int node, int level, int parent, int root, bool modify) {
     visited[node] = true;
 
