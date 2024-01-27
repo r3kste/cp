@@ -11,219 +11,190 @@ struct range {
     }
 };
 template<typename T>
+struct node {
+    T val;
+    T lazy;
+    const T DEFAULT_VAL = 0;
+    const T DEFAULT_LAZY = 0;
+    node() {
+        val = DEFAULT_VAL;
+        lazy = DEFAULT_LAZY;
+    }
+};
+
+template<typename T>
 struct segtree {
     int n;
     vector<int> arr;
-    vector<T> tree;
-    vector<int> lazy;
-    string update_op;
-    string query_op;
+    vector<node<T>> tree;
 
-    segtree(vector<int> &array, int no_of_elements, const string &update, const string &query) {
-        n = no_of_elements;
+    segtree(vector<int> &array) {
         arr = array;
+        n = array.size();
         tree.resize(4 * n + 1);
-        lazy.resize(4 * n + 1);
-        this->update_op = update;
-        this->query_op = query;
-        Build();
+        build();
     }
 
     T default_val() {
-        if (query_op == "add" || query_op == "sum") {
-            return T(0);
-        } else if (query_op == "max") {
-            return std::numeric_limits<T>::min();
-        } else if (query_op == "min") {
-            return std::numeric_limits<T>::max();
-        } else if (query_op == "xor" || query_op == "or") {
-            return T(0);
-        } else if (query_op == "and") {
-            return std::numeric_limits<T>::max();
-        } else if (query_op == "gcd") {
-            return T(0);
-        } else if (query_op == "lcm" || query_op == "mul") {
-            return T(1);
-        } else if (query_op == "assign") {
-            return T(0);
-        } else {
-            return T(0);
-        }
+        /**/
+        return 0;
+        /**/
     }
-
-    class Combine {
-    public:
-        T add(T left_subtree, T right_subtree) {
-            return left_subtree + right_subtree;
-        }
-
-        T max(T left_subtree, T right_subtree) {
-            return left_subtree > right_subtree ? left_subtree : right_subtree;
-        }
-
-        T min(T left_subtree, T right_subtree) {
-            return left_subtree < right_subtree ? left_subtree : right_subtree;
-        }
-
-        T xor_(T left_subtree, T right_subtree) {
-            return left_subtree ^ right_subtree;
-        }
-
-        T or_(T left_subtree, T right_subtree) {
-            return left_subtree | right_subtree;
-        }
-
-        T and_(T left_subtree, T right_subtree) {
-            return left_subtree & right_subtree;
-        }
-
-        T gcd(T left_subtree, T right_subtree) {
-            return __gcd(left_subtree, right_subtree);
-        }
-
-        T lcm(T left_subtree, T right_subtree) {
-            return left_subtree * right_subtree / __gcd(left_subtree, right_subtree);
-        }
-
-        T mul(T left_subtree, T right_subtree) {
-            return left_subtree * right_subtree;
-        }
-
-        T assign([[maybe_unused]] T left_subtree, T right_subtree) {
-            return right_subtree;
-        }
-    };
-
-    auto query_operation(T a, T b) {
-        if (query_op == "add" || query_op == "sum") {
-            return Combine().add(a, b);
-        } else if (query_op == "max") {
-            return Combine().max(a, b);
-        } else if (query_op == "min") {
-            return Combine().min(a, b);
-        } else if (query_op == "xor") {
-            return Combine().xor_(a, b);
-        } else if (query_op == "or") {
-            return Combine().or_(a, b);
-        } else if (query_op == "and") {
-            return Combine().and_(a, b);
-        } else if (query_op == "gcd") {
-            return Combine().gcd(a, b);
-        } else if (query_op == "lcm") {
-            return Combine().lcm(a, b);
-        } else if (query_op == "mul") {
-            return Combine().mul(a, b);
-        } else if (query_op == "assign") {
-            return Combine().assign(a, b);
-        } else {
-            return Combine().add(a, b);
-        }
+    T build_operation(int left_vertex, int right_vertex) {
+        /**/
+        return tree[left_vertex].val + tree[right_vertex].val;
+        /**/
     }
-
-    auto combine(int left_vertex, int right_vertex) {
-        if (query_op == "add" || query_op == "sum") {
-            return Combine().add(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "max") {
-            return Combine().max(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "min") {
-            return Combine().min(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "xor") {
-            return Combine().xor_(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "or") {
-            return Combine().or_(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "and") {
-            return Combine().and_(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "gcd") {
-            return Combine().gcd(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "lcm") {
-            return Combine().lcm(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "mul") {
-            return Combine().mul(tree[left_vertex], tree[right_vertex]);
-        } else if (query_op == "assign") {
-            return Combine().assign(tree[left_vertex], tree[right_vertex]);
-        } else {
-            return Combine().add(tree[left_vertex], tree[right_vertex]);
-        }
+    T update_operation(int vertex, T value) {
+        /**/
+        return tree[vertex].val + value;
+        /**/
+    }
+    T query_operation(T left_subtree, T right_subtree) {
+        /**/
+        return left_subtree + right_subtree;
+        /**/
+    }
+    T lazy_operation(T value, int vertex, range borders) {
+        /**/
+        return tree[vertex].val + (borders.R - borders.L + 1) * value;
+        /**/
     }
 
     void build(int vertex, range borders) {
         if (borders.L == borders.R) {
             if (borders.L <= n) {
-                tree[vertex] = arr[borders.L - 1];
+                tree[vertex].val = arr[borders.L - 1];
             }
         } else {
             int mid = borders.mid();
             build(vertex << 1, {borders.L, mid});
             build(vertex << 1 | 1, {mid + 1, borders.R});
-            tree[vertex] = combine(vertex << 1, vertex << 1 | 1);
+            tree[vertex].val = build_operation(vertex << 1, vertex << 1 | 1);
         }
     }
 
-    void Build() {
-        build(1, {1, n});
-    }
+    void point_update(int target, T value, int vertex, range borders) {
+        if (tree[vertex].lazy != tree[vertex].DEFAULT_LAZY) {
+            tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
 
-    auto update(int vertex, T value) {
-        if (update_op == "add" || update_op == "sum") {
-            return tree[vertex] + value;
-        } else if (update_op == "max") {
-            return max(tree[vertex], value);
-        } else if (update_op == "min") {
-            return min(tree[vertex], value);
-        } else if (update_op == "xor") {
-            return tree[vertex] ^ value;
-        } else if (update_op == "or") {
-            return tree[vertex] | value;
-        } else if (update_op == "and") {
-            return tree[vertex] & value;
-        } else if (update_op == "gcd") {
-            return __gcd(tree[vertex], value);
-        } else if (update_op == "lcm") {
-            return tree[vertex] * value / __gcd(tree[vertex], value);
-        } else if (update_op == "mul") {
-            return tree[vertex] * value;
-        } else if (update_op == "assign") {
-            return value;
-        } else {
-            return tree[vertex] + value;
+            if (borders.L != borders.R) {
+                tree[vertex << 1].lazy += tree[vertex].lazy;
+                tree[vertex << 1 | 1].lazy += tree[vertex].lazy;
+            }
+
+            tree[vertex].lazy = tree[vertex].DEFAULT_LAZY;
         }
-    }
 
-    void update(int target, T value, int vertex, range borders) {
         if (borders.L == borders.R) {
-            tree[vertex] = update(vertex, value);
+            tree[vertex].val = update_operation(vertex, value);
         } else {
             int mid = borders.mid();
 
             if (target <= mid) {
-                update(target, value, vertex << 1, {borders.L, mid});
+                point_update(target, value, vertex << 1, {borders.L, mid});
             } else {
-                update(target, value, vertex << 1 | 1, {mid + 1, borders.R});
+                point_update(target, value, vertex << 1 | 1, {mid + 1, borders.R});
             }
 
-            tree[vertex] = combine(vertex << 1, vertex << 1 | 1);
+            tree[vertex].val = build_operation(vertex << 1, vertex << 1 | 1);
         }
     }
+    void range_update(range update_range, T value, int vertex, range borders) {
+        if (tree[vertex].lazy != tree[vertex].DEFAULT_LAZY) {
+            tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
 
-    void Update(int target, T value) {
-        update(target, value, 1, {1, n});
+            if (borders.L != borders.R) {
+                tree[vertex << 1].lazy += tree[vertex].lazy;
+                tree[vertex << 1 | 1].lazy += tree[vertex].lazy;
+            }
+
+            tree[vertex].lazy = tree[vertex].DEFAULT_LAZY;
+        }
+
+        if (borders.L > borders.R || borders.L > update_range.R || borders.R < update_range.L) {
+            return;
+        }
+
+        if (borders.L >= update_range.L && borders.R <= update_range.R) {
+            tree[vertex].val = lazy_operation(value, vertex, borders);
+
+            if (borders.L != borders.R) {
+                tree[vertex << 1].lazy += value;
+                tree[vertex << 1 | 1].lazy += value;
+            }
+
+            return;
+        }
+
+        int mid = borders.mid();
+        range_update(update_range, value, vertex << 1, {borders.L, mid});
+        range_update(update_range, value, vertex << 1 | 1, {mid + 1, borders.R});
+        tree[vertex].val = build_operation(vertex << 1, vertex << 1 | 1);
     }
 
-    auto query(range query_range, int vertex, range borders) {
+    T point_query(int target, int vertex, range borders) {
+        if (tree[vertex].lazy != tree[vertex].DEFAULT_LAZY) {
+            tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
+
+            if (borders.L != borders.R) {
+                tree[vertex << 1].lazy += tree[vertex].lazy;
+                tree[vertex << 1 | 1].lazy += tree[vertex].lazy;
+            }
+
+            tree[vertex].lazy = tree[vertex].DEFAULT_LAZY;
+        }
+
+        if (borders.L == borders.R) {
+            return tree[vertex].val;
+        } else {
+            int mid = borders.mid();
+
+            if (target <= mid) {
+                return point_query(target, vertex << 1, {borders.L, mid});
+            } else {
+                return point_query(target, vertex << 1 | 1, {mid + 1, borders.R});
+            }
+        }
+    }
+    T range_query(range query_range, int vertex, range borders) {
+        if (tree[vertex].lazy != tree[vertex].DEFAULT_LAZY) {
+            tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
+
+            if (borders.L != borders.R) {
+                tree[vertex << 1].lazy += tree[vertex].lazy;
+                tree[vertex << 1 | 1].lazy += tree[vertex].lazy;
+            }
+
+            tree[vertex].lazy = tree[vertex].DEFAULT_LAZY;
+        }
+
         if (borders.L > query_range.R || borders.R < query_range.L) {
             return default_val();
         } else if (borders.L >= query_range.L && borders.R <= query_range.R) {
-            return tree[vertex];
+            return tree[vertex].val;
         } else {
             int mid = borders.mid();
-            auto left_subtree = query(query_range, vertex << 1, {borders.L, mid});
-            auto right_subtree = query(query_range, vertex << 1 | 1, {mid + 1, borders.R});
+            T left_subtree = range_query(query_range, vertex << 1, {borders.L, mid});
+            T right_subtree = range_query(query_range, vertex << 1 | 1, {mid + 1, borders.R});
             return query_operation(left_subtree, right_subtree);
         }
     }
 
-    auto Query(range query_range) {
-        return query(query_range, 1, {1, n});
+    void build() {
+        build(1, {1, n});
+    }
+    void update(int target, T value) {
+        point_update(target, value, 1, {1, n});
+    }
+    void update(range update_range, T value) {
+        range_update(update_range, value, 1, {1, n});
+    }
+    T query(int target) {
+        return point_query(target, 1, {1, n});
+    }
+    T query(range query_range) {
+        return range_query(query_range, 1, {1, n});
     }
 };
 
@@ -238,20 +209,20 @@ int main() {
         cin >> i;
     }
 
-    segtree<int> tree(arr, n, "assign", "min");
+    segtree<long long int> tree(arr);
 
     while (m--) {
         int operation;
         cin >> operation;
 
         if (operation == 1) {
-            int index, value;
-            cin >> index >> value;
-            tree.Update(index + 1, value);
+            int l, r, value;
+            cin >> l >> r >> value;
+            tree.update({l, r}, value);
         } else {
-            int l, r;
-            cin >> l >> r;
-            cout << tree.Query({l + 1, r}) << endl;
+            int k;
+            cin >> k;
+            cout << tree.query(k) << "\n";
         }
     }
 
