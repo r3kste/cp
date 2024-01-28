@@ -1,6 +1,43 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
+
+typedef long long int ll;
+typedef pair<int, int> ii;
+
+typedef vector<int> vi;
+typedef vector<char> vc;
+typedef vector<bool> vb;
+typedef vector<ll> vll;
+typedef vector<vi> vvi;
+
+#define MOD (ll)(1e9 + 7)
+#define fastio                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(nullptr);
+
+#define F first
+#define S second
+#define mp make_pair
+#define pb push_back
+#define all(a) (a).begin(), (a).end()
+#define sz(a) ((int) (a).size())
+
+#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+
+#define in(_) cin >> _;
+#define in2(_0, _1) cin >> _0 >> _1;
+#define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
+#define vin(a) { rep (_, sz (a)) { in (a[_]) }}
+#define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
+#define br cout << "\n";
+#define out(_, __) cout << _ << __;
+#define o(_) out(_, " ")
+#define vout(__) for (auto _ : __) { o (_) } br
+#define vvout(___)  for (auto __ : ___) { vout (__); }
+
+#define oyes out("YES","\n")
+#define ono out("NO", "\n")
 
 struct range {
     int L;
@@ -194,13 +231,29 @@ struct segtree {
 template<typename T>
 T segtree<T>::build_operation(int left_vertex, int right_vertex) {
     /* How to combine two nodes into one parent node */
-    return tree[left_vertex].val + tree[right_vertex].val;
+    int log2n = (int)floor(log2(n));
+    int llog2 = (int)floor(log2(left_vertex));
+
+    if (log2n % 2) {
+        if (llog2 % 2) {
+            return tree[left_vertex].val | tree[right_vertex].val;
+        } else {
+            return tree[left_vertex].val ^ tree[right_vertex].val;
+        }
+    } else {
+        if (llog2 % 2) {
+            return tree[left_vertex].val ^ tree[right_vertex].val;
+        } else {
+            return tree[left_vertex].val | tree[right_vertex].val;
+        }
+    }
+
     /**/
 }
 template<typename T>
 T segtree<T>::update_operation(int vertex, T value) {
     /* How to update the value in tree[vertex] */
-    return tree[vertex].val + value;
+    return value;
     /**/
 }
 template<typename T>
@@ -216,33 +269,30 @@ T segtree<T>::lazy_operation(T value, int vertex, range borders) {
     /**/
 }
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+int solve() {
+    fastio
     int n, m;
-    cin >> n >> m;
-    vector<int> arr(n);
+    in2(n, m);
+    vi a(pow(2, n));
+    vin (a);
+    segtree<int> st(a);
 
-    for (auto &i : arr) {
-        cin >> i;
-    }
-
-    segtree<long long int> tree(arr);
-
-    while (m--) {
-        int operation;
-        cin >> operation;
-
-        if (operation == 1) {
-            int l, r, value;
-            cin >> l >> r >> value;
-            tree.update({l, r}, value);
-        } else {
-            int k;
-            cin >> k;
-            cout << tree.query(k) << "\n";
-        }
+    while(m--) {
+        int p, b;
+        in2(p, b);
+        st.update(p, b);
+        out(st.tree[1].val, "\n");
     }
 
     return 0;
+}
+
+int main() {
+    fastio;
+    int t = 1;
+    // in (t);
+
+    while (t--) {
+        solve();
+    }
 }

@@ -2,40 +2,41 @@
 
 using namespace std;
 
-#define MOD (LL)(1e9 + 7)
-#define fastio                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);
+typedef long long int lll;
 
-#define endl "\n"
-#define yesno(a) cout << ((a) ? "Yes" : "No");
+template<typename T>
+struct matrix {
+    vector<vector<T>> mat;
+    int rows, cols;
+    int order{};
 
-#define F first
-#define S second
-#define mp make_pair
-#define pb push_back
-#define all(a) (a).begin(), (a).end()
-#define rall(a) (a).rbegin(), (a).rend()
+    matrix(int no_of_rows, int no_of_cols) {
+        rows = no_of_rows;
+        cols = no_of_cols;
 
-typedef long long int ll;
-typedef unsigned long long int LL;
-typedef pair<int, int> ii;
+        if (rows == cols) {
+            order = rows;
+        } else {
+            order = -1;
+        }
 
-typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
-typedef vector<long long int> vll;
+        mat = vector<vector<T>>(no_of_rows, vector<T>(no_of_cols, T(0)));
+    }
 
-typedef vector<vector<ll>> matrix;
-ll order;
+    explicit matrix(int order) {
+        rows = cols = this->order = order;
+        mat = vector<vector<T>>(order, vector<T>(order, T(0)));
+    }
+};
 
-matrix m_mul(matrix a, matrix b, ll m) {
-    matrix res(order, vector<ll>(order, 0));
+matrix<lll> mul(matrix<lll> a, matrix<lll> b, ll m) {
+    matrix<lll> res(a.rows, b.cols);
 
-    for (int i = 0; i < order; i++) {
-        for (int j = 0; j < order; j++) {
-            for (int k = 0; k < order; k++) {
-                res[i][j] += a[i][k] * b[k][j];
-                res[i][j] %= m;
+    for (int i = 0; i < a.rows; i++) {
+        for (int j = 0; j < b.cols; j++) {
+            for (int k = 0; k < b.rows; k++) {
+                res.mat[i][j] += a.mat[i][k] * b.mat[k][j];
+                res.mat[i][j] %= m;
             }
         }
     }
@@ -43,27 +44,26 @@ matrix m_mul(matrix a, matrix b, ll m) {
     return res;
 }
 
-matrix m_pow(matrix a, ll n, ll m) {
-    matrix res(order, vector<ll>(order, 0));
+matrix<lll> pow(matrix<lll> a, ll n, ll m) {
+    matrix<lll> res(a.order, a.rows);
 
-    for (ll i = 0; i < order; i++) {
-        res[i][i] = 1;
+    for (int i = 0; i < a.rows; i++) {
+        res.mat[i][i] = 1;
     }
 
     while (n) {
         if (n & 1) {
-            res = m_mul(res, a, m);
+            res = mul(res, a, m);
         }
 
         n >>= 1;
-        a = m_mul(a, a, m);
+        a = mul(a, a, m);
     }
 
     return res;
 }
 
 int solve() {
-    fastio
     int n;
     cin >> n;
     return 0;

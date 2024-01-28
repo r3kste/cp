@@ -2,17 +2,17 @@
 
 using namespace std;
 
-bool isPrime(long long int n) {
-    if (n < 2) {
-        return false;
-    } else if (n == 2 || n == 3) {
+typedef long long int ll;
+
+bool isPrime(ll n) {
+    if (n == 2 || n == 3) {
         return true;
-    } else if (n % 2 == 0 || n % 3 == 0) {
+    } else if (n % 2 == 0 || n % 3 == 0 || n < 2) {
         return false;
     } else {
-        double sqrtN = sqrt(n) + 1;
+        ll sqrtN = ll(sqrt(n));
 
-        for (long long int i = 5; i < sqrtN; i += 6) {
+        for (ll i = 5; i < sqrtN; i += 6) {
             if (n % i == 0 || n % (i + 2) == 0) {
                 return false;
             }
@@ -22,8 +22,8 @@ bool isPrime(long long int n) {
     }
 }
 
-long long int power(long long int x, int y, long long int mod) {
-    long long int res = 1;
+ll power(ll x, ll y, ll mod) {
+    ll res = 1;
     x %= mod;
 
     while (y > 0) {
@@ -38,19 +38,19 @@ long long int power(long long int x, int y, long long int mod) {
     return res;
 }
 
-long long int inv(long long int n, long long int mod) {
+ll inv(ll n, ll mod) {
     return power(n, mod - 2, mod);
 }
 
-long long int mul(long long int x, long long int y, long long int mod) {
+ll mul(ll x, ll y, ll mod) {
     return ((x % mod) * (y % mod)) % mod;
 }
 
-long long int div(long long int x, long long int y, long long int mod) {
+ll div(ll x, ll y, ll mod) {
     return mul(x, inv(y, mod), mod);
 }
 
-long long int ncr(long long int n, long long int r, long long int mod) {
+ll ncr(ll n, ll r, ll mod) {
     if (n < r) {
         return 0;
     }
@@ -63,18 +63,18 @@ long long int ncr(long long int n, long long int r, long long int mod) {
         return ncr(n, n - r, mod);
     }
 
-    long long int res = 1;
+    ll res = 1;
 
-    for (int i = r; i > 0; i--) {
+    for (ll i = r; i > 0; i--) {
         res = div(mul(res, n - i + 1, mod), i, mod);
     }
 
     return res;
 }
 
-vector<long long int> factors(long long int n) {
-    vector<long long int> factors;
-    const int sqrtN = sqrt(n) + 1;
+vector<ll> factors(ll n) {
+    vector<ll> factors;
+    const ll sqrtN = ll(sqrt(n));
 
     for (int i = 1; i <= sqrtN; ++i) {
         if (n % i == 0) {

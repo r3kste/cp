@@ -22,6 +22,7 @@ struct Graph {
     // int timer;
     // vector<int> tin, tout;
     // int depth;
+
     Graph(int no_of_nodes, int no_of_edges, bool fill = true) {
         adj.resize(no_of_nodes);
         n = no_of_nodes;
