@@ -14,7 +14,7 @@ typedef vector<vi> vvi;
 #define MOD (ll)(1e9 + 7)
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);
+    cin.tie(nullptr);
 
 #define F first
 #define S second
@@ -41,61 +41,43 @@ typedef vector<vi> vvi;
 
 int solve() {
     fastio
-    int n, k, p, q;
-    in2(n, k);
-    in2(p, q);
-    vi a(n);
-    vin (a);
-    vi b(n);
-    vin (b);
-    vi d_rainfall(n + 1);
-
-    while(k--) {
-        int l, r, x;
-        in3(l, r, x);
-        l--;
-        r--;
-        d_rainfall[l] += x;
-        d_rainfall[r + 1] -= x;
-    }
-
-    vi rainfall(n);
-    rainfall[0] = d_rainfall[0];
-
-    for (int i = 1; i < n; i++) {
-        rainfall[i] = rainfall[i - 1] + d_rainfall[i];
-    }
-
-    ll could_give_to = 0;
-    ll could_take_from = 0;
-    ll havetogiveto = 0;
-    ll havetotakefrom = 0;
+    ll n, k;
+    in2(n, k)
+    vector<pair<ll, int>> a;
 
     for (int i = 0; i < n; i++) {
-        if (rainfall[i] > a[i]) {
-            could_take_from += rainfall[i] - a[i];
-        }
-
-        if (rainfall[i] < a[i]) {
-            havetogiveto += a[i] - rainfall[i];
-        }
-
-        if (rainfall[i] < b[i]) {
-            could_give_to += b[i] - rainfall[i];
-        }
-
-        if (rainfall[i] > b[i]) {
-            havetotakefrom += rainfall[i] - b[i];
-        }
+        int x;
+        in(x)
+        a.push_back(mp(x, i + 1));
     }
 
-    if(havetogiveto <= could_take_from + havetotakefrom && havetotakefrom <= could_give_to + havetogiveto) {
-        o((havetogiveto + havetotakefrom) * (p + q));
+    sort(all(a));
+    vector<pair<ll, int>> b;
+
+    for (int i = 0; i < n; i++) {
+        b.pb(mp(a[i].F - k * a[i].S, a[i].S));
+    }
+
+    sort(all(b));
+    ll score = 0;
+    score += b.back().F;
+
+    if (b.back().S == a.back().S) {
+        score += max(b[sz(b) - 2].F, a[sz(a) - 2].F);
     } else {
-        o(-1);
+        score += a.back().F;
     }
 
-    br;
+    ll score2 = 0;
+    score2 += a.back().F;
+
+    if (a.back().S == b.back().S) {
+        score2 += b[sz(b) - 2].F;
+    } else {
+        score2 += b.back().F;
+    }
+
+    o(max(score, score2))br;
     return 0;
 }
 

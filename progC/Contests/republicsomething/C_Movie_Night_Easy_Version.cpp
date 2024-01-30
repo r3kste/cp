@@ -14,7 +14,7 @@ typedef vector<vi> vvi;
 #define MOD (ll)(1e9 + 7)
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);
+    cin.tie(nullptr);
 
 #define F first
 #define S second
@@ -41,37 +41,43 @@ typedef vector<vi> vvi;
 
 int solve() {
     fastio
-    int n, s;
-    in2(n, s);
-    vi a(n);
-    vin (a);
-    vll ps(n);
+    ll n, k;
+    in2(n, k)
+    vector<pair<ll, int>> a;
 
     for (int i = 0; i < n; i++) {
-        ps[i] = a[i] + (i > 0 ? ps[i - 1] : 0);
+        int x;
+        in(x)
+        a.push_back(mp(x, i + 1));
     }
 
-    int mm = INT_MAX;
+    sort(all(a));
+    vector<pair<ll, int>> b;
 
-    for (int left = 0; left < n; left++) {
-        int right = n;
-
-        while (left < right) {
-            int mid = left + (right - left + 1) / 2;
-
-            if (ps[mid] - ps[left] <= s) {
-                left = mid;
-            } else {
-                right = mid - 1;
-            }
-        }
-
-        if (ps[left] - ps[left - 1] <= s) {
-            mm = min (mm, left);
-        }
+    for (int i = 0; i < n; i++) {
+        b.pb(mp(a[i].F - k * a[i].S, a[i].S));
     }
 
-    o(mm)br
+    sort(all(b));
+    ll score = 0;
+    score += b.back().F;
+
+    if (b.back().S == a.back().S) {
+        score += max(b[sz(b) - 2].F, a[sz(a) - 2].F);
+    } else {
+        score += a.back().F;
+    }
+
+    ll score2 = 0;
+    score2 += a.back().F;
+
+    if (a.back().S == b.back().S) {
+        score2 += b[sz(b) - 2].F;
+    } else {
+        score2 += b.back().F;
+    }
+
+    o(max(score, score2))br;
     return 0;
 }
 
