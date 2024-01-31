@@ -43,24 +43,32 @@ int solve() {
     fastio
     int n;
     in (n)
-    string s;
-    cin >> s;
-    string ne = "";
+    vi a(n);
+    vin (a);
+    vi b(n);
+    vin (b);
+    vector<ii> ab(n);
+    vector<ii> ba(n);
 
     for (int i = 0; i < n; i++) {
-        if (s[i + 1] == s[i]) {
-            continue;
-        }
-
-        ne.push_back(s[i]);
+        ab[i] = mp(a[i], b[i]);
+        ba[i] = mp(b[i], a[i]);
     }
 
-    if (ne == "cfi") {
-        oyes
-    } else {
-        ono;
+    sort(all(ab));
+    sort(all(ba));
+
+    for (int i = 0; i < n; i++) {
+        o(ab[i].F);
     }
 
+    br
+
+    for (int i = 0; i < n; i++) {
+        o(ab[i].S);
+    }
+
+    br
     return 0;
 }
 

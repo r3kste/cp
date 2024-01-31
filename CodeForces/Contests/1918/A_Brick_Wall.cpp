@@ -41,26 +41,10 @@ typedef vector<vi> vvi;
 
 int solve() {
     fastio
-    int n;
-    in (n)
-    string s;
-    cin >> s;
-    string ne = "";
-
-    for (int i = 0; i < n; i++) {
-        if (s[i + 1] == s[i]) {
-            continue;
-        }
-
-        ne.push_back(s[i]);
-    }
-
-    if (ne == "cfi") {
-        oyes
-    } else {
-        ono;
-    }
-
+    ll n, m;
+    in2(n, m);
+    o(n * (m / 2));
+    br
     return 0;
 }
 

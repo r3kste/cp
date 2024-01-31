@@ -1,9 +1,8 @@
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 template<typename T>
-struct segtree {
+struct difftree {
     struct range {
         int L;
         int R;
@@ -24,15 +23,18 @@ struct segtree {
             lazy = DEFAULT_LAZY;
         }
     };
-    int n;
-    vector<int> arr;
+    long long int n;
     vector<node> tree;
 
-    explicit segtree(vector<int> &array) {
-        arr = array;
-        n = (int) array.size();
-        tree.resize(4 * n + 1);
-        build();
+    explicit difftree(int no_of_elements) {
+        n = no_of_elements;
+        long long int size = 1;
+
+        while (size < n) {
+            size <<= 1;
+        }
+
+        tree.resize(min(4 * n + 1, 2 * size + 1));
     }
 
     T default_val() {
@@ -45,19 +47,6 @@ struct segtree {
     T update_operation(int vertex, T value);
     T query_operation(T left_subtree, T right_subtree);
     T lazy_operation(T value, int vertex, range borders);
-
-    void build(int vertex, range borders) {
-        if (borders.L == borders.R) {
-            if (borders.L <= n) {
-                tree[vertex].val = arr[borders.L - 1];
-            }
-        } else {
-            int mid = borders.mid();
-            build(vertex << 1, {borders.L, mid});
-            build(vertex << 1 | 1, {mid + 1, borders.R});
-            tree[vertex].val = build_operation(vertex << 1, vertex << 1 | 1);
-        }
-    }
 
     void point_update(int target, T value, int vertex, range borders) {
         if (tree[vertex].lazy != DEFAULT_LAZY) {
@@ -166,10 +155,6 @@ struct segtree {
         }
     }
 
-    void build() {
-        build(1, {1, n});
-    }
-
     void update(int target, T value) {
         point_update(target, value, 1, {1, n});
     }
@@ -187,55 +172,69 @@ struct segtree {
     }
 };
 template<typename T>
-T segtree<T>::build_operation(int left_vertex, int right_vertex) {
+T difftree<T>::build_operation(int left_vertex, int right_vertex) {
     /* How to combine two nodes into one parent node */
     return tree[left_vertex].val + tree[right_vertex].val;
     /**/
 }
 template<typename T>
-T segtree<T>::update_operation(int vertex, T value) {
+T difftree<T>::update_operation(int vertex, T value) {
     /* How to update the value in tree[vertex] */
     return tree[vertex].val + value;
     /**/
 }
 template<typename T>
-T segtree<T>::query_operation(T left_subtree, T right_subtree) {
+T difftree<T>::query_operation(T left_subtree, T right_subtree) {
     /* What should be returned as query's result after calculating for children */
     return left_subtree + right_subtree;
     /**/
 }
 template<typename T>
-T segtree<T>::lazy_operation(T value, int vertex, range borders) {
+T difftree<T>::lazy_operation(T value, int vertex, range borders) {
     /* How to update the lazy of a vertex */
     return tree[vertex].val + (borders.R - borders.L + 1) * value;
     /**/
 }
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int n, m;
-    cin >> n >> m;
-    vector<int> arr(n);
+#include <tuple>
 
-    for (auto &i : arr) {
-        cin >> i;
+int main() {
+    long long int n, q;
+    cin >> n >> q;
+    vector<tuple<int, int, int, int>> queries;
+    map<long long int, long long int> splits;
+
+    while (q--) {
+        int op;
+        cin >> op;
+
+        if (op == 1) {
+            int l, r;
+            long long int x;
+            cin >> l >> r >> x;
+            queries.emplace_back(l, r, x);
+            splits[l] = 0;
+            splits[r] = 0;
+        } else {
+            int i;
+            cin >> i;
+            queries.emplace_back(i, -1, -1);
+        }
     }
 
-    segtree<long long int> tree(arr);
+    long long int new_n = -1;
 
-    while (m--) {
-        int operation;
-        cin >> operation;
+    for (auto &i : splits) {
+        i.second = new_n += 2;
+    }
 
-        if (operation == 1) {
-            int l, r, value;
-            cin >> l >> r >> value;
-            tree.update({l, r}, value);
+    difftree<long long int> tree(new_n);
+
+    for (auto [a, b, c] : queries) {
+        if (b == -1) {
+            cout << tree.query(splits[a]) << "\n";
         } else {
-            int k;
-            cin >> k;
-            cout << tree.query(k) << "\n";
+            tree.update(splits[a], splits[b], c);
         }
     }
 

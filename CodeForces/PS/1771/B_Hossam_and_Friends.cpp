@@ -41,26 +41,32 @@ typedef vector<vi> vvi;
 
 int solve() {
     fastio
-    int n;
-    in (n)
-    string s;
-    cin >> s;
-    string ne = "";
+    int n, m;
+    in2(n, m);
+    vi segment_until(n + 1, n + 1);
 
-    for (int i = 0; i < n; i++) {
-        if (s[i + 1] == s[i]) {
-            continue;
+    while(m--) {
+        int x, y;
+        in2(x, y);
+
+        if (x > y) {
+            swap(x, y);
         }
 
-        ne.push_back(s[i]);
+        segment_until[x] = min(segment_until[x], y);
     }
 
-    if (ne == "cfi") {
-        oyes
-    } else {
-        ono;
+    ll ans = 0;
+
+    for (int i = n - 1; i >= 1; i--) {
+        segment_until[i] = min(segment_until[i], segment_until[i + 1]);
     }
 
+    for (int i = 1; i <= n; i++) {
+        ans += segment_until[i] - i;
+    }
+
+    o(ans)br;
     return 0;
 }
 
