@@ -2,6 +2,7 @@
 
 using namespace std;
 
+typedef long long int ll;
 typedef long long int lll;
 
 template<typename T>
@@ -70,7 +71,6 @@ int solve() {
 }
 
 int main() {
-    fastio
     int t = 1;
     cin >> t;
 
