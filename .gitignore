@@ -1,7 +1,6 @@
 .directory
 *.out
-t.cpp
-t.py
+t.*
 cmake-build-debug/
 .cph/
 rust/

@@ -10,7 +10,7 @@
         "-g",
         "\"${file}\"",
         "-o",
-        "\"${workspaceFolder}/.out\""
+        "${workspaceFolder}/.out"
       ],
       "presentation": {
         "echo": true,
@@ -34,7 +34,7 @@
     },
     {
       "type": "shell",
-      "label": "Rust: rustc build active file",
+      "label": "Rustc: rustc build active file",
       "command": "/usr/bin/rustc \"${file}\" -o \"${workspaceFolder}/.out\" && \"${workspaceFolder}/.out\"",
       "presentation": {
         "echo": true,
