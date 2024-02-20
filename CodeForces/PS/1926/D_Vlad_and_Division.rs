@@ -1,6 +1,7 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
+use std::collections::HashMap;
 use std::io::{self, prelude::*};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
@@ -8,10 +9,39 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
+        let mut a: Vec<usize> = vec![0usize; n];
+        let mut freq: HashMap<usize, usize> = HashMap::new();
         for x in a.iter_mut() {
             *x = input.next();
+            if freq.contains_key(x) {
+                *freq.get_mut(x).unwrap() += 1;
+            } else {
+                freq.insert(*x, 1);
+            }
         }
+        const LIMIT: usize = 2147483647;
+        let mut group: usize = 0;
+        for x in a {
+            if freq.contains_key(&x) {
+                if freq[&x] < 1 {
+                    continue;
+                }
+            }
+            if freq.contains_key(&(LIMIT - x)) {
+                if freq[&(LIMIT - x)] >= 1 {
+                    group += 1;
+                    *freq.get_mut(&(LIMIT - x)).unwrap() -= 1;
+                    *freq.get_mut(&x).unwrap() -= 1;
+                } else {
+                    group += 1;
+                    *freq.get_mut(&x).unwrap() -= 1;
+                }
+            } else {
+                group += 1;
+                *freq.get_mut(&x).unwrap() -= 1;
+            }
+        }
+        writeln!(w, "{}", group);
     }
 }
 
