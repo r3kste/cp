@@ -3,19 +3,48 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-fn ans(n: usize, k: usize) -> usize {
-    if k <= (n + 1) / 2 {
-        return 2 * k - 1;
-    }
-    return 2 * ans(n / 2, k - (n + 1) / 2);
-}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let k: usize = input.next();
-        writeln!(w, "{}", ans(n, k));
+        let m: usize = input.next();
+        let mut a: Vec<i32> = vec![0i32; n];
+        for x in a.iter_mut() {
+            *x = input.next();
+        }
+        let s: Vec<u8> = input.next();
+        let s = std::str::from_utf8(&s).unwrap();
+
+        let mut l = 0;
+        let mut r = n;
+        for c in s.chars() {
+            if c == 'L' {
+                l += 1;
+            } else {
+                r -= 1;
+            }
+        }
+        let mut p: usize = 1;
+
+        let mut ans: Vec<usize> = Vec::new();
+        for c in s.chars().rev() {
+            if c == 'L' {
+                l -= 1;
+                p *= a[l] as usize;
+                p %= m;
+                ans.push(p);
+            } else {
+                p *= a[r] as usize;
+                r += 1;
+                p %= m;
+                ans.push(p);
+            }
+        }
+        for x in ans.iter().rev() {
+            write!(w, "{} ", x);
+        }
+        writeln!(w, "");
     }
 }
 
