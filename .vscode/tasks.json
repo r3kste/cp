@@ -8,7 +8,7 @@
         "-Wall",
         // "-O2",
         "-g",
-        "\"${file}\"",
+        "${file}",
         "-o",
         "${workspaceFolder}/.out"
       ],
