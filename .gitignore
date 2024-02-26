@@ -3,4 +3,3 @@
 t.*
 cmake-build-debug/
 .cph/
-rust/
