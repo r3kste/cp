@@ -1,16 +1,37 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
 
+fn gcd(a: usize, b: usize) -> usize {
+    if b == 0 {
+        a
+    } else {
+        gcd(b, a % b)
+    }
+}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
         let mut a: Vec<i32> = vec![0i32; n];
+        let mut g: usize = a[0] as usize;
+        let mut freq: HashMap<usize, usize> = HashMap::new();
         for x in a.iter_mut() {
             *x = input.next();
+            freq.entry(*x as usize).and_modify(|e| *e += 1).or_insert(1);
+        }
+        for &x in a.iter() {
+            g = gcd(g, x as usize);
+        }
+        if freq.contains_key(&g) && freq[&g] > 1 {
+            writeln!(w, "NO");
+        } else {
+            writeln!(w, "YES");
         }
     }
 }
@@ -86,7 +107,7 @@ impl<R: BufRead> TokenStream<Vec<u8>> for FastInput<R> {
     }
 }
 
-macro_rules! ustream {
+macro_rules! impl_token_stream {
     ($($t:ident),+) => {$(
         impl<R: BufRead> TokenStream<$t> for FastInput<R> {
            fn next(&mut self) -> $t {
@@ -116,40 +137,5 @@ macro_rules! ustream {
     )+}
 }
 
-macro_rules! istream {
-    ($($t:ident),+) => {$(
-        impl<R: BufRead> TokenStream<$t> for FastInput<R> {
-           fn next(&mut self) -> $t {
-                let mut ans = 0;
-                let mut negative = false;
-                let mut parse_token = false;
-                loop {
-                    if let Ok(buf) = self.stdin.fill_buf() {
-                        if !parse_token {
-                            while self.pos < buf.len() && buf[self.pos] <= 32 {
-                                self.pos += 1;
-                            }
-                        }
-                        if buf[self.pos] == b'-' {
-                            negative = true;
-                            self.pos += 1;
-                        }
-                        while self.pos < buf.len() && buf[self.pos] > 32 {
-                            parse_token = true;
-                            ans = ans * 10 + (buf[self.pos] - b'0') as $t;
-                            self.pos += 1;
-                        }
-                        if self.pos != buf.len() || self.pos == 0 {
-                            return if negative { -ans } else { ans };
-                        }
-                    }
-                    self.stdin.consume(self.pos);
-                    self.pos = 0;
-                }
-           }
-        }
-    )+}
-}
-
-ustream!(usize);
-istream!(i32);
+impl_token_stream!(usize);
+impl_token_stream!(i32);

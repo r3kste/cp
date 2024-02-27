@@ -1,17 +1,51 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
-
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
+fn valid(data: &HashMap<i32, usize>, m: usize) -> bool {
+    let mut extra_jobs: isize = 0;
+    for (_, &count) in data.iter() {
+        if count <= m {
+            extra_jobs += ((m - count) / 2) as isize;
+        } else {
+            let remaining = count - m;
+            extra_jobs -= remaining as isize;
+        }
+    }
+    extra_jobs >= 0
+}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
+        let m: usize = input.next();
+        let mut a: Vec<i32> = vec![0i32; m];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let mut data: HashMap<i32, usize> = HashMap::new();
+        for worker_id in 1..=n {
+            data.insert(worker_id as i32, 0);
+        }
+        for &x in a.iter() {
+            let count = data.entry(x).or_insert(0);
+            *count += 1;
+        }
+        let mut l = 0;
+        let mut r = 2 * m;
+        while l < r {
+            let m = l + (r - l) / 2;
+            if valid(&data, m) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        writeln!(w, "{}", l);
     }
 }
 
@@ -86,7 +120,7 @@ impl<R: BufRead> TokenStream<Vec<u8>> for FastInput<R> {
     }
 }
 
-macro_rules! ustream {
+macro_rules! impl_token_stream {
     ($($t:ident),+) => {$(
         impl<R: BufRead> TokenStream<$t> for FastInput<R> {
            fn next(&mut self) -> $t {
@@ -116,40 +150,5 @@ macro_rules! ustream {
     )+}
 }
 
-macro_rules! istream {
-    ($($t:ident),+) => {$(
-        impl<R: BufRead> TokenStream<$t> for FastInput<R> {
-           fn next(&mut self) -> $t {
-                let mut ans = 0;
-                let mut negative = false;
-                let mut parse_token = false;
-                loop {
-                    if let Ok(buf) = self.stdin.fill_buf() {
-                        if !parse_token {
-                            while self.pos < buf.len() && buf[self.pos] <= 32 {
-                                self.pos += 1;
-                            }
-                        }
-                        if buf[self.pos] == b'-' {
-                            negative = true;
-                            self.pos += 1;
-                        }
-                        while self.pos < buf.len() && buf[self.pos] > 32 {
-                            parse_token = true;
-                            ans = ans * 10 + (buf[self.pos] - b'0') as $t;
-                            self.pos += 1;
-                        }
-                        if self.pos != buf.len() || self.pos == 0 {
-                            return if negative { -ans } else { ans };
-                        }
-                    }
-                    self.stdin.consume(self.pos);
-                    self.pos = 0;
-                }
-           }
-        }
-    )+}
-}
-
-ustream!(usize);
-istream!(i32);
+impl_token_stream!(usize);
+impl_token_stream!(i32);

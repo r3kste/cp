@@ -11,7 +11,27 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
         let mut a: Vec<i32> = vec![0i32; n];
         for x in a.iter_mut() {
             *x = input.next();
+            *x %= 3;
         }
+        let mut cnt: Vec<usize> = vec![0; 3];
+        let mut sum: usize = 0;
+        for x in a.iter() {
+            sum += *x as usize;
+            cnt[*x as usize] += 1;
+        }
+        let ans;
+        if sum % 3 == 0 {
+            ans = 0;
+        } else if sum % 3 == 1 {
+            if cnt[1] > 0 {
+                ans = 1;
+            } else {
+                ans = 2;
+            }
+        } else {
+            ans = 1;
+        }
+        writeln!(w, "{}", ans);
     }
 }
 
@@ -86,7 +106,7 @@ impl<R: BufRead> TokenStream<Vec<u8>> for FastInput<R> {
     }
 }
 
-macro_rules! ustream {
+macro_rules! impl_token_stream {
     ($($t:ident),+) => {$(
         impl<R: BufRead> TokenStream<$t> for FastInput<R> {
            fn next(&mut self) -> $t {
@@ -116,40 +136,5 @@ macro_rules! ustream {
     )+}
 }
 
-macro_rules! istream {
-    ($($t:ident),+) => {$(
-        impl<R: BufRead> TokenStream<$t> for FastInput<R> {
-           fn next(&mut self) -> $t {
-                let mut ans = 0;
-                let mut negative = false;
-                let mut parse_token = false;
-                loop {
-                    if let Ok(buf) = self.stdin.fill_buf() {
-                        if !parse_token {
-                            while self.pos < buf.len() && buf[self.pos] <= 32 {
-                                self.pos += 1;
-                            }
-                        }
-                        if buf[self.pos] == b'-' {
-                            negative = true;
-                            self.pos += 1;
-                        }
-                        while self.pos < buf.len() && buf[self.pos] > 32 {
-                            parse_token = true;
-                            ans = ans * 10 + (buf[self.pos] - b'0') as $t;
-                            self.pos += 1;
-                        }
-                        if self.pos != buf.len() || self.pos == 0 {
-                            return if negative { -ans } else { ans };
-                        }
-                    }
-                    self.stdin.consume(self.pos);
-                    self.pos = 0;
-                }
-           }
-        }
-    )+}
-}
-
-ustream!(usize);
-istream!(i32);
+impl_token_stream!(usize);
+impl_token_stream!(i32);
