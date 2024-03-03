@@ -4,14 +4,21 @@
 use std::io::{self, prelude::*};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let mut si: i32 = 0;
+        let mut sj: i32 = 0;
+        for i in 0..5 {
+            for j in 0..5 {
+                let x: i32 = input.next();
+                if x == 1 {
+                    si = i as i32;
+                    sj = j as i32;
+                }
+            }
         }
+        writeln!(w, "{}", (si - 2).abs() + (sj - 2).abs());
     }
 }
 

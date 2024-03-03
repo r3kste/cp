@@ -12,6 +12,13 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
         for x in a.iter_mut() {
             *x = input.next();
         }
+        a.sort();
+        let p = a[0];
+        let q = a[1];
+        let r = a[n - 1];
+        let s = a[n - 2];
+
+        writeln!(w, "{}", 2 * (s - p - q + r));
     }
 }
 
