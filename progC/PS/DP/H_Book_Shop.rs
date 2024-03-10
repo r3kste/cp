@@ -1,18 +1,61 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
 
-const MOD: usize = 1_000_000_007;
+fn f(
+    pos: usize,
+    money: usize,
+    prices: &Vec<usize>,
+    pages: &Vec<usize>,
+    dp: &mut HashMap<(usize, usize), usize>,
+    dpd: &mut HashMap<(usize, usize), bool>,
+) -> usize {
+    if pos == prices.len() - 1 {
+        return if money >= *prices.last().unwrap() {
+            *pages.last().unwrap()
+        } else {
+            0
+        };
+    }
+    if *dpd.entry((pos, money)).or_default() {
+        return dp[&(pos, money)];
+    }
+    let mut ans = f(pos + 1, money, prices, pages, dp, dpd);
+    if money >= prices[pos] {
+        ans = ans.max(pages[pos] + f(pos + 1, money - prices[pos], prices, pages, dp, dpd));
+    }
+    dpd.insert((pos, money), true);
+    dp.insert((pos, money), ans);
+    ans
+}
+
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
+        let x: usize = input.next();
+        let mut prices: Vec<usize> = vec![0usize; n];
+        for x in prices.iter_mut() {
             *x = input.next();
         }
+        let mut pages: Vec<usize> = vec![0usize; n];
+        for x in pages.iter_mut() {
+            *x = input.next();
+        }
+
+        // f(pos, money) = maximum number of pages starting from pos and ending with n-1, with current money as money
+        // f(pos, money) = max(pages[pos] + f(pos+1,money-prices[pos]), f(pos + 1, money))
+
+        let mut dp: HashMap<(usize, usize), usize> = HashMap::new();
+        let mut dpd: HashMap<(usize, usize), bool> = HashMap::new();
+
+        let ans = f(0, x, &prices, &pages, &mut dp, &mut dpd);
+        writeln!(w, "{}", ans);
     }
 }
 

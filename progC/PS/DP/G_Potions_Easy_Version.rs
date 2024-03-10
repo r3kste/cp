@@ -3,16 +3,48 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
+        let mut a: Vec<i128> = vec![0i128; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let mut ps = vec![0; n + 1];
+        let mut neg: Vec<(i128, usize)> = Vec::new();
+        let mut ans = 0;
+
+        for i in 0..n {
+            if a[i] >= 0 {
+                ps[i + 1] = ps[i] + a[i];
+                ans += 1;
+            } else {
+                neg.push((a[i], i));
+                ps[i + 1] = ps[i];
+            }
+        }
+
+        neg.sort_by(|a, b| b.cmp(a));
+
+        for &(val, idx) in &neg {
+            let mut flag = true;
+
+            for j in idx..n {
+                if ps[j + 1] + val < 0 {
+                    flag = false;
+                    break;
+                }
+            }
+            if flag {
+                ans += 1;
+                for j in idx..n {
+                    ps[j + 1] += val;
+                }
+            }
+        }
+        writeln!(w, "{}", ans);
     }
 }
 
@@ -153,4 +185,4 @@ macro_rules! istream {
 }
 
 ustream!(usize);
-istream!(i32);
+istream!(i128);

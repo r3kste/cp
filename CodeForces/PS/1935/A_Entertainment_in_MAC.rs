@@ -3,16 +3,16 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
-        }
+        let s: Vec<u8> = input.next();
+        let t = s.iter().rev().map(|&c| c as char).collect::<String>();
+        let s = s.iter().map(|&c| c as char).collect::<String>();
+        let t = t + &s;
+        writeln!(w, "{}", std::cmp::min(s, t));
     }
 }
 

@@ -3,16 +3,27 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
+fn get_maxdigit(n: usize) -> usize {
+    let mut n = n;
+    let mut ans = 0;
+    while n > 0 {
+    ans = ans.max(n % 10);
+        n /= 10;
+    }
+    ans
+}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let mut ans = 0;
+        let mut n = n;
+        while n > 0 {
+            ans += 1;
+            n -= get_maxdigit(n);
         }
+        writeln!(w, "{ans}");
     }
 }
 

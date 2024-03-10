@@ -3,16 +3,39 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
+fn f(n: usize, a: &Vec<i32>, dp: &mut Vec<isize>, dpd: &mut Vec<bool>) -> isize {
+    if dpd[n] {
+        return dp[n];
+    }
+    let mut ans = 0;
+    for coin in a.iter() {
+        if n < *coin as usize {
+            continue;
+        }
+        ans += f(n - *coin as usize, a, dp, dpd);
+        ans %= 1_000_000_007;
+    }
+    dp[n] = ans;
+    dpd[n] = true;
+    ans % 1_000_000_007
+}
+
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
+        let x: usize = input.next();
         let mut a: Vec<i32> = vec![0i32; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let mut dp: Vec<isize> = vec![0; x + 1];
+        dp[0] = 1;
+        let mut dpd: Vec<bool> = vec![false; x + 1];
+        dpd[0] = true;
+        let ans = f(x, &a, &mut dp, &mut dpd);
+        writeln!(w, "{}", ans);
     }
 }
 

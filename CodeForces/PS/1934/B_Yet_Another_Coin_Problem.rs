@@ -3,16 +3,45 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
+fn f(n: usize, dp: &mut Vec<usize>, dpd: &mut Vec<bool>) -> usize {
+    if n == 0 {
+        return 0;
+    }
+    if dpd[n] {
+        return dp[n];
+    }
+    dpd[n] = true;
+    let mut ans = u32::MAX as usize;
+    if n >= 15 {
+        ans = ans.min(1 + f(n - 15, dp, dpd));
+    }
+    if n >= 10 {
+        ans = ans.min(1 + f(n - 10, dp, dpd));
+    }
+    if n >= 6 {
+        ans = ans.min(1 + f(n - 6, dp, dpd));
+    }
+    if n >= 3 {
+        ans = ans.min(1 + f(n - 3, dp, dpd));
+    }
+    if n >= 1 {
+        ans = ans.min(1 + f(n - 1, dp, dpd));
+    }
+    dp[n] = ans;
+    return ans;
+}
+
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
+    let mut dp = vec![0; 3001];
+    let mut dpd = vec![false; 3001];
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
-        }
+        let sure_fifteens = if n > 1000 { (n - 1000) / 15 } else { 0 };
+        let n = n - sure_fifteens * 15;
+        let ans = f(n, &mut dp, &mut dpd) + sure_fifteens;
+        writeln!(w, "{}", ans);
     }
 }
 

@@ -13,6 +13,24 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
         for x in a.iter_mut() {
             *x = input.next();
         }
+        // f(i) = minimum number of operations to make a[i..] beautiful
+        // if i+a[i]==n-1: 0
+        // elif >n-1: 1 + f(i+1)
+        // elif <n-1: min(1+f(i+1),f(a[i]+i))
+
+        let mut dp: Vec<usize> = vec![0usize; n];
+        dp[n - 1] = 1;
+
+        for i in (0..(n - 1)).rev() {
+            dp[i] = if i + a[i] as usize == n - 1 {
+                0
+            } else if i + a[i] as usize > n - 1 {
+                1 + dp[i + 1]
+            } else {
+                std::cmp::min(1 + dp[i + 1], dp[a[i] as usize + i + 1])
+            }
+        }
+        writeln!(w, "{}", dp[0]);
     }
 }
 

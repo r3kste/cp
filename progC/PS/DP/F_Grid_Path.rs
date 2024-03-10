@@ -3,16 +3,54 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
+const MOD: isize = 1_000_000_007;
+fn f(
+    i: usize,
+    j: usize,
+    n: &usize,
+    grid: &Vec<Vec<char>>,
+    dp: &mut Vec<Vec<isize>>,
+    dpd: &mut Vec<Vec<bool>>,
+) -> isize {
+    if dpd[i][j] {
+        return dp[i][j];
+    }
+    if grid[i][j] == '*' {
+        return 0;
+    }
+    if i > 0 {
+        dp[i][j] += f(i - 1, j, n, grid, dp, dpd);
+        dp[i][j] %= MOD;
+    }
+    if j > 0 {
+        dp[i][j] += f(i, j - 1, n, grid, dp, dpd);
+        dp[i][j] %= MOD;
+    }
+    dpd[i][j] = true;
+    dp[i][j] % MOD
+}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let mut grid: Vec<Vec<char>> = vec![vec!['.'; n]; n];
+        for i in 0..n {
+            for j in 0..n {
+                let ch: u8 = input.next();
+                grid[i][j] = ch as char;
+            }
         }
+        // f(i,j) = number of paths from 0,0 to i,j
+        // ans = f(n,n)
+        // f(i,j) = if grid[i][j] = '*' {0} else {f(i-1,j) + f(i,j-1);}
+
+        let mut dp: Vec<Vec<isize>> = vec![vec![0; n]; n];
+        let mut dpd: Vec<Vec<bool>> = vec![vec![false; n]; n];
+        dp[0][0] = if grid[0][0] == '.' { 1 } else { 0 };
+        dpd[0][0] = true;
+        let ans = f(n - 1, n - 1, &n, &grid, &mut dp, &mut dpd);
+        writeln!(w, "{}", ans);
     }
 }
 

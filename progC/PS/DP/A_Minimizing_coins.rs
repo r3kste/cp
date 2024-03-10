@@ -3,16 +3,47 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
+fn f(x: isize, a: &Vec<i32>, dp: &mut Vec<isize>, dpd: &mut Vec<bool>) -> isize {
+    if x == 0 {
+        return 0;
+    }
+    if dpd[x as usize] {
+        return dp[x as usize];
+    }
+    let mut ans = i32::MAX as isize;
+    for &coin in a.iter() {
+        if x < coin as isize {
+            continue;
+        }
+        ans = ans.min(f(x - coin as isize, a, dp, dpd));
+    }
+    dp[x as usize] = ans + 1;
+    dpd[x as usize] = true;
+    if ans >= i32::MAX as isize {
+        return i32::MAX as isize;
+    }
+    ans + 1
+}
+
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
+        let x: usize = input.next();
         let mut a: Vec<i32> = vec![0i32; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let mut dp: Vec<isize> = vec![-1; x + 1];
+        let mut dpd: Vec<bool> = vec![false; x + 1];
+        // f(x) = minimum number of coins needed to make x
+        // f(x) = 1 + min(f(x - a[0]), f(x - a[1]), ..., f(x - a[n - 1]))
+        // f(0) = 0
+        // ans = f(x)
+
+        let ans = f(x as isize, &a, &mut dp, &mut dpd);
+        writeln!(w, "{}", if ans >= i32::MAX as isize { -1 } else { ans });
     }
 }
 

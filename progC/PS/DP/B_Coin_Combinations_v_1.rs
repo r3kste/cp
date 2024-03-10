@@ -3,16 +3,39 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
+        let x: usize = input.next();
         let mut a: Vec<i32> = vec![0i32; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let mut dp: Vec<Vec<i32>> = vec![vec![-1; x + 1]; n + 1];
+
+        // f(x,i) = number of ways to get x, using the first i coins
+        // f(x,i) = f(x,i-1) + f(x-a[i],i)
+
+        for i in 0..=x {
+            dp[0][i] = 0;
+        }
+        for i in 0..=n {
+            dp[i][0] = 1;
+        }
+
+        const MOD: i32 = 1000000007;
+        for pos in 1..=n {
+            for money in 1..=x {
+                dp[pos][money] = dp[pos - 1][money] % MOD;
+                if money >= a[pos - 1] as usize {
+                    dp[pos][money] += dp[pos][money - a[pos - 1] as usize];
+                    dp[pos][money] %= MOD;
+                }
+            }
+        }
+        writeln!(w, "{}", dp[n][x] % MOD);
     }
 }
 
