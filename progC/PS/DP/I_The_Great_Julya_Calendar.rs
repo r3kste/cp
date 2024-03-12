@@ -7,7 +7,7 @@ fn get_maxdigit(n: usize) -> usize {
     let mut n = n;
     let mut ans = 0;
     while n > 0 {
-    ans = ans.max(n % 10);
+        ans = ans.max(n % 10);
         n /= 10;
     }
     ans

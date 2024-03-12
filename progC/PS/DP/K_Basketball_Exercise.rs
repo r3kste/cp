@@ -3,33 +3,47 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
+fn f(
+    pos: usize,
+    row: usize,
+    players: &Vec<Vec<usize>>,
+    dp: &mut Vec<Vec<usize>>,
+    dpd: &mut Vec<Vec<bool>>,
+) -> usize {
+    if pos == players[0].len() {
+        return u64::MIN as usize;
+    }
+    if dpd[row][pos] {
+        return dp[row][pos];
+    }
+    let mut ans = players[row][pos] + f(pos + 1, row ^ 1, players, dp, dpd);
+    ans = ans.max(f(pos + 1, row, players, dp, dpd));
+    ans = ans.max(f(pos + 1, row ^ 1, players, dp, dpd));
+    dp[row][pos] = ans;
+    dpd[row][pos] = true;
+    ans
+}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
+        let mut a: Vec<usize> = vec![0usize; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
-        let mut b: Vec<i32> = vec![0i32; n];
+        let mut b: Vec<usize> = vec![0usize; n];
         for x in b.iter_mut() {
             *x = input.next();
         }
-        let mut ps_a: Vec<usize> = vec![0usize; n + 1];
-        let mut ps_b: Vec<usize> = vec![0usize; n + 1];
-        for i in 0..n {
-            ps_a[i + 1] = ps_a[i] + a[i] as usize;
-            ps_b[i + 1] = ps_b[i] + b[i] as usize;
-        }
-        let mut ans = u64::MAX as usize;
-        for jump in 0..n {
-            let sum_a = ps_a[n] - ps_a[jump + 1];
-            let sum_b = ps_b[jump];
-            let sum = std::cmp::max(sum_a, sum_b);
-            ans = ans.min(sum);
-        }
+        let players: Vec<Vec<usize>> = vec![a, b];
+        let mut dp: Vec<Vec<usize>> = vec![vec![0usize; n]; 2];
+        let mut dpd: Vec<Vec<bool>> = vec![vec![false; n]; 2];
+        // f(pos, row) = maximum height possible starting from position pos, with the next player having to be taken from otherrow.
+        // f(pos, row) = max(height[pos][row] + f(pos+1, otherrow), max(f(pos+1, row),f(pos+1, otherrow)))
+        // ans = max (f(0,0), f(0,1))
+        let mut ans = f(0, 0, &players, &mut dp, &mut dpd);
+        ans = ans.max(f(0, 1, &players, &mut dp, &mut dpd));
         writeln!(w, "{}", ans);
     }
 }

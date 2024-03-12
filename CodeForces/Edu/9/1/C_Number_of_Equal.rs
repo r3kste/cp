@@ -1,34 +1,31 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
 
-const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let m: usize = input.next();
+        let mut a_freq: HashMap<i32, i32> = HashMap::new();
+        for _ in 0..n {
+            let x: i32 = input.next();
+            *a_freq.entry(x).or_default() += 1;
         }
-        let mut b: Vec<i32> = vec![0i32; n];
-        for x in b.iter_mut() {
-            *x = input.next();
+        let mut b_freq: HashMap<i32, i32> = HashMap::new();
+        for _ in 0..m {
+            let x: i32 = input.next();
+            *b_freq.entry(x).or_default() += 1;
         }
-        let mut ps_a: Vec<usize> = vec![0usize; n + 1];
-        let mut ps_b: Vec<usize> = vec![0usize; n + 1];
-        for i in 0..n {
-            ps_a[i + 1] = ps_a[i] + a[i] as usize;
-            ps_b[i + 1] = ps_b[i] + b[i] as usize;
-        }
-        let mut ans = u64::MAX as usize;
-        for jump in 0..n {
-            let sum_a = ps_a[n] - ps_a[jump + 1];
-            let sum_b = ps_b[jump];
-            let sum = std::cmp::max(sum_a, sum_b);
-            ans = ans.min(sum);
+        let mut ans: u128 = 0;
+        for (x, p) in a_freq {
+            let &q = b_freq.get(&x).unwrap_or(&0);
+            ans += p as u128 * q as u128;
         }
         writeln!(w, "{}", ans);
     }
