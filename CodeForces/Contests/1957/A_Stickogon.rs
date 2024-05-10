@@ -1,8 +1,12 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
 
+const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
@@ -12,6 +16,15 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let mut freq: HashMap<i32, usize> = HashMap::new();
+        for x in a {
+            *freq.entry(x).or_insert(0) += 1;
+        }
+        let mut res = 0;
+        for (k, v) in freq.iter() {
+            res += v / 3;
+        }
+        writeln!(w, "{}", res);
     }
 }
 

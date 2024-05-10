@@ -8,10 +8,54 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
+        let k: usize = input.next();
+        let q: usize = input.next();
+
+        let mut distances: Vec<usize> = vec![0; k];
+        let mut times: Vec<usize> = vec![0; k];
+
+        for x in distances.iter_mut() {
             *x = input.next();
         }
+        for x in times.iter_mut() {
+            *x = input.next();
+        }
+
+        let mut velocity: Vec<f64> = Vec::new();
+
+        for i in 0..k {
+            let mut dist = distances[i] as f64;
+            if i > 0 {
+                dist -= distances[i - 1] as f64;
+            }
+
+            let mut tim = times[i] as f64;
+            if i > 0 {
+                tim -= times[i - 1] as f64;
+            }
+
+            velocity.push(dist / tim);
+        }
+
+        for _ in 0..q {
+            let dist = input.next();
+            let idx = distances.binary_search(&dist).unwrap_or_else(|x| x);
+
+            let vel = velocity[idx];
+            let mut d = dist;
+            if idx > 0 {
+                d -= distances[idx - 1];
+            }
+
+            let mut t = d as f64 / vel;
+            if idx > 0 {
+                t += times[idx - 1] as f64;
+            }
+
+            write!(w, "{} ", t.floor() as usize);
+        }
+
+        writeln!(w, "").unwrap();
     }
 }
 

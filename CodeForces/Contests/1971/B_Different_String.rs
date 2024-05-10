@@ -1,16 +1,41 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::{HashMap, HashSet},
+    io::{self, prelude::*},
+};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let s: Vec<u8> = input.next();
+        let mut set: HashSet<u8> = HashSet::new();
+        let mut freq: HashMap<u8, usize> = HashMap::new();
+        for c in s.iter() {
+            freq.insert(*c, freq.get(c).unwrap_or(&0) + 1);
+            set.insert(*c);
+        }
+        if set.len() == 1 {
+            writeln!(w, "NO");
+        } else {
+            writeln!(w, "YES");
+            let mut s_new: Vec<u8> = Vec::new();
+            for (k, v) in freq.iter() {
+                for _ in 0..*v {
+                    s_new.push(*k);
+                }
+            }
+
+            if s_new == s.clone() {
+                s_new = s_new.iter().rev().map(|c| *c).collect();
+            }
+
+            for c in s_new.iter() {
+                write!(w, "{}", *c as char);
+            }
+            writeln!(w, "").unwrap();
         }
     }
 }

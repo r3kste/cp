@@ -8,10 +8,8 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
-        }
+        let m: usize = input.next();
+        writeln!(w, "{} {}", std::cmp::min(n, m), std::cmp::max(n, m));
     }
 }
 

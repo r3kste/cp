@@ -7,11 +7,28 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        // let n: usize = input.next();
+        let s: Vec<u8> = input.next();
+        let n = s.len();
+
+        let mut c1 = 0;
+        let mut c2 = 0;
+        for i in 0..(n - 1) {
+            if s[i] == b'1' && s[i + 1] == b'0' {
+                c1 += 1;
+            }
+            if s[i] == b'0' && s[i + 1] == b'1' {
+                c2 += 1;
+            }
         }
+
+        let res;
+        if c2 == 0 {
+            res = c1 + 1;
+        } else {
+            res = c1 + c2;
+        }
+        writeln!(w, "{}", res);
     }
 }
 

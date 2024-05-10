@@ -1,16 +1,67 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
+
+    let mut angles: HashMap<usize, f64> = HashMap::new();
+    angles.insert(1, 60.0);
+    angles.insert(2, 30.0);
+    angles.insert(3, 0.0);
+    angles.insert(4, 330.0);
+    angles.insert(5, 300.0);
+    angles.insert(6, 270.0);
+    angles.insert(7, 240.0);
+    angles.insert(8, 210.0);
+    angles.insert(9, 180.0);
+    angles.insert(10, 150.0);
+    angles.insert(11, 120.0);
+    angles.insert(12, 90.0);
+
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let a: usize = input.next();
+        let b: usize = input.next();
+        let c: usize = input.next();
+        let d: usize = input.next();
+
+        let t1 = angles.get(&a).unwrap();
+        let t2 = angles.get(&b).unwrap();
+        let t3 = angles.get(&c).unwrap();
+        let t4 = angles.get(&d).unwrap();
+
+        let mut t2 = t2 - t1;
+        let mut t3 = t3 - t1;
+        let mut t4 = t4 - t1;
+        let t1 = 0.0;
+
+        if t2 < 0.0 {
+            t2 += 360.0;
+        }
+        if t3 < 0.0 {
+            t3 += 360.0;
+        }
+        if t4 < 0.0 {
+            t4 += 360.0;
+        }
+
+        if t3 < t2 {
+            if t4 < t2 {
+                writeln!(w, "NO");
+            } else {
+                writeln!(w, "YES");
+            }
+        } else {
+            if t4 > t2 {
+                writeln!(w, "NO");
+            } else {
+                writeln!(w, "YES");
+            }
         }
     }
 }

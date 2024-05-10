@@ -3,15 +3,25 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
+const MOD: usize = 998_244_353;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let l: usize = input.next();
+        let r: usize = input.next();
+        let q = r / l;
+        let max_length = (q as f64).log2().floor() as usize + 1;
+        let p2 = max_length - 1;
+        let mut res: isize = 0;
+        let s = r as isize / (1 << p2);
+
+        res += s - l as isize + 1;
+
+        if p2 > 0 {
+            res += (p2 as isize) * (r as isize / (3 * (1 << (p2 - 1))) - l as isize + 1).max(0);
         }
+        writeln!(w, "{} {}", max_length, res);
     }
 }
 

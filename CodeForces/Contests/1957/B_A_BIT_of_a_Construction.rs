@@ -3,14 +3,24 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
+const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0i32; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let k: usize = input.next();
+        let TWO: usize = 2;
+        let log2 = (k as f64).log2() as usize;
+        let res = TWO.pow(log2 as u32) - 1;
+        if n == 1 {
+            writeln!(w, "{}", k);
+        } else {
+            write!(w, "{} {} ", res, k - res);
+            for i in 0..(n - 2) {
+                write!(w, "0 ");
+            }
+            writeln!(w, "").unwrap();
         }
     }
 }
