@@ -3,15 +3,40 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
+fn gcd(a: usize, b: usize) -> usize {
+    if b == 0 {
+        return a;
+    }
+    gcd(b, a % b)
+}
+
+fn lcm(a: usize, b: usize) -> usize {
+    a * b / gcd(a, b)
+}
+
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
+        let mut a: Vec<usize> = vec![0; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let l = a.iter().fold(1, |acc, x| lcm(acc as usize, *x as usize));
+        let res: Vec<usize> = a.iter().map(|x| l / *x as usize).collect();
+
+        let sum: usize = res.iter().sum();
+
+        let possible = !a.iter().zip(res.iter()).any(|(x, y)| x * y <= sum);
+        if possible {
+            for x in res.iter() {
+                write!(w, "{} ", x);
+            }
+        } else {
+            write!(w, "-1");
+        }
+        writeln!(w);
     }
 }
 

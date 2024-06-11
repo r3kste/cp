@@ -1,7 +1,45 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
+
+fn gcd(a: usize, b: usize) -> usize {
+    if b == 0 {
+        a
+    } else {
+        gcd(b, a % b)
+    }
+}
+
+fn lcm(a: usize, b: usize) -> usize {
+    a * b / gcd(a, b)
+}
+
+fn f(i: i32, l: i32, a: &Vec<i32>, dp: &mut HashMap<(i32, i32, i32), i32>, len: i32) -> i32 {
+    if i == a.len() as i32 {
+        if a.contains(&(l)) {
+            return 0;
+        } else {
+            return len;
+        }
+    }
+    if dp.contains_key(&(i, l, len)) {
+        return dp[&(i, l, len)];
+    }
+    let mut res = 0;
+    res = std::cmp::max(res, f(i + 1, l, a, dp, len));
+
+    let mut new_l = lcm(l as usize, a[i as usize] as usize) as i32;
+    if l == 0 {
+        new_l = a[i as usize];
+    }
+    res = std::cmp::max(res, f(i + 1, new_l, a, dp, len + 1));
+    dp.insert((i, l, len), res);
+    res
+}
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
@@ -11,6 +49,16 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
         let mut a: Vec<i32> = vec![0; n];
         for x in a.iter_mut() {
             *x = input.next();
+        }
+        let lcm_a = a.iter().fold(1, |acc, x| lcm(acc, *x as usize));
+        if lcm_a > 1_000_000_000 {
+            writeln!(w, "{}", n);
+        } else if !a.contains(&(lcm_a as i32)) {
+            writeln!(w, "{}", n);
+        } else {
+            let mut dp: HashMap<(i32, i32, i32), i32> = HashMap::new();
+            let res = f(0, 0, &a, &mut dp, 0);
+            writeln!(w, "{}", res);
         }
     }
 }

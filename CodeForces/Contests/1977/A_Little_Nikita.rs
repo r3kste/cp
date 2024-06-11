@@ -8,9 +8,16 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let m: usize = input.next();
+
+        if m > n {
+            writeln!(w, "No");
+        } else {
+            if (n - m) % 2 == 0 {
+                writeln!(w, "Yes");
+            } else {
+                writeln!(w, "No");
+            }
         }
     }
 }

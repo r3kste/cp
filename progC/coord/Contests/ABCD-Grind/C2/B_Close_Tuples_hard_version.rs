@@ -2,16 +2,58 @@
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
+const MOD: usize = 1_000_000_007;
 
+fn nCr(n: usize, r: usize, fact: &Vec<usize>, inv: &Vec<usize>) -> usize {
+    if r > n {
+        return 0;
+    }
+    fact[n] * inv[r] % MOD * inv[n - r] % MOD
+}
+fn pow(x: usize, y: usize) -> usize {
+    let mut res = 1;
+    let mut x = x;
+    let mut y = y;
+    while y > 0 {
+        if y & 1 == 1 {
+            res = res * x;
+            res %= MOD;
+        }
+        x = x * x % MOD;
+        y >>= 1;
+    }
+    res % MOD
+}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
+
+    let mut fact = vec![1; 200_001];
+    let mut inv = vec![1; 200_001];
+    for i in 1..fact.len() {
+        fact[i] = fact[i - 1] * i;
+        fact[i] %= MOD;
+
+        inv[i] = pow(fact[i], MOD - 2);
+    }
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
+        let m: usize = input.next();
+        let k: usize = input.next();
+        let mut a: Vec<i32> = vec![0i32; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        a.sort();
+
+        let mut res = 0;
+
+        for i in 0..n {
+            let ub = a.partition_point(|&x| x <= a[i] + k as i32) - 1;
+            res += nCr(ub - i, m - 1, &fact, &inv);
+            res %= MOD;
+        }
+        writeln!(w, "{}", res);
     }
 }
 

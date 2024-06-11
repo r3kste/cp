@@ -4,13 +4,34 @@
 use std::io::{self, prelude::*};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let a: usize = input.next();
+        let b: usize = input.next();
+        let x: usize = input.next();
+
+        let half = x / 2;
+        if a > b {
+            let mut res = "01".repeat(half);
+            if x % 2 == 0 {
+                res.push_str("1".repeat(b - half).as_str());
+                res.push_str("0".repeat(a - half).as_str());
+            } else {
+                res.push_str("0".repeat(a - half).as_str());
+                res.push_str("1".repeat(b - half).as_str());
+            }
+            writeln!(w, "{}", res);
+        } else {
+            let mut res = "10".repeat(half);
+            if x % 2 == 1 {
+                res.push_str("1".repeat(b - half).as_str());
+                res.push_str("0".repeat(a - half).as_str());
+            } else {
+                res.push_str("0".repeat(a - half).as_str());
+                res.push_str("1".repeat(b - half).as_str());
+            }
+            writeln!(w, "{}", res);
         }
     }
 }

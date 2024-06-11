@@ -1,7 +1,10 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::{HashMap, HashSet},
+    io::{self, prelude::*},
+};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
@@ -9,9 +12,53 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     for _ in 0..t {
         let n: usize = input.next();
         let mut a: Vec<i32> = vec![0; n];
+        let mut a_set: HashSet<i32> = HashSet::new();
         for x in a.iter_mut() {
             *x = input.next();
+            a_set.insert(*x);
         }
+        let mut b: Vec<i32> = vec![0; n];
+        let mut b_set: HashSet<i32> = HashSet::new();
+        for x in b.iter_mut() {
+            *x = input.next();
+            b_set.insert(*x);
+        }
+        let m: usize = input.next();
+        let mut change: HashMap<i32, i32> = HashMap::new();
+        let mut c: Vec<i32> = vec![0; m];
+        for x in c.iter_mut() {
+            *x = input.next();
+            *change.entry(*x).or_insert(0) += 1;
+        }
+
+        let mut same: HashSet<i32> = HashSet::new();
+        let mut need: HashMap<i32, i32> = HashMap::new();
+        for i in 0..n {
+            if a[i] == b[i] {
+                same.insert(a[i]);
+            } else {
+                *need.entry(b[i]).or_insert(0) += 1;
+            }
+        }
+
+        let mut res = "YES";
+        for (key, req) in need.iter() {
+            if !change.contains_key(key) {
+                res = "NO";
+                break;
+            }
+            let have = *change.get(key).unwrap();
+            if have < *req {
+                res = "NO";
+                break;
+            }
+        }
+        let last = c.last().unwrap();
+        if !b_set.contains(last) {
+            res = "NO";
+        }
+
+        writeln!(w, "{}", res);
     }
 }
 

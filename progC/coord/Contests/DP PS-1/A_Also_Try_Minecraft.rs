@@ -4,13 +4,57 @@
 use std::io::{self, prelude::*};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
+        let m: usize = input.next();
+        let mut a: Vec<usize> = vec![0; n];
         for x in a.iter_mut() {
             *x = input.next();
+        }
+        let mut damage: Vec<usize> = Vec::new();
+        for i in 0..(n - 1) {
+            let curr = a[i];
+            let next = a[i + 1];
+            if a[i] < a[i + 1] {
+                damage.push(0);
+            } else {
+                damage.push(curr - next);
+            }
+        }
+        let mut ps_damage: Vec<usize> = Vec::new();
+        ps_damage.push(0);
+        for i in 0..(n - 1) {
+            ps_damage.push(ps_damage[i] + damage[i]);
+        }
+        let mut damage: Vec<usize> = Vec::new();
+        for i in (1..n).rev() {
+            let curr = a[i];
+            let prev = a[i - 1];
+            if a[i] < a[i - 1] {
+                damage.push(0);
+            } else {
+                damage.push(curr - prev);
+            }
+        }
+        let mut suf_damage: Vec<usize> = Vec::new();
+        suf_damage.push(0);
+        for i in 0..(n - 1) {
+            suf_damage.push(suf_damage[i] + damage[n - 2 - i]);
+        }
+        for _ in 0..m {
+            let l: usize = input.next();
+            let r: usize = input.next();
+            let res;
+            if r == l {
+                res = 0;
+            } else if r > l {
+                res = ps_damage[r - 1] - ps_damage[l - 1];
+            } else {
+                res = suf_damage[l - 1] - suf_damage[r - 1];
+            }
+            writeln!(w, "{}", res);
         }
     }
 }

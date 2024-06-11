@@ -8,10 +8,15 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let msb = 63 - ((n - 1) as u64).leading_zeros();
+        let a = 1 << msb;
+        for i in (0..a).rev() {
+            write!(w, "{} ", i);
         }
+        for i in a..n {
+            write!(w, "{} ", i);
+        }
+        writeln!(w, "").unwrap();
     }
 }
 

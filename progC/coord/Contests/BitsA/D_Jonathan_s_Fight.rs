@@ -1,16 +1,49 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::HashMap,
+    io::{self, prelude::*},
+};
 
+fn f(
+    i: usize,
+    and: usize,
+    group_counter: usize,
+    a: &Vec<usize>,
+    dp: &mut HashMap<(usize, usize), usize>,
+) -> usize {
+    if i == a.len() {
+        return group_counter;
+    }
+    if dp.contains_key(&(i, and)) {
+        return dp[&(i, and)];
+    }
+    let mut res = 0;
+    if and & a[i] == 0 {
+        res = f(i + 1, u64::MAX as usize, group_counter + 1, a, dp);
+    }
+    res = res.max(f(i + 1, and & a[i], group_counter, a, dp));
+    dp.insert((i, and), res);
+    res
+}
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
+        let mut a: Vec<usize> = vec![0usize; n];
         for x in a.iter_mut() {
             *x = input.next();
+        }
+
+        let and = a.iter().fold(u64::MAX, |acc, &x| acc & x as u64);
+        if and != 0 {
+            writeln!(w, "1");
+        } else {
+            let mut dp = HashMap::new();
+            let res = f(0, u64::MAX as usize, 0, &a, &mut dp);
+            writeln!(w, "{}", res);
         }
     }
 }

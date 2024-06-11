@@ -8,10 +8,21 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
+        let k: usize = input.next();
         let mut a: Vec<i32> = vec![0; n];
+        let mut res = 0;
         for x in a.iter_mut() {
             *x = input.next();
+            res += *x;
         }
+
+        a.sort();
+        let n = n - 1;
+        for i in 0..k {
+            res += (a[n - k - i]) / (a[n - i]);
+            res -= (a[n - i]) + (a[n - k - i]);
+        }
+        writeln!(w, "{}", res);
     }
 }
 

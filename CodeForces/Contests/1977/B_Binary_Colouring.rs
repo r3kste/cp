@@ -3,15 +3,60 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
+fn repr(n: usize) -> Vec<i32> {
+    if n.count_ones() == 1 {
+        let mut res: Vec<i32> = vec![0; 32];
+        let log2n = (n as f64).log2().ceil() as usize;
+        res[log2n] = 1;
+        return res;
+    }
+    let log2n = (n as f64).log2().ceil() as usize;
+
+    let inc = 1 << (log2n);
+    let dec = inc - n;
+
+    let rinc = repr(inc);
+    let rdec = repr(dec);
+
+    let mut res = vec![0; 32];
+    for i in 0..32 {
+        res[i] = rinc[i] - rdec[i];
+    }
+    res
+}
+
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let mut res = repr(n);
+        let mut lastone = 0;
+        for i in 0..32 {
+            if res[i] == 1 {
+                lastone = i;
+            }
         }
+        for i in 0..=lastone {
+            if res[i] == 1 && res[i + 1] == -1 {
+                res[i] = -1;
+                res[i + 1] = 0;
+            }
+            if res[i] == -1 && res[i + 1] == 1 {
+                res[i] = 1;
+                res[i + 1] = 0;
+            }
+        }
+        for i in 0..32 {
+            if res[i] == 1 {
+                lastone = i;
+            }
+        }
+        writeln!(w, "{}", lastone + 1);
+        for i in 0..=lastone {
+            write!(w, "{} ", res[i]);
+        }
+        writeln!(w, "").unwrap();
     }
 }
 

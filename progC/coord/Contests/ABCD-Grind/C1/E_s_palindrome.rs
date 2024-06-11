@@ -1,16 +1,50 @@
 #![allow(unused_variables)]
 #![allow(unused_must_use)]
 #![allow(non_snake_case)]
-use std::io::{self, prelude::*};
+use std::{
+    collections::{HashMap, HashSet},
+    io::{self, prelude::*},
+};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
+    let symmetric = [
+        'A', 'H', 'I', 'M', 'O', 'T', 'U', 'V', 'W', 'X', 'Y', 'o', 'v', 'w', 'x',
+    ];
+    let symmap: HashMap<char, char> = [('b', 'd'), ('d', 'b'), ('p', 'q'), ('q', 'p')]
+        .iter()
+        .cloned()
+        .collect();
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let s: Vec<u8> = input.next();
+        let s = String::from_utf8(s).unwrap();
+        let n = s.len();
+        let half = n / 2;
+
+        let mut res: bool = true;
+        for i in 0..half {
+            let char = s.chars().nth(i).unwrap();
+            let char2 = s.chars().nth(n - i - 1).unwrap();
+            if symmetric.contains(&char) && char == char2 {
+                continue;
+            }
+            if symmap.contains_key(&char) && symmap.get(&char).unwrap() == &char2 {
+                continue;
+            }
+            res = false;
+            break;
+        }
+        if n % 2 == 1 {
+            let char = s.chars().nth(half).unwrap();
+            if !symmetric.contains(&char) {
+                res = false;
+            }
+        }
+        if !res {
+            writeln!(w, "NIE");
+        } else {
+            writeln!(w, "TAK");
         }
     }
 }

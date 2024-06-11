@@ -4,13 +4,38 @@
 use std::io::{self, prelude::*};
 
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let t: usize = input.next();
-    // let t: usize = 1;
+    // let t: usize = input.next();
+    let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let k: usize = input.next();
+
+        let mut cn = n;
+        let mut res = Vec::new();
+        while cn > 0 {
+            let p = cn.trailing_zeros();
+            res.push((1 << p) as usize);
+            cn &= !(1 << p);
+        }
+
+        if k < res.len() || k > n {
+            writeln!(w, "NO");
+        } else {
+            let mut i = 0;
+            while res.len() < k {
+                let x = res[i];
+                if x == 1 {
+                    i += 1;
+                    continue;
+                }
+                res[i] /= 2;
+                res.push(x / 2);
+            }
+            writeln!(w, "YES");
+            for e in res {
+                write!(w, "{} ", e);
+            }
+            writeln!(w, "").unwrap();
         }
     }
 }

@@ -12,6 +12,15 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
         for x in a.iter_mut() {
             *x = input.next();
         }
+
+        let mut res = n * (n + 1) * (n + 2) / 6;
+        for i in 0..n {
+            if a[i] == 0 {
+                res += (i + 1) * (n - i);
+            }
+        }
+
+        writeln!(w, "{}", res);
     }
 }
 

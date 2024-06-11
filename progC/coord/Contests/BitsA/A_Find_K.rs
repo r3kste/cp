@@ -8,10 +8,11 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
-        }
+        let n = n as f64;
+        let log2n = n.log2();
+        let log2n = log2n.floor() as u32;
+        let res = 2usize.pow(log2n) - 1;
+        writeln!(w, "{}", res);
     }
 }
 

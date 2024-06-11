@@ -12,6 +12,27 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
         for x in a.iter_mut() {
             *x = input.next();
         }
+
+        let mut b = a.clone();
+
+        for i in 0..n {
+            if i == 0 {
+                if a[1] > a[0] {
+                    b[0] = a[1];
+                }
+                continue;
+            }
+            if i == n - 1 {
+                if a[n - 2] > a[n - 1] {
+                    b[n - 1] = a[n - 2];
+                }
+                continue;
+            }
+            b[i] = std::cmp::max(a[i], std::cmp::min(a[i - 1], a[i + 1]));
+        }
+
+        let mini = b.iter().min().unwrap();
+        writeln!(w, "{}", *mini - 1);
     }
 }
 

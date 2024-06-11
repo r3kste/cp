@@ -7,11 +7,15 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
-        }
+        let l: usize = input.next();
+        let r: usize = input.next();
+
+        let log2l = (l as f64).log2().floor() as usize;
+        let log2l = log2l + 1;
+        let log2r = (r as f64).log2().floor() as usize;
+        let log2r = log2r + 1;
+
+        writeln!(w, "{}", log2r - 1);
     }
 }
 

@@ -3,15 +3,41 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
+fn f(i: usize, turn: i32, a: &Vec<i32>, dp: &mut Vec<Vec<i32>>, dpd: &mut Vec<Vec<bool>>) -> i32 {
+    if i == a.len() {
+        return 0;
+    }
+    if dpd[i][turn as usize] {
+        return dp[i][turn as usize];
+    }
+    let mut ans = 0;
+    if turn == 1 {
+        ans = a[i] + std::cmp::min(f(i + 1, 2, a, dp, dpd), f(i + 1, 3, a, dp, dpd));
+    } else if turn == 2 {
+        ans = a[i] + f(i + 1, 3, a, dp, dpd);
+    } else if turn == 3 {
+        ans = std::cmp::min(f(i + 1, 4, a, dp, dpd), f(i + 1, 1, a, dp, dpd));
+    } else if turn == 4 {
+        ans = f(i + 1, 1, a, dp, dpd);
+    }
+    dp[i][turn as usize] = ans;
+    dpd[i][turn as usize] = true;
+    ans
+}
+
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
         let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
+        let mut a: Vec<i32> = vec![0i32; n];
         for x in a.iter_mut() {
             *x = input.next();
         }
+        let mut dp: Vec<Vec<i32>> = vec![vec![0; 5]; n];
+        let mut dpd: Vec<Vec<bool>> = vec![vec![false; 5]; n];
+        let ans = f(0, 1, &a, &mut dp, &mut dpd);
+        writeln!(w, "{}", ans);
     }
 }
 

@@ -7,11 +7,21 @@ fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
     let t: usize = input.next();
     // let t: usize = 1;
     for _ in 0..t {
-        let n: usize = input.next();
-        let mut a: Vec<i32> = vec![0; n];
-        for x in a.iter_mut() {
-            *x = input.next();
+        let s: Vec<u8> = input.next();
+        let n = s.len();
+        let mut seen: Vec<i32> = vec![-1; 26];
+        let mut dp: Vec<i32> = vec![0; n + 1];
+
+        for i in 0..n {
+            let c = (s[i] - b'a') as usize;
+            dp[i + 1] = dp[i];
+            if seen[c] != -1 {
+                dp[i + 1] = dp[i + 1].max(dp[seen[c] as usize] + 2);
+            }
+            seen[c] = i as i32;
         }
+
+        writeln!(w, "{}", n as i32 - dp[n]);
     }
 }
 
