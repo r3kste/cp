@@ -3,10 +3,39 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let c: Vec<u8> = input.next();
-    writeln!(w, "YES");
+    let t: usize = input.next();
+    let ends = ["00", "25", "50", "75"];
+    for _ in 0..t {
+        let s: Vec<u8> = input.next();
+        let n = s.len();
+        let mut res = 19;
+
+        for &end in ends.iter() {
+            let mut ans = 0;
+            let mut r = n - 1;
+            let end = end.as_bytes();
+
+            while s[r] != end[1] && r > 0 {
+                r -= 1;
+                ans += 1;
+            }
+
+            if r == 0 {
+                continue;
+            }
+
+            let mut l = r - 1;
+            while s[l] != end[0] && l > 0 {
+                l -= 1;
+                ans += 1;
+            }
+
+            res = res.min(ans);
+        }
+
+        writeln!(w, "{}", res);
+    }
 }
 
 fn main() {

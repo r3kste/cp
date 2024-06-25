@@ -3,10 +3,27 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let c: Vec<u8> = input.next();
-    writeln!(w, "YES");
+    let t: usize = input.next();
+    // let t: usize = 1;
+    for _ in 0..t {
+        let (x1, y1): (i32, i32) = (input.next(), input.next());
+        let (x2, y2): (i32, i32) = (input.next(), input.next());
+
+        if x1 > y1 {
+            if y2 > x2 {
+                writeln!(w, "NO");
+            } else {
+                writeln!(w, "YES");
+            }
+        } else {
+            if x2 > y2 {
+                writeln!(w, "NO");
+            } else {
+                writeln!(w, "YES");
+            }
+        }
+    }
 }
 
 fn main() {

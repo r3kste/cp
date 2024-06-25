@@ -3,10 +3,40 @@
 #![allow(non_snake_case)]
 use std::io::{self, prelude::*};
 
-const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let c: Vec<u8> = input.next();
-    writeln!(w, "YES");
+    let t: usize = input.next();
+    // let t: usize = 1;
+    for _ in 0..t {
+        let (x, y, k): (usize, usize, usize) = (input.next(), input.next(), input.next());
+        let mut x = x;
+        let mut k = k;
+        while k > 0 {
+            if x == 1 {
+                break;
+            }
+
+            let r = x % y;
+            if k >= (y - r) {
+                x += y - r;
+                k -= y - r;
+            } else {
+                x += k;
+                k = 0;
+            }
+
+            while x % y == 0 {
+                x /= y;
+            }
+        }
+
+        let res;
+        if k != 0 && x == 1 {
+            res = 1 + k % (y - 1);
+        } else {
+            res = x;
+        }
+        writeln!(w, "{}", res);
+    }
 }
 
 fn main() {

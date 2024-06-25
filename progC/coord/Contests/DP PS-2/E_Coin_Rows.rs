@@ -5,8 +5,33 @@ use std::io::{self, prelude::*};
 
 const MOD: usize = 1_000_000_007;
 fn solve<R: BufRead, W: Write>(mut input: FastInput<R>, mut w: W) {
-    let c: Vec<u8> = input.next();
-    writeln!(w, "YES");
+    let t: usize = input.next();
+    // let t: usize = 1;
+    for _ in 0..t {
+        let n: usize = input.next();
+        let mut a: Vec<i32> = vec![0i32; n];
+        for x in a.iter_mut() {
+            *x = input.next();
+        }
+        let mut b: Vec<i32> = vec![0i32; n];
+        for x in b.iter_mut() {
+            *x = input.next();
+        }
+        let mut ps_a: Vec<usize> = vec![0usize; n + 1];
+        let mut ps_b: Vec<usize> = vec![0usize; n + 1];
+        for i in 0..n {
+            ps_a[i + 1] = ps_a[i] + a[i] as usize;
+            ps_b[i + 1] = ps_b[i] + b[i] as usize;
+        }
+        let mut ans = u64::MAX as usize;
+        for jump in 0..n {
+            let sum_a = ps_a[n] - ps_a[jump + 1];
+            let sum_b = ps_b[jump];
+            let sum = std::cmp::max(sum_a, sum_b);
+            ans = ans.min(sum);
+        }
+        writeln!(w, "{}", ans);
+    }
 }
 
 fn main() {
