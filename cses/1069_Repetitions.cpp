@@ -11,22 +11,28 @@ using namespace std;
     cin.tie(nullptr);
 
 void test() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
+    string s;
+    cin >> s;
+    int longest = 1;
 
-    for (int &i : a) {
-        cin >> i;
+    for (int i = 0; i < s.size(); i++) {
+        int count = 1;
+
+        while (i + 1 < s.size() && s[i] == s[i + 1]) {
+            i++;
+            count++;
+        }
+
+        longest = max(longest, count);
     }
 
-    int res = 0;
-    cout << res << endl;
+    cout << longest << endl;
 }
 
 int32_t main() {
     fastio;
     int t = 1;
-    cin >> t;
+    // cin >> t;
 
     while (t--) {
         test();
