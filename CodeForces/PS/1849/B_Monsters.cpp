@@ -69,6 +69,7 @@ struct segtree {
             lazy = DEFAULT_LAZY;
         }
     };
+
     int n;
     vector<int> arr;
     vector<node> tree;
@@ -127,6 +128,7 @@ struct segtree {
             tree[vertex].val = build_operation(vertex << 1, vertex << 1 | 1);
         }
     }
+
     void build() {
         build(1, {1, n});
     }
@@ -147,18 +149,21 @@ struct segtree {
     //     return range_query(query_range, 1, {1, n});
     // }
 };
+
 template<typename T>
 T segtree<T>::build_operation(int left_vertex, int right_vertex) {
     /* How to combine two nodes into one parent node */
     return max(tree[left_vertex].val, tree[right_vertex].val);
     /**/
 }
+
 template<typename T>
 T segtree<T>::update_operation(int vertex, T value) {
     /* How to update the value in tree[vertex] */
     return max(tree[vertex].val - value, 0);
     /**/
 }
+
 int solve() {
     fastio
     int n, k;

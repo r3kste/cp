@@ -41,6 +41,7 @@ int solve() {
             e++;
         }
     }
+
     cout << min(e, n - e);
     return 0;
 }

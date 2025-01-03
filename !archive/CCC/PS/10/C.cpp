@@ -43,6 +43,7 @@ int solve() {
         cin >> a[i];
         // ps[i + 1] = ps[i] + a[i];
     }
+
     ll tblock = 0;
     // vi b(m);
     to (i, 0, m, 1) {
@@ -80,5 +81,6 @@ int solve() {
 
         cout << tblock + 1 << " " << temp - s << "\n";
     }
+
     return 0;
 }

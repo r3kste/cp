@@ -46,6 +46,7 @@ int solve() {
         cin >> x[i];
         nom[i] = n - x[i];
     }
+
     sort(nom.begin(), nom.end());
     vll psnom(k + 1);
     to (i, 1, k + 1, 1) {
@@ -56,6 +57,7 @@ int solve() {
             return 0;
         }
     }
+
     cout << k;
     return 0;
 }

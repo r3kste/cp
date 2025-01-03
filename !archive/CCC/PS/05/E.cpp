@@ -46,6 +46,7 @@ void solve() {
         a[i] = a[i] - i;
         c += (mp[a[i]]++);
     }
+
     cout << c;
     a.clear();
 }

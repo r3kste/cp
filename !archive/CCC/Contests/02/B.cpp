@@ -54,6 +54,7 @@ int solve() {
             mi = i + 1;
         }
     }
+
     cout << mi;
     return 0;
 }

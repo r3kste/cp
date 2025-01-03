@@ -22,10 +22,10 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
-typedef vector<vector<ll>> matrix;
+typedef vector<vector<ll >> matrix;
 ll order;
 
 matrix m_mul(matrix a, matrix b, ll m) {

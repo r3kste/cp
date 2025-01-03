@@ -48,6 +48,7 @@ int solve() {
         C += (a[i] * a[i]);
         S += a[i];
     }
+
     ll b = 4 * S;
     ll a0 = 4 * n;
     ll co = C - c;

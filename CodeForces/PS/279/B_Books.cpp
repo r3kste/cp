@@ -54,6 +54,7 @@ bool valid(vll &ps, ll m, ll time) {
 
     return false;
 }
+
 int solve() {
     fastio
     ll n, time;

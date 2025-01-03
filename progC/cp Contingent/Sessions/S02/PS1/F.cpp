@@ -22,12 +22,12 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int n;
 vector<vi> dp;
-vector<vector<char>> a;
+vector<vector<char >> a;
 
 ll f(int i, int j) {
     if (i >= 0 && i < n && j >= 0 && j < n) {
@@ -58,7 +58,7 @@ ll f(int i, int j) {
 int solve() {
     fastio;
     cin >> n;
-    a = vector<vector<char>>(n, vector<char>(n, '.'));
+    a = vector<vector<char >> (n, vector<char>(n, '.'));
     dp = vector<vi>(n, vi(n, 0));
 
     for (int i = 0; i < n; i++) {
@@ -66,7 +66,6 @@ int solve() {
             cin >> a[i][j];
         }
     }
-
     for (int i = 0; i < n; i++) {
         if (a[0][i] == '*') {
             break;
@@ -74,7 +73,6 @@ int solve() {
 
         dp[0][i] = 1;
     }
-
     for (int i = 0; i < n; i++) {
         if (a[i][0] == '*') {
             break;
@@ -82,7 +80,6 @@ int solve() {
 
         dp[i][0] = 1;
     }
-
     dp[0][0] = 0;
 
     //f(i,j) = no of paths from from (0,0) to (i,j)
@@ -101,7 +98,6 @@ int solve() {
             }
         }
     }
-
     if (n == 1 && a[0][0] == '.') {
         cout << 1;
     } else if (a[0][0] == '*') {
@@ -109,7 +105,6 @@ int solve() {
     } else {
         cout << dp[n - 1][n - 1];
     }
-
     return 0;
 }
 

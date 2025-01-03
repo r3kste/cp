@@ -46,7 +46,7 @@ Weighted Graph
 */
 struct Graph_EV {
     using pii = pair<int, int>;
-    vector<vector<pii>> adj;
+    vector<vector<pii >> adj;
     int n;
     vector<bool> visited;
     vector<int> roots;
@@ -186,14 +186,12 @@ struct Graph_EV {
         parents.assign(n, -1);
         distances[start] = 0;
         using pii = pair<int, int>;
-        priority_queue<pii, vector<pii>, greater<pii>> q;
+        priority_queue<pii, vector<pii>, greater<pii >> q;
         q.push({0, start});
-
         while (!q.empty()) {
             int node = q.top().second;
             int dist = q.top().first;
             q.pop();
-
             if (dist != distances[node]) {
                 continue;
             }

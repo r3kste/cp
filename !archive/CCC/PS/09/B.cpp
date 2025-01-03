@@ -40,6 +40,7 @@ void solve() {
         cin >> a[i];
         ps[i + 1] = ps[i] + a[i];
     }
+
     int m;
     cin >> m;
     to (i, 0, m, 1) {

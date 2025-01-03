@@ -47,6 +47,7 @@ void solve() {
         psr[i] = r[i - 1] + psr[i - 1];
         mr = max(psr[i], mr);
     }
+
     int m;
     cin >> m;
     vi b(m);
@@ -58,5 +59,6 @@ void solve() {
         psb[i] = b[i - 1] + psb[i - 1];
         mb = max(psb[i], mb);
     }
+
     cout << mr + mb;
 }

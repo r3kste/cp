@@ -44,6 +44,7 @@ int solve() {
     to (i, 0, n, i + 1) {
         cin >> a[i];
     }
+
     vi cik;
 
     for (int i = 0; i < n - 1; i++) {

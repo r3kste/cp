@@ -40,7 +40,7 @@ typedef vector<vi> vvi;
 #define ono out("NO", "\n")
 
 int n;
-vector<vector<int>> adj;
+vector<vector<int >> adj;
 vector<bool> visited;
 vll distances;
 
@@ -88,9 +88,8 @@ int solve() {
     fastio;
     int n;
     in (n);
-    adj = vector<vector<int>>(n);
+    adj = vector<vector<int >> (n);
     distances = vll(n);
-
     for (int i = 0; i < n - 1; i++) {
         int u, v;
         cin >> u >> v;
@@ -113,18 +112,19 @@ int solve() {
     rep (__, n) {
         dist[__] = max(dist[__], distances[__]);
     }
+
     visited = vector<bool>(n, false);
     populate_distances(a, 0);
     rep (___, n) {
         dist[___] = max(dist[___], distances[___]);
     }
+
     sort(all (dist));
 
     for (int k = 1; k <= n; k++) {
         int ptr = lower_bound(all (dist), k) - begin(dist);
         out (min(n, ptr + 1), " ");
     }
-
     br;
     return 0;
 }

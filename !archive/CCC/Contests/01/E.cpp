@@ -43,6 +43,7 @@ int solve() {
             }
         }
     }
+
     cout << c;
     return 0;
 }

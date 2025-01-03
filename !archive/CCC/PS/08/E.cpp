@@ -37,6 +37,7 @@ int solve() {
     to (i, 0, n, 1) {
         cin >> a[i];
     }
+
     int o = 360;
     to (i, 0, n, 1) {
         int s = 0;
@@ -50,6 +51,7 @@ int solve() {
             return 0;
         }
     }
+
     cout << o;
     return 0;
 }

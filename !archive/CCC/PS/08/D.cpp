@@ -45,5 +45,6 @@ void solve() {
             }
         }
     }
+
     cout << c;
 }

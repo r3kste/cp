@@ -60,6 +60,7 @@ int solve() {
             min = temp;
         }
     }
+
     cout << min;
     return 0;
 }

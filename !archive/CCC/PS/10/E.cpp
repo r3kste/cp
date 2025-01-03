@@ -92,9 +92,11 @@ int solve() {
     to (i, 0, n, 1) {
         cin >> a[i];
     }
+
     to (i, 0, n, 1) {
         cin >> b[i];
     }
+
     sort(begin(a), end(a));
     sort(begin(b), end(b));
     ll no_fixed = 0;

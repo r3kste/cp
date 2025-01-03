@@ -46,6 +46,7 @@ int solve() {
 
         diff[i - 1] = a[i] - a[i - 1];
     }
+
     ll k = 0;
     ll f = 1, e = h;
 
@@ -55,6 +56,7 @@ int solve() {
         to (i, 0, n - 1, 1) {
             dam += min(m, diff[i]);
         }
+
         dam += m;
 
         if (dam >= h) {

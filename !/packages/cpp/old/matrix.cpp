@@ -7,26 +7,26 @@ typedef long long int lll;
 
 template<typename T>
 struct matrix {
-    vector<vector<T>> mat;
+    vector<vector<T >> mat;
     int rows, cols;
     int order{};
 
     matrix(int no_of_rows, int no_of_cols) {
         rows = no_of_rows;
         cols = no_of_cols;
-
         if (rows == cols) {
             order = rows;
-        } else {
-            order = -1;
         }
 
-        mat = vector<vector<T>>(no_of_rows, vector<T>(no_of_cols, T(0)));
+        else {
+            order = -1;
+        }
+        mat = vector<vector<T >> (no_of_rows, vector<T>(no_of_cols, T(0)));
     }
 
     explicit matrix(int order) {
         rows = cols = this->order = order;
-        mat = vector<vector<T>>(order, vector<T>(order, T(0)));
+        mat = vector<vector<T >> (order, vector<T>(order, T(0)));
     }
 };
 

@@ -39,6 +39,7 @@ int solve() {
     to (i, 0, n, 1) {
         cin >> price[i];
     }
+
     sort(price.begin(), price.end());
     int q;
     cin >> q;
@@ -48,5 +49,6 @@ int solve() {
         cin >> temp;
         cout << upper_bound(price.begin(), price.end(), temp) - price.begin() << "\n";
     }
+
     return 0;
 }

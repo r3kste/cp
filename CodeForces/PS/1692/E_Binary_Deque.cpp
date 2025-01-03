@@ -42,6 +42,7 @@ typedef vector<vi> vvi;
 ll query(int l, int r, vector<ll>& ps) {
     return ps[r] - (l ? ps[l - 1] : 0);
 }
+
 int solve() {
     fastio
     ll n, s;
@@ -81,6 +82,7 @@ int solve() {
     out((ans == LLONG_MAX ? -1 : ans), "\n");
     return 0;
 }
+
 int main() {
     fastio;
     int t = 1;

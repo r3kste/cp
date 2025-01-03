@@ -10,10 +10,8 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-struct BinaryTree
-{
-    struct Node
-    {
+struct BinaryTree {
+    struct Node {
         int id;
         Node *left;
         Node *right;
@@ -25,17 +23,14 @@ struct BinaryTree
     Node *root;
     vector<Node *> nodes;
 
-    BinaryTree(int n, int root, vector<pair<int, int>> children)
-    {
+    BinaryTree(int n, int root, vector<pair<int, int >> children) {
         this->no_of_nodes = n;
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             nodes.push_back(new Node{i + 1, nullptr, nullptr});
         }
-        this->root = nodes[root - 1];
 
-        for (int i = 0; i < n; i++)
-        {
+        this->root = nodes[root - 1];
+        for (int i = 0; i < n; i++) {
             if (children[i].first != 0)
                 nodes[i]->left = nodes[children[i].first - 1];
             if (children[i].second != 0)
@@ -43,28 +38,22 @@ struct BinaryTree
         }
     }
 
-    void answer()
-    {
+    void answer() {
         cout << f(root) << endl;
     }
 
-    int f(Node *node)
-    {
+    int f(Node *node) {
         if (node == nullptr)
             return 0;
-
         if (node->left == nullptr && node->right == nullptr)
             return 0;
-
         int left = MOD;
         int right = MOD;
-
-        if (node->left != nullptr)
-        {
+        if (node->left != nullptr) {
             left = f(node->left);
         }
-        if (node->right != nullptr)
-        {
+
+        if (node->right != nullptr) {
             right = f(node->right);
         }
 
@@ -72,14 +61,11 @@ struct BinaryTree
     }
 };
 
-void test()
-{
+void test() {
     int n;
     cin >> n;
-
-    vector<pair<int, int>> children;
-    for (int i = 0; i < n; i++)
-    {
+    vector<pair<int, int >> children;
+    for (int i = 0; i < n; i++) {
         int l, r;
         cin >> l >> r;
         children.push_back({l, r});
@@ -89,14 +75,14 @@ void test()
     tree.answer();
 }
 
-int32_t main()
-{
+int32_t main() {
     fastio;
-
     int t;
     cin >> t;
-    while (t--)
+
+    while (t--) {
         test();
+    }
 
     return 0;
 }

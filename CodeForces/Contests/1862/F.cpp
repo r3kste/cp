@@ -47,5 +47,6 @@ int solve() {
         ll t;
         cin >> t;
     }
+
     return 0;
 }

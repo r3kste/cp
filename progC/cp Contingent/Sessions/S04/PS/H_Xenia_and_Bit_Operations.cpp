@@ -47,6 +47,7 @@ struct range {
         return L + (R - L) / 2;
     }
 };
+
 template<typename T>
 struct node {
     T val;
@@ -59,11 +60,12 @@ struct node {
         lazy = DEFAULT_LAZY;
     }
 };
+
 template<typename T>
 struct segtree {
     int n;
     vector<int> arr;
-    vector<node<T>> tree;
+    vector<node<T >> tree;
 
     explicit segtree(vector<int> &array) {
         arr = array;
@@ -228,6 +230,7 @@ struct segtree {
         return range_query(query_range, 1, {1, n});
     }
 };
+
 template<typename T>
 T segtree<T>::build_operation(int left_vertex, int right_vertex) {
     /* How to combine two nodes into one parent node */
@@ -250,18 +253,21 @@ T segtree<T>::build_operation(int left_vertex, int right_vertex) {
 
     /**/
 }
+
 template<typename T>
 T segtree<T>::update_operation(int vertex, T value) {
     /* How to update the value in tree[vertex] */
     return value;
     /**/
 }
+
 template<typename T>
 T segtree<T>::query_operation(T left_subtree, T right_subtree) {
     /* What should be returned as query's result after calculating for children */
     return left_subtree + right_subtree;
     /**/
 }
+
 template<typename T>
 T segtree<T>::lazy_operation(T value, int vertex, range borders) {
     /* How to update the lazy of a vertex */

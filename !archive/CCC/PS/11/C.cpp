@@ -55,6 +55,7 @@ int solve() {
 
         pe = temp;
     }
+
     cout << o;
     return 0;
 }

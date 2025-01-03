@@ -56,6 +56,7 @@ int solve() {
             o += (c - k + 1);
         }
     }
+
     // temps.push_back(c);
     // c = 0;
     // to(i, 0, temps.size(), 1)

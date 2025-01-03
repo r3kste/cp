@@ -43,7 +43,7 @@ typedef vector<vi> vvi;
 Unweighted Graph
 */
 struct Graph {
-    vector<vector<int>> adj;
+    vector<vector<int >> adj;
     int n;
     vector<bool> visited;
     vector<int> roots;

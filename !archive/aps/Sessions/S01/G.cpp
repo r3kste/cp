@@ -64,10 +64,12 @@ int solve() {
     to (i, 0, n, i + 1) {
         cin >> a[i];
     }
+
     vi b(n);
     to (i, 0, n, i + 1) {
         cin >> b[i];
     }
+
     vi status;
     to (i, 0, n, i + 1) {
         if (a[i] == 0 || b[i] == 0) {
@@ -76,6 +78,7 @@ int solve() {
             status.push_back(1);
         }
     }
+
     status.push_back(0);
     // LL num = 0;
     // LL den = 0;

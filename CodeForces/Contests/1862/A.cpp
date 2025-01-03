@@ -46,6 +46,7 @@ int solve() {
             cin >> a[i][j];
         }
     }
+
     char test[4] = {'v', 'i', 'k', 'a'};
     int c = 0;
     to (i, 0, m, i + 1) {

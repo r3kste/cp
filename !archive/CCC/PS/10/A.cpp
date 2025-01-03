@@ -57,10 +57,12 @@ int solve() {
         //     c++;
         // }
     }
+
     n = a.size();
     to (i, 0, n, 1) {
         o += abs(a[i]);
     }
+
     a.push_back(1);
     to (i, 0, n, 1) {
         if (a[i] < 0) {
@@ -71,6 +73,7 @@ int solve() {
             }
         }
     }
+
     // int signi = (a[0] == 0) ? 0 : a[0] / abs(a[0]);
     // to(j, 1, n, 1)
     // {

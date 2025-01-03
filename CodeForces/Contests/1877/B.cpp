@@ -47,6 +47,7 @@ int solve() {
     sort(a.begin(), a.end(), [](ii & a, ii & b) {
         return a.second < b.second;
     });
+
     // int ptr = -1;
     // int ptr1 = -1;
     // int cost = 0;

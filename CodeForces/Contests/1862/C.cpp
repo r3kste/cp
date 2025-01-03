@@ -63,6 +63,7 @@ int solve() {
             return 0;
         }
     }
+
     cout << "YES";
     return 0;
 }

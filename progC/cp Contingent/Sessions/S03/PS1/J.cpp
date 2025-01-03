@@ -40,7 +40,7 @@ typedef vector<vi> vvi;
 #define ono out("NO", "\n")
 
 int n;
-vector<vector<ii>> adj;
+vector<vector<ii >> adj;
 vector<bool> visited;
 vll position;
 vb positiond;
@@ -82,7 +82,7 @@ int solve() {
     fastio;
     ll m;
     in2 (n, m);
-    adj = vector<vector<ii>>(n);
+    adj = vector<vector<ii >> (n);
     visited = vector<bool>(n, false);
     position = vll(n);
     positiond = vb(n);
@@ -95,7 +95,6 @@ int solve() {
         adj[u].pb(mp(v, d));
         adj[v].pb(mp(u, -d));
     }
-
     for (ll root = 0; root < n; root++) {
         if (visited[root]) {
             continue;
@@ -106,7 +105,6 @@ int solve() {
             return 0;
         }
     }
-
     oyes;
     return 0;
 }

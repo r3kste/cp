@@ -40,7 +40,7 @@ typedef vector<vi> vvi;
 #define ono out("NO", "\n")
 
 bool find(vc s, string p, int n) {
-    map<char, deque<int>> l;
+    map<char, deque<int >> l;
     rep (__, n) {
         if (s[__] == '.') {
             continue;
@@ -48,16 +48,15 @@ bool find(vc s, string p, int n) {
 
         l[s[__]].pb(__);
     }
+
     int starti = l[p[0]].front();
     l[p[0]].pop_front();
-
     for (int i = 1; i < sz (p); i++) {
         if (sz (l[p[i]]) == 0) {
             return false;
         }
 
         int nexti = upper_bound(all (l[p[i]]), starti) - l[p[i]].begin();
-
         if (nexti >= sz (l[p[i]])) {
             return false;
         }
@@ -76,6 +75,7 @@ bool valid(vc s, string p, vi a, int x, int n) {
     rep (__, x) {
         s[a[__] - 1] = '.';
     }
+
     return find(s, p, n);
 }
 

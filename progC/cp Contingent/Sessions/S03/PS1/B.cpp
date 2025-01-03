@@ -22,11 +22,11 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int n;
-vector<set<int>> adj;
+vector<set<int >> adj;
 vector<bool> visited;
 
 void dfs(int node, int parent) {
@@ -51,7 +51,7 @@ int solve() {
     cin >> n;
     int e;
     cin >> e;
-    adj = vector<set<int>>(n);
+    adj = vector<set<int >> (n);
     visited = vector<bool>(n, false);
 
     for (int i = 0; i < e; i++) {
@@ -62,7 +62,6 @@ int solve() {
         adj[u].insert(v);
         adj[v].insert(u);
     }
-
     dfs(0, -1);
     return 0;
 }

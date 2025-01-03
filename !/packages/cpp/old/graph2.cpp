@@ -6,7 +6,7 @@ using namespace std;
 Unweighted Graph
 */
 struct Graph {
-    vector<vector<int>> adj;
+    vector<vector<int >> adj;
     int n;
     vector<bool> visited;
     vector<int> roots;
@@ -120,6 +120,7 @@ struct Graph {
             }
         }
     }
+
     /*
     void clusters() {
         visited.assign(n, false);
@@ -182,6 +183,7 @@ struct Graph {
     }
     */
 };
+
 void Graph::dfs(int node, int level, int parent, int root, bool modify) {
     visited[node] = true;
 
@@ -220,7 +222,7 @@ Weighted Graph
 #define INF 100000000000000000
 struct Graph_EV {
     using pii = pair<int, int>;
-    vector<vector<pii>> adj;
+    vector<vector<pii >> adj;
     // vector<vector<int>> mat;
     int n;
     vector<bool> visited;
@@ -274,6 +276,7 @@ struct Graph_EV {
             }
         }
     }
+
     // void input_matrix() {
     //     for (int i = 0; i < n; i++) {
     //         for (int j = 0; j < 0; j++) {
@@ -331,14 +334,12 @@ struct Graph_EV {
         distance.assign(n, INF);
         parents.assign(n, -1);
         distance[start] = 0;
-        priority_queue<pii, vector<pii>, greater<>> q;
+        priority_queue<pii, vector<pii>, greater< >> q;
         q.emplace(0, start);
-
         while (!q.empty()) {
             int node = q.top().second;
             int dist = q.top().first;
             q.pop();
-
             if (dist != distance[node]) {
                 continue;
             }
@@ -396,6 +397,7 @@ struct Graph_EV {
     }
     */
 };
+
 void Graph_EV::dfs(int node, int level, int parent, int root, bool modify) {
     visited[node] = true;
 

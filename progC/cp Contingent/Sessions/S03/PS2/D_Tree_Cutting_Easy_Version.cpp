@@ -43,7 +43,7 @@ typedef vector<vi> vvi;
 Unweighted Graph
 */
 struct Graph {
-    vector<vector<int>> adj;
+    vector<vector<int >> adj;
     int n;
     vector<bool> visited;
     vector<int> roots;
@@ -219,6 +219,7 @@ struct Graph {
             }
         }
     }
+
     /*
     bool is_ancestor (int parents, int child) {
         return tin[parents] <= tin[child] && tout[parents] >= tout[child];

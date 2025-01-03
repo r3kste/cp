@@ -22,13 +22,13 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int n;
 vi a;
 vector<vi> dp;
-vector<vector<bool>> dpd;
+vector<vector<bool >> dpd;
 
 ll f(int i, int j) {
     if (i > j) {
@@ -46,14 +46,13 @@ int solve() {
     cin >> n;
     a = vi(n, 0);
     dp = vector<vi>(n, vi(n));
-    dpd = vector<vector<bool>>(n, vector<bool>(n, false));
+    dpd = vector<vector<bool >> (n, vector<bool>(n, false));
     ll sum = 0;
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
         sum += a[i];
     }
-
     // f (i, j) = maximum score of ibraheen considering from index i to index j
     // ans = sum - 2*f (0, n - 1)
     //f (i, j) = max (a[i] + min (f (i + 2, j), f (i + 1, j - 1)), a[j] + min (f (i, j - 2), f (i + 1, j - 1)))

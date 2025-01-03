@@ -40,7 +40,7 @@ typedef vector<vi> vvi;
 #define ono out("NO", "\n")
 
 int n;
-vector<vector<ii>> adj;
+vector<vector<ii >> adj;
 vector<bool> visited;
 
 ll bfs(int root) {
@@ -73,7 +73,7 @@ ll bfs(int root) {
 int solve() {
     fastio;
     in (n);
-    adj = vector<vector<ii>>(n);
+    adj = vector<vector<ii >> (n);
     visited = vector<bool>(n, false);
     vi a(n), b(n), c(n);
     vin (a);
@@ -91,7 +91,6 @@ int solve() {
             adj[B].pb(mp(A, C));
         }
     }
-
     ll count = 1;
 
     for (int root = 0; root < n; root++) {
@@ -106,7 +105,6 @@ int solve() {
         count *= bfs(root);
         count %= MOD;
     }
-
     o (count);
     br;
     return 0;

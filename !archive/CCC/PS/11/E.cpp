@@ -59,6 +59,7 @@ int solve() {
                     fo++;
                 }
             }
+
             cout << "\n";
         }
     }

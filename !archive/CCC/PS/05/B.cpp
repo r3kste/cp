@@ -41,12 +41,14 @@ void solve() {
     z (i, n) {
         cin >> a[i];
     }
+
     sort(a.begin(), a.end());
     ll ps[n + 1];
     ps[0] = 0;
     zr (i, 1, n + 1) {
         ps[i] = a[i - 1] + ps[i - 1];
     }
+
     z (i, q) {
         ll x, y;
         cin >> x >> y;

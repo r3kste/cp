@@ -39,6 +39,7 @@ int solve() {
     to (i, 0, n, 1) {
         cin >> a[i];
     }
+
     sort(begin(a), end(a));
     to (i, 0, q, 1) {
         int type, no;
@@ -60,5 +61,6 @@ int solve() {
             break;
         }
     }
+
     return 0;
 }

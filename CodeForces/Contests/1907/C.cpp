@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -31,12 +31,10 @@ int solve() {
     cin >> n;
     string s;
     cin >> s;
-    vector<pair<char, int>> k;
+    vector<pair<char, int >> k;
     int c = 1;
-
     for (int i = 0; i < s.size() - 1;) {
         c = 1;
-
         for (int j = i; j < s.size() - 1; j++) {
             if (s[j] == s[j + 1]) {
                 c++;

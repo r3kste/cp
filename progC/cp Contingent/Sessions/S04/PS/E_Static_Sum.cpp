@@ -46,6 +46,7 @@ struct range {
         return L + (R - L) / 2;
     }
 };
+
 template<typename T>
 struct SegTree {
     int n;

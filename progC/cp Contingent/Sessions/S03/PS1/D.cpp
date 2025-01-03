@@ -22,11 +22,11 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int n;
-vector<vector<int>> adj;
+vector<vector<int >> adj;
 vector<bool> visited;
 int maxdepth;
 

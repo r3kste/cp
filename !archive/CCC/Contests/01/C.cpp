@@ -40,12 +40,14 @@ int solve() {
     to (i, 0, n, 1) {
         a[s[i] - 97]++;
     }
+
     int mx = 0;
     to (i, 0, 26, 1) {
         if (a[i] > a[mx]) {
             mx = i;
         }
     }
+
     cout << (char) (mx + 97);
     return 0;
 }

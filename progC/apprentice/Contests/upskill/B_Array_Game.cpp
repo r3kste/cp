@@ -50,7 +50,7 @@ int solve() {
         o(0)br;
     } else {
         sort(all(a));
-        vector<vector<ll>> diff(n, vector<ll>(n, 0));
+        vector<vector<ll >> diff(n, vector<ll>(n, 0));
 
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
@@ -58,7 +58,6 @@ int solve() {
                 diff[j][i] = diff[i][j];
             }
         }
-
         if (k == 1) {
             ll ans = a[0];
 

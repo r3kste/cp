@@ -16,6 +16,7 @@ public:
     void next_year() {
         this->set_age(this->age + 1);
     }
+
     void set_age(int new_age) {
         this->age = new_age;
     }
@@ -97,6 +98,7 @@ struct database {
     void add_student(Student student) {
         students.push_back(student);
     }
+
     void add_teacher(Teacher teacher) {
         teachers.push_back(teacher);
     }

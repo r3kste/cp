@@ -48,6 +48,7 @@ int solve() {
             break;
         }
     }
+
     a = a + ".";
     string build = "";
     int k[3] = {2, 2, 4};
@@ -60,6 +61,7 @@ int solve() {
                 to(j, 0, k[c] - build.length(), j + 1) {
                     st.append("0");
                 }
+
                 st.append(build);
                 build = st;
             }
@@ -88,6 +90,7 @@ int solve() {
             build = build + "" + a[i];
         }
     }
+
     cout << date << "." << month << "." << year;
     cout << " " << month << "/" << date << "/" << year;
     return 0;

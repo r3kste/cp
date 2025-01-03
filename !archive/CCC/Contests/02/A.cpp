@@ -49,6 +49,7 @@ int solve() {
             co++;
         }
     }
+
     cout << co << "\n";
     return 0;
 }

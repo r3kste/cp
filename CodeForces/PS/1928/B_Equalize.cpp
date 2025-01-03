@@ -70,6 +70,7 @@ bool valid(vll &a, int k) {
     o(ans)br
     return ans >= k;
 }
+
 int solve() {
     fastio
     ll n;

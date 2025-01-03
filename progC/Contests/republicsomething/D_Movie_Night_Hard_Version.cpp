@@ -43,8 +43,7 @@ int solve() {
     fastio
     ll n, k;
     in2(n, k)
-    vector<pair<ll, int>> a;
-
+    vector<pair<ll, int >> a;
     for (int i = 0; i < n; i++) {
         int x;
         in(x)
@@ -52,12 +51,11 @@ int solve() {
     }
 
     sort(all(a));
-    vector<pair<ll, int>> b;
+    vector<pair<ll, int >> b;
 
     for (int i = 0; i < n; i++) {
         b.pb(mp(a[i].F - k * a[i].S, a[i].S));
     }
-
     sort(all(b));
     ll score = 0;
     score += b.back().F;
@@ -67,7 +65,6 @@ int solve() {
     } else {
         score += a.back().F;
     }
-
     ll score2 = 0;
     score2 += a.back().F;
 
@@ -76,7 +73,6 @@ int solve() {
     } else {
         score2 += b.back().F;
     }
-
     o(max(score, score2))br;
     return 0;
 }

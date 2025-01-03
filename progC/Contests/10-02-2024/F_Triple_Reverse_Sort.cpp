@@ -43,8 +43,7 @@ int solve() {
     fastio
     int n;
     in (n)
-    vector<pair<int, int>> a(n);
-
+    vector<pair<int, int >> a(n);
     for (int i = 0; i < n; i++) {
         in (a[i].first)
         a[i].second = i;
@@ -52,10 +51,8 @@ int solve() {
 
     auto b = a;
     sort(all(b));
-
     for (int i = 0; i < n; i++) {
         auto e = b[i];
-
         if (i % 2 != e.second % 2) {
             ono
             return 0;
@@ -70,7 +67,6 @@ int main() {
     fastio;
     int t = 1;
     in (t);
-
     while (t--) {
         solve();
     }

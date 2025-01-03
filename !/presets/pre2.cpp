@@ -10,27 +10,27 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-void test()
-{
+void test() {
     int n;
     cin >> n;
-
     vector<int> a(n);
-    for (int &i : a)
+
+    for (int &i : a) {
         cin >> i;
+    }
 
     int res = 0;
     cout << res << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     fastio;
-
     int t;
     cin >> t;
-    while (t--)
+
+    while (t--) {
         test();
+    }
 
     return 0;
 }

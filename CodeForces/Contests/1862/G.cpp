@@ -41,6 +41,7 @@ int op(vi a) {
     to (i, 0, a.size(), 1) {
         a[i] += (a.size() - i);
     }
+
     return 0;
 }
 
@@ -52,6 +53,7 @@ int solve() {
     to (i, 0, n, i + 1) {
         cin >> a[i];
     }
+
     sort(begin(a), end(a));
     int q;
     cin >> q;
@@ -59,5 +61,6 @@ int solve() {
         int j, x;
         a[j - 1] = x;
     }
+
     return 0;
 }

@@ -40,7 +40,7 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-bool valid(vector<tuple<int, int, int, int>> p, int m, int T) {
+bool valid(vector<tuple<int, int, int, int >> p, int m, int T) {
     int n = sz (p);
     ll no_balloons = 0;
     rep (_, n) {
@@ -53,6 +53,7 @@ bool valid(vector<tuple<int, int, int, int>> p, int m, int T) {
         cT %= cycle;
         no_balloons += min(z, (ll) floor(cT / t));
     }
+
     return no_balloons >= m;
 }
 
@@ -60,27 +61,27 @@ int solve() {
     fastio;
     int req, n;
     in2 (req, n);
-    vector<tuple<int, int, int, int>> p(n);
+    vector<tuple<int, int, int, int >> p(n);
     rep (__, n) {
         int t, z, y;
         in3 (t, z, y);
         p[__] = {t, z, y, __};
     }
+
     int l = 0;
     int r = 10e9;
-
     while (!valid(p, req, r)) {
         r *= 2;
     }
 
     int n_iter = 100;
-
     while (n_iter--) {
         int m = l + (r - l) / 2;
-
         if (valid(p, req, m)) {
             r = m;
-        } else {
+        }
+
+        else {
             l = m;
         }
     }
@@ -110,6 +111,7 @@ int solve() {
             break;
         }
     }
+
     vout (ans);
     return 0;
 }

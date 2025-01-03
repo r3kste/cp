@@ -44,6 +44,7 @@ int solve() {
     to (i, 0, n, i + 1) {
         cin >> a[i];
     }
+
     b.push_back(a[0]);
     to (i, 1, n, i + 1) {
         b.push_back(a[i]);
@@ -52,9 +53,11 @@ int solve() {
             b.push_back(a[i]);
         }
     }
+
     cout << b.size() << "\n";
     to (i, 0, b.size(), i + 1) {
         cout << b[i] << " ";
     }
+
     return 0;
 }

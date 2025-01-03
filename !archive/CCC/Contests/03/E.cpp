@@ -47,11 +47,13 @@ int solve() {
         cin >> a[i];
         mp[a[i]]++;
     }
+
     to (i, 0, n, i + 1) {
         if (mp[a[i]] > max) {
             max = mp[a[i]];
         }
     }
+
     cout << max;
     return 0;
 }

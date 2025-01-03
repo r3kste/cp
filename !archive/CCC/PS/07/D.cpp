@@ -37,10 +37,12 @@ int solve() {
     to (i, 0, n, 1) {
         cin >> a[i];
     }
+
     sort(begin(a), end(a));
     to (i, 0, n / 2, 1) {
         o += (a[n - 1 - i] - a[i]);
     }
+
     cout << o;
     return 0;
 }

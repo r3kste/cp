@@ -43,6 +43,7 @@ int solve() {
             o += a;
         }
     }
+
     cout << o;
     return 0;
 }

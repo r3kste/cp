@@ -47,6 +47,7 @@ struct range {
         return L + (R - L) / 2;
     }
 };
+
 template<typename T>
 struct segtree {
     int n;
@@ -89,6 +90,7 @@ struct segtree {
             return T(0);
         }
     }
+
     T operation(string op, T a, T b) {
         if (op == "add" || op == "sum") {
             return a + b;
@@ -118,6 +120,7 @@ struct segtree {
     T build_operation(int left_vertex, int right_vertex) {
         return operation(query_op, tree[left_vertex], tree[right_vertex]);
     }
+
     void build(int vertex, range borders) {
         if (borders.L == borders.R) {
             if (borders.L <= n) {
@@ -130,6 +133,7 @@ struct segtree {
             tree[vertex] = build_operation(vertex << 1, vertex << 1 | 1);
         }
     }
+
     void build() {
         build(1, {1, n});
     }
@@ -137,6 +141,7 @@ struct segtree {
     T update_operation(int vertex, T value) {
         return operation(update_op, tree[vertex], value);
     }
+
     void point_update(int target, T value, int vertex, range borders) {
         if (borders.L == borders.R) {
             tree[vertex] = update_operation(vertex, value);
@@ -152,9 +157,11 @@ struct segtree {
             tree[vertex] = build_operation(vertex << 1, vertex << 1 | 1);
         }
     }
+
     void update(int target, T value) {
         point_update(target, value, 1, {1, n});
     }
+
     void range_update(range update_range, T value, int vertex, range borders) {
         if (lazy[vertex] != 0) {
             tree[vertex] += (borders.R - borders.L + 1) * lazy[vertex];
@@ -187,6 +194,7 @@ struct segtree {
         range_update(update_range, value, vertex << 1 | 1, {mid + 1, borders.R});
         tree[vertex] = build_operation(vertex << 1, vertex << 1 | 1);
     }
+
     void update(range update_range, T value) {
         range_update(update_range, value, 1, {1, n});
     }
@@ -194,6 +202,7 @@ struct segtree {
     T query_operation(T left_subtree, T right_subtree) {
         return operation(query_op, left_subtree, right_subtree);
     }
+
     T point_query(int target, int vertex, range borders) {
         if (lazy[vertex] != 0) {
             tree[vertex] += (borders.R - borders.L + 1) * lazy[vertex];
@@ -218,9 +227,11 @@ struct segtree {
             }
         }
     }
+
     T query(int target) {
         return point_query(target, 1, {1, n});
     }
+
     T range_query(range query_range, int vertex, range borders) {
         if (lazy[vertex] != 0) {
             tree[vertex] += (borders.R - borders.L + 1) * lazy[vertex];
@@ -244,6 +255,7 @@ struct segtree {
             return query_operation(left_subtree, right_subtree);
         }
     }
+
     T query(range query_range) {
         return range_query(query_range, 1, {1, n});
     }

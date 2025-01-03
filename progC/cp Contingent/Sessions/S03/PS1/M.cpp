@@ -40,7 +40,7 @@ typedef vector<vi> vvi;
 #define ono out("NO", "\n")
 
 int n;
-vector<vector<int>> adj;
+vector<vector<int >> adj;
 vector<bool> visited;
 vector<int> dp;
 vector<bool> dpd;
@@ -95,7 +95,7 @@ int solve() {
     cin.tie(NULL);
     int n;
     cin >> n;
-    adj = vector<vector<int>>(n);
+    adj = vector<vector<int >> (n);
     visited = vector<bool>(n, false);
     subtree_size = vll(n, 0);
     ans = 0;
@@ -107,7 +107,6 @@ int solve() {
         adj[u].push_back(i);
         adj[i].push_back(u);
     }
-
     subtrees(0, -1);
     dfs(0, -1, 0);
     o (ans)

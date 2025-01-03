@@ -48,5 +48,6 @@ void solve() {
             c++;
         }
     }
+
     cout << c / 3;
 }

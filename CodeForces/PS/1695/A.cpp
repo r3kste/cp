@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -32,7 +32,7 @@ int solve() {
     int mr = -1;
     int mc = -1;
     int maxa = -int(MOD);
-    vector<vector<int>> aa(n, vector<int>(m));
+    vector<vector<int >> aa(n, vector<int>(m));
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -45,7 +45,6 @@ int solve() {
             }
         }
     }
-
     int a = mr + 1;
     int b = mc + 1;
     int c = n - a + 1;

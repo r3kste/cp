@@ -45,8 +45,7 @@ int solve() {
     fastio
     int n;
     in (n)
-    vector<tuple<ll, ll, ll, ll>> dirs;
-
+    vector<tuple<ll, ll, ll, ll >> dirs;
     for (int i = 0; i < n; i++) {
         int X, Y;
         in2(X, Y);
@@ -61,26 +60,21 @@ int solve() {
         Idir[get<2>(p)]++;
         IIdir[get<3>(p)]++;
     }
-
     dirs.clear();
     ll ans = 0;
 
     for (auto x : xdir) {
         ans += x.S * (x.S - 1) / 2 ;
     }
-
     for (auto y : ydir) {
         ans += y.S * (y.S - 1) / 2;
     }
-
     for (auto I : Idir) {
         ans += I.S * (I.S - 1) / 2;
     }
-
     for (auto II : IIdir) {
         ans += II.S * (II.S - 1) / 2;
     }
-
     o(ans * 2)br;
     return 0;
 }

@@ -48,10 +48,12 @@ int solve() {
         ps[i + 1] = ps[i] + a[i];
         a[i] = max(a[i], a[i - 1]);
     }
+
     to (i, 0, q, 1) {
         ll temp;
         cin >> temp;
         cout << ps[upper_bound(a.begin(), a.end(), temp) - a.begin()] << " ";
     }
+
     return 0;
 }

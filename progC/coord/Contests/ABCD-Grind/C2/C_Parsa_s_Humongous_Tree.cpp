@@ -42,7 +42,7 @@ typedef vector<vi> vvi;
 Unweighted Graph
 */
 struct Graph {
-    vector<vector<int>> adj;
+    vector<vector<int >> adj;
     int n;
     vector<bool> visited;
     vector<int> roots;
@@ -163,6 +163,7 @@ struct Graph {
             }
         }
     }
+
     /*
     void clusters() {
         visited.assign(n, false);
@@ -225,6 +226,7 @@ struct Graph {
     }
     */
 };
+
 void Graph::dfs(int node, int level, int parent, int root, bool modify) {
     visited[node] = true;
 

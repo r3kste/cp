@@ -53,6 +53,7 @@ int powofa(ll n, int a) {
 
     return cnt;
 }
+
 int solve() {
     fastio
     ll n, m;

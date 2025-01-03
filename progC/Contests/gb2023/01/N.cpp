@@ -22,15 +22,14 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int solve() {
     fastio;
     int n;
     cin >> n;
-    vector<pair<pair<ll, ll>, ll>> a(n);
-
+    vector<pair<pair<ll, ll>, ll >> a(n);
     for (int i = 0; i < n; i++) {
         cin >> a[i].F.F >> a[i].F.S >> a[i].S;
     }
@@ -51,7 +50,6 @@ int solve() {
             }
         }
     }
-
     return 0;
 }
 

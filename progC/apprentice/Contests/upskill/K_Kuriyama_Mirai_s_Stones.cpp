@@ -60,6 +60,7 @@ struct segtree {
             lazy = DEFAULT_LAZY;
         }
     };
+
     int n;
     vector<int> arr;
     vector<node> tree;
@@ -121,6 +122,7 @@ struct segtree {
             tree[vertex].val = build_operation(vertex << 1, vertex << 1 | 1);
         }
     }
+
     void range_update(range update_range, T value, int vertex, range borders) {
         if (tree[vertex].lazy != DEFAULT_LAZY) {
             tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
@@ -178,6 +180,7 @@ struct segtree {
             }
         }
     }
+
     T range_query(range query_range, int vertex, range borders) {
         if (tree[vertex].lazy != DEFAULT_LAZY) {
             tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
@@ -222,24 +225,28 @@ struct segtree {
         return range_query(query_range, 1, {1, n});
     }
 };
+
 template<typename T>
 T segtree<T>::build_operation(int left_vertex, int right_vertex) {
     /* How to combine two nodes into one parent node */
     return tree[left_vertex].val + tree[right_vertex].val;
     /**/
 }
+
 template<typename T>
 T segtree<T>::update_operation(int vertex, T value) {
     /* How to update the value in tree[vertex] */
     return tree[vertex].val + value;
     /**/
 }
+
 template<typename T>
 T segtree<T>::query_operation(T left_subtree, T right_subtree) {
     /* What should be returned as query's result after calculating for children */
     return left_subtree + right_subtree;
     /**/
 }
+
 template<typename T>
 T segtree<T>::lazy_operation(T value, int vertex, range borders) {
     /* How to update the lazy of a vertex */

@@ -47,6 +47,7 @@ int solve() {
             flag = true;
         }
     }
+
     cout << ((flag) ? "YES" : "NO");
     return 0;
 }

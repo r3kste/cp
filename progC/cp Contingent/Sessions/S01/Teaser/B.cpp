@@ -22,13 +22,13 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 struct matrix2 {
     ll mat[2][2];
 
-    matrix2 friend operator*(matrix2 &a, matrix2 &b) {
+    matrix2 friend operator*(matrix2 & a, matrix2 & b) {
         matrix2 c;
 
         for (int i = 0; i < 2; i++)
@@ -47,7 +47,7 @@ struct matrix2 {
 struct matrix3 {
     ll mat[3][3];
 
-    matrix3 friend operator*(matrix3 &a, matrix3 &b) {
+    matrix3 friend operator*(matrix3 & a, matrix3 & b) {
         matrix3 c;
 
         for (int i = 0; i < 3; i++)

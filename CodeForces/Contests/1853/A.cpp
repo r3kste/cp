@@ -55,6 +55,7 @@ int solve() {
             mm = temp;
         }
     }
+
     bool s = is_sorted(begin(a), end(a));
 
     if (!s) {

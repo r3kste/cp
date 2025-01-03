@@ -47,19 +47,19 @@ Weighted Graph
 // #define INF 100000000000000000
 struct Graph_EV {
     using pii = pair<int, int>;
-    vector<vector<pii>> adj;
-    vector<vector<ll>> mat;
+    vector<vector<pii >> adj;
+    vector<vector<ll >> mat;
     int n;
     vector<bool> visited;
     vector<int> roots;
-    vector<vector<ll>> distances;
+    vector<vector<ll >> distances;
 
     Graph_EV(int no_of_nodes, bool fill = true) {
         adj.resize(no_of_nodes);
         n = no_of_nodes;
         visited.assign(no_of_nodes, false);
-        distances = vector<vector<ll>>(no_of_nodes, vector<ll>(no_of_nodes, INF));
-        mat = vector<vector<ll>>(no_of_nodes, vector<ll>(no_of_nodes, 0));
+        distances = vector<vector<ll >> (no_of_nodes, vector<ll>(no_of_nodes, INF));
+        mat = vector<vector<ll >> (no_of_nodes, vector<ll>(no_of_nodes, 0));
 
         if (fill) {
             DFS();
@@ -165,14 +165,12 @@ struct Graph_EV {
         parents.assign(n, -1);
         distances[start] = 0;
         using pii = pair<int, int>;
-        priority_queue<pii, vector<pii>, greater<pii>> q;
+        priority_queue<pii, vector<pii>, greater<pii >> q;
         q.push({0, start});
-
         while (!q.empty()) {
             int node = q.top().second;
             int dist = q.top().first;
             q.pop();
-
             if (dist != distances[node]) {
                 continue;
             }

@@ -24,6 +24,7 @@ void f (int i, int j) {
         }
     }
 }
+
 int main() {
     int n, m, x, y;
     cin >> n >> m;

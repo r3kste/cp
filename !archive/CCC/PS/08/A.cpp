@@ -41,8 +41,10 @@ void solve() {
         cin >> a[i];
         k[a[i]]++;
     }
+
     to (i, 0, n, 1) {
         c += k[h[i]];
     }
+
     cout << c;
 }

@@ -55,6 +55,7 @@ int solve() {
             a[i] = k;
         }
     }
+
     cout << o;
     return 0;
 }

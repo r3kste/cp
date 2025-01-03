@@ -46,8 +46,7 @@ int solve() {
     vll a(n);
     vin (a);
     vll d_op(m + 1, 0);
-    vector<pair<pair<ll, ll>, ll>> q(m);
-
+    vector<pair<pair<ll, ll>, ll >> q(m);
     for (ll i = 0; i < m; i++) {
         ll l, r, d;
         in3(l, r, d);
@@ -67,13 +66,11 @@ int solve() {
 
     vll n_op(m, 0);
     n_op[0] = d_op[0];
-
     for (ll i = 1; i < m; i++) {
         n_op[i] = n_op[i - 1] + d_op[i];
     }
 
     vll d_arr(n + 1, 0);
-
     for (ll i = 0; i < m; i++) {
         ll l = q[i].F.F;
         ll r = q[i].F.S;
@@ -85,7 +82,6 @@ int solve() {
 
     vll ps(n, 0);
     ps[0] = d_arr[0];
-
     for (ll i = 1; i < n; i++) {
         ps[i] = ps[i - 1] + d_arr[i];
     }
@@ -101,8 +97,8 @@ int solve() {
 int main() {
     fastio;
     int t = 1;
-    // in (t);
 
+    // in (t);
     while (t--) {
         solve();
     }

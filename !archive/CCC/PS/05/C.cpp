@@ -61,6 +61,7 @@ int solve() {
             a[t] = true;
         }
     }
+
     cout << "No";
     return 0;
 }

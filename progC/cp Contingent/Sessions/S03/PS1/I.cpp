@@ -41,14 +41,16 @@ typedef vector<vi> vvi;
 
 int n;
 int m;
-vector<vector<int>> adj;
+vector<vector<int >> adj;
 vector<bool> visited;
-vector<vector<int>> distances;
+vector<vector<int >> distances;
 
 int d(int start, int target) {
     if (distances[start][target] != MOD) {
         return distances[start][target];
-    } else {
+    }
+
+    else {
         queue<ii> todo;
         visited = vb(n, false);
         todo.push(mp(start, 0));
@@ -75,7 +77,6 @@ int d(int start, int target) {
             }
         }
     }
-
     return MOD;
 }
 
@@ -84,9 +85,9 @@ int solve() {
     int s, t;
     in2 (n, m)
     in2 (s, t);
-    adj = vector<vector<int>>(n);
+    adj = vector<vector<int >> (n);
     visited = vector<bool>(n, false);
-    distances = vector<vector<int>>(n, vector<int>(n, MOD));
+    distances = vector<vector<int >> (n, vector<int>(n, MOD));
 
     for (int i = 0; i < m; i++) {
         int u, v;
@@ -96,7 +97,6 @@ int solve() {
         adj[u].pb(v);
         adj[v].pb(u);
     }
-
     s--;
     t--;
     int cur_dist = d(s, t);
@@ -117,7 +117,6 @@ int solve() {
             }
         }
     }
-
     o (ans / 2);
     br;
     return 0;

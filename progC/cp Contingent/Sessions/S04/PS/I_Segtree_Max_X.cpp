@@ -46,6 +46,7 @@ struct range {
         return L + (R - L) / 2;
     }
 };
+
 template<typename T>
 struct node {
     ll val;
@@ -58,11 +59,12 @@ struct node {
         lazy = DEFAULT_LAZY;
     }
 };
+
 template<typename T>
 struct segtree {
     int n;
     vector<ll> arr;
-    vector<node<ll>> tree;
+    vector<node<ll >> tree;
 
     explicit segtree(vector<ll> &array) {
         arr = array;

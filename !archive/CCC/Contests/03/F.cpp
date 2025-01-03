@@ -74,6 +74,7 @@ int solve() {
         cin >> temp;
         in.push_back(temp);
     }
+
     to (i, 0, n - 1, i + 1) {
         comp.push_back('d');
         int t = n - i - 1;
@@ -89,12 +90,14 @@ int solve() {
             }
         }
     }
+
     to (i, 0, n, i + 1) {
         if (in[i] == 'u') {
             cout << -1;
             return 0;
         }
     }
+
     cout << c;
     return 0;
 }

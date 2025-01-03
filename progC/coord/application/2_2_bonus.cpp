@@ -9,6 +9,7 @@ struct matrix2 {
     matrix2() {
         mat[0][0] = mat[0][1] = mat[1][0] = mat[1][1] = 0;
     }
+
     matrix2(ll a, ll b, ll c, ll d) {
         mat[0][0] = a;
         mat[0][1] = b;

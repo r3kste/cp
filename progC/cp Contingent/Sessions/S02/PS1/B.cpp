@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -35,13 +35,12 @@ int solve() {
         cin >> c[i];
     }
 
-    vector<vector<int>> dp(n + 1, vector<int>(x + 1, 0));
+    vector<vector<int >> dp(n + 1, vector<int>(x + 1, 0));
 
     //dp[a][b] = number of ways to get a sum of b using a distinct (ordered?) coins
     for (int i = 0; i <= x; i++) {
         dp[0][i] = 0;
     }
-
     for (int i = 0; i <= n; i++) {
         dp[i][0] = 1;
     }
@@ -69,7 +68,6 @@ int solve() {
             }
         }
     }
-
     cout << dp[n][x] % MOD;
     return 0;
 }

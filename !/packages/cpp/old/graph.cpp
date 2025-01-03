@@ -3,7 +3,7 @@
 using namespace std;
 
 int n;
-vector<vector<int>> adj;
+vector<vector<int >> adj;
 vector<bool> visited;
 vector<int> dp;
 vector<bool> dpd;
@@ -57,7 +57,7 @@ int solve() {
     cin.tie(nullptr);
     int e;
     cin >> n >> e;
-    adj = vector<vector<int>>(n);
+    adj = vector<vector<int >> (n);
     visited = vector<bool>(n, false);
     dp = vector<int>(n);
     dpd = vector<bool>(n);
@@ -70,7 +70,6 @@ int solve() {
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
-
     return 0;
 }
 

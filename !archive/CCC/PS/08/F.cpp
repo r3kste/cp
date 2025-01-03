@@ -37,9 +37,11 @@ int solve() {
     to (i, 0, n, 1) {
         cin >> a[i];
     }
+
     to (i, 0, n, 1) {
         o[i] = i;
     }
+
     to (i, 0, n + 1, 1) {
         bool flag = true;
         to (j, 0, n, 1) {
@@ -67,6 +69,7 @@ int solve() {
             }
         }
     }
+
     cout << "No";
     return 0;
 }

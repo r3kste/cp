@@ -40,6 +40,7 @@ int solve() {
         cin >> temp;
         s += temp;
     }
+
     cout << ((s % n == 0) ? 0 : 1);
     // sort(a.begin(), a.end());
     // int u;

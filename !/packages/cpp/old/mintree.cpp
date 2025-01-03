@@ -23,6 +23,7 @@ struct difftree {
             lazy = DEFAULT_LAZY;
         }
     };
+
     long long int n;
     vector<node> tree;
 
@@ -74,6 +75,7 @@ struct difftree {
             tree[vertex].val = build_operation(vertex << 1, vertex << 1 | 1);
         }
     }
+
     void range_update(range update_range, T value, int vertex, range borders) {
         if (tree[vertex].lazy != DEFAULT_LAZY) {
             tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
@@ -131,6 +133,7 @@ struct difftree {
             }
         }
     }
+
     T range_query(range query_range, int vertex, range borders) {
         if (tree[vertex].lazy != DEFAULT_LAZY) {
             tree[vertex].val = lazy_operation(tree[vertex].lazy, vertex, borders);
@@ -171,24 +174,28 @@ struct difftree {
         return range_query(query_range, 1, {1, n});
     }
 };
+
 template<typename T>
 T difftree<T>::build_operation(int left_vertex, int right_vertex) {
     /* How to combine two nodes into one parent node */
     return tree[left_vertex].val + tree[right_vertex].val;
     /**/
 }
+
 template<typename T>
 T difftree<T>::update_operation(int vertex, T value) {
     /* How to update the value in tree[vertex] */
     return tree[vertex].val + value;
     /**/
 }
+
 template<typename T>
 T difftree<T>::query_operation(T left_subtree, T right_subtree) {
     /* What should be returned as query's result after calculating for children */
     return left_subtree + right_subtree;
     /**/
 }
+
 template<typename T>
 T difftree<T>::lazy_operation(T value, int vertex, range borders) {
     /* How to update the lazy of a vertex */
@@ -201,7 +208,7 @@ T difftree<T>::lazy_operation(T value, int vertex, range borders) {
 int main() {
     long long int n, q;
     cin >> n >> q;
-    vector<tuple<int, int, int, int>> queries;
+    vector<tuple<int, int, int, int >> queries;
     map<long long int, long long int> splits;
 
     while (q--) {
@@ -221,13 +228,11 @@ int main() {
             queries.emplace_back(i, -1, -1);
         }
     }
-
     long long int new_n = -1;
 
     for (auto &i : splits) {
         i.second = new_n += 2;
     }
-
     difftree<long long int> tree(new_n);
 
     for (auto [a, b, c] : queries) {
@@ -237,6 +242,5 @@ int main() {
             tree.update(splits[a], splits[b], c);
         }
     }
-
     return 0;
 }

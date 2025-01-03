@@ -10,8 +10,7 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-struct Node
-{
+struct Node {
     int id;
     int parent;
     vector<int> children = vector<int>();
@@ -22,8 +21,7 @@ struct Node
 public:
     Node(int id, int parent) : id(id), parent(parent) {}
 
-    Node()
-    {
+    Node() {
         this->id = -1;
         this->children = vector<int>();
         this->distance_from_s = 0;
@@ -31,8 +29,7 @@ public:
     }
 };
 
-class Graph
-{
+class Graph {
     int n;
     int source;
     int target;
@@ -40,17 +37,14 @@ class Graph
     vector<int> visited;
 
 public:
-    Graph(int n, int m, int s, int t)
-    {
+    Graph(int n, int m, int s, int t) {
         this->n = n;
         this->source = s - 1;
         this->target = t - 1;
-
         this->nodes = vector<Node>(n);
         this->nodes[0] = Node(0, -1);
 
-        for (int i = 0; i < m; i++)
-        {
+        for (int i = 0; i < m; i++) {
             int u, v;
             cin >> u >> v;
             u--;
@@ -59,42 +53,38 @@ public:
             this->nodes[v] = Node(v, u);
         }
 
-        for (int i = 0; i < n; i++)
-        {
-            if (nodes[i].parent == -1)
-            {
+        for (int i = 0; i < n; i++) {
+            if (nodes[i].parent == -1) {
                 continue;
             }
+
             this->nodes[nodes[i].parent].children.push_back(i);
         }
     }
 
-    void answer()
-    {
+    void answer() {
         visited = vector<int>(n, -1);
         this->bfs(this->source);
-        for (int i = 0; i < n; i++)
-        {
+
+        for (int i = 0; i < n; i++) {
             nodes[i].distance_from_s = visited[i];
         }
 
         visited = vector<int>(n, -1);
         this->bfs(this->target);
-        for (int i = 0; i < n; i++)
-        {
+
+        for (int i = 0; i < n; i++) {
             nodes[i].distance_from_t = visited[i];
         }
 
         int current_min = nodes[target].distance_from_s;
-
         int res = 0;
-        for (int node1_idx = 0; node1_idx < n; node1_idx++)
-        {
-            for (int node2_idx = node1_idx + 1; node2_idx < n; node2_idx++)
-            {
+
+        for (int node1_idx = 0; node1_idx < n; node1_idx++) {
+            for (int node2_idx = node1_idx + 1; node2_idx < n; node2_idx++) {
                 int new_distance = nodes[node1_idx].distance_from_s + nodes[node2_idx].distance_from_t + 1;
-                if (new_distance >= current_min)
-                {
+
+                if (new_distance >= current_min) {
                     res++;
                 }
             }
@@ -104,30 +94,24 @@ public:
     }
 
 private:
-    void dfs(int node)
-    {
-        for (int child : this->nodes[node].children)
-        {
+    void dfs(int node) {
+        for (int child : this->nodes[node].children) {
             this->dfs(child);
         }
     }
 
-    void bfs(int node)
-    {
-        queue<pair<int, int>> q;
+    void bfs(int node) {
+        queue<pair<int, int >> q;
         q.push({node, 0});
         visited[node] = 0;
-
-        while (!q.empty())
-        {
+        while (!q.empty()) {
             auto [node, depth] = q.front();
             q.pop();
-            for (int child : this->nodes[node].children)
-            {
-                if (visited[child] != -1)
-                {
+            for (int child : this->nodes[node].children) {
+                if (visited[child] != -1) {
                     continue;
                 }
+
                 visited[child] = depth + 1;
                 q.push({child, depth + 1});
             }
@@ -135,12 +119,10 @@ private:
     }
 };
 
-int32_t main()
-{
+int32_t main() {
     fastio;
     int n, m, s, t;
     cin >> n >> m >> s >> t;
-
     Graph tree(n, m, s, t);
     tree.answer();
 }

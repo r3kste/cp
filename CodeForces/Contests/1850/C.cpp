@@ -49,8 +49,10 @@ int solve() {
             }
         }
     }
+
     to (i, 0, o.size(), i + 1) {
         cout << o[i];
     }
+
     return 0;
 }

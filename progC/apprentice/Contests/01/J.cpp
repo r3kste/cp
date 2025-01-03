@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int>> vii;
+typedef vector<pair<int, int >> vii;
 typedef vector<long long int> vll;
 
 ll tonum(vll a) {
@@ -46,8 +46,7 @@ int solve() {
     ll n, d;
     cin >> n >> d;
     vll a(n);
-    vector<pair<ll, ll>> b;
-
+    vector<pair<ll, ll >> b;
     for (int i = 0; i < n; i++) {
         cin >> a[i];
         // if (a[i] == 0)
@@ -81,7 +80,6 @@ int solve() {
             mmm = wow;
         }
     }
-
     cout << mmm;
     return 0;
 }
