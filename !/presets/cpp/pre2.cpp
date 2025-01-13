@@ -15,7 +15,7 @@ void test() {
     cin >> n;
     vector<int> a(n);
 
-    for (int &i : a) {
+    for (int& i : a) {
         cin >> i;
     }
 

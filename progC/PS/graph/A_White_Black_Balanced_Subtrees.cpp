@@ -31,7 +31,7 @@ class Graph {
     vector<Node> nodes;
 
 public:
-    Graph(int n, const vector<int> &parents, const string &colors) {
+    Graph(int n, const vector<int>& parents, const string &colors) {
         this->n = n;
         nodes.push_back(Node(0, -1, colors[0]));
 

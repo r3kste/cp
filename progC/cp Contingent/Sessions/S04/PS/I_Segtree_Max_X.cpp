@@ -66,7 +66,7 @@ struct segtree {
     vector<ll> arr;
     vector<node<ll >> tree;
 
-    explicit segtree(vector<ll> &array) {
+    explicit segtree(vector<ll>& array) {
         arr = array;
         n = (ll) array.size();
         tree.resize(4 * n + 1);

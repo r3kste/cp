@@ -13,8 +13,8 @@ using namespace std;
 struct BinaryTree {
     struct Node {
         int id;
-        Node *left;
-        Node *right;
+        Node* left;
+        Node* right;
 
         char c;
 
@@ -22,8 +22,8 @@ struct BinaryTree {
     };
 
     int no_of_nodes;
-    Node *root;
-    vector<Node *> nodes;
+    Node* root;
+    vector<Node*> nodes;
 
     BinaryTree(int n, int root, vector<pair<int, int >> children, string s) {
         this->no_of_nodes = n;

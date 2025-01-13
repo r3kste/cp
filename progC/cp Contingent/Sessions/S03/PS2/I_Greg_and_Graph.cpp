@@ -160,7 +160,7 @@ struct Graph_EV {
         }
     }
 
-    void dijkstra(int start, vector<long long int> &distances, vector<int> &parents) {
+    void dijkstra(int start, vector<long long int>& distances, vector<int>& parents) {
         distances.assign(n, INF);
         parents.assign(n, -1);
         distances[start] = 0;
@@ -201,7 +201,7 @@ struct Graph_EV {
         return path;
     }
 
-    void populate_distances(vector<int> &nodes_to_be_removed) {
+    void populate_distances(vector<int>& nodes_to_be_removed) {
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
                 distances[i][j] = mat[i][j];

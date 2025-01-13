@@ -56,7 +56,7 @@ struct segtree {
     string update_op;
     string query_op;
 
-    segtree(vector<int> &array, int no_of_elements, const string &update, const string &query) {
+    segtree(vector<int>& array, int no_of_elements, const string &update, const string &query) {
         n = no_of_elements;
         arr = array;
         tree.resize(4 * n + 1);

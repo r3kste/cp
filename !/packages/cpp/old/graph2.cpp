@@ -330,7 +330,7 @@ struct Graph_EV {
     //     }
     // }
 
-    void dijkstra(int start, vector<long long int> &distance, vector<int> &parents) {
+    void dijkstra(int start, vector<long long int>& distance, vector<int>& parents) {
         distance.assign(n, INF);
         parents.assign(n, -1);
         distance[start] = 0;

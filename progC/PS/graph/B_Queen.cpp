@@ -25,7 +25,7 @@ class Graph {
     vector<Node> nodes;
 
 public:
-    Graph(int n, const vector<int> &parents, const vector<bool> &respects) {
+    Graph(int n, const vector<int>& parents, const vector<bool>& respects) {
         this->n = n;
 
         for (int i = 0; i < n; i++) {

@@ -181,7 +181,7 @@ struct Graph_EV {
         1. distances => minimum distance starting from start to every other node.
         2. parents => parents, for traversal
     */
-    void dijkstra_pqu(int start, vector<long long int> &distances, vector<int> &parents) {
+    void dijkstra_pqu(int start, vector<long long int>& distances, vector<int>& parents) {
         distances.assign(n, INF);
         parents.assign(n, -1);
         distances[start] = 0;

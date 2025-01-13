@@ -39,7 +39,7 @@ typedef vector<vi> vvi;
 #define oyes out("YES","\n")
 #define ono out("NO", "\n")
 
-vi slicing(vector<int> &arr, int X, int Y) {
+vi slicing(vector<int>& arr, int X, int Y) {
     auto start = arr.begin() + X;
     auto end = arr.begin() + Y;
     vi result(Y - X);
