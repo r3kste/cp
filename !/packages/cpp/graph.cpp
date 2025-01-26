@@ -10,6 +10,8 @@ struct Graph {
         vector<Node*> neighbors;
         bool visited = false;
 
+        Node* parent = nullptr;
+
         Component* component = nullptr;
 
         Node(int id) : id(id) {}
@@ -55,10 +57,41 @@ struct Graph {
         }
     }
 
+    void bfs(Node* node) {
+        for (Node* node : nodes) {
+            node->visited = false;
+        }
+
+        struct State {
+            Node* node;
+        };
+        queue<State> q;
+        q.push({node});
+
+        while (!q.empty()) {
+            State state = q.front();
+            q.pop();
+            Node* node = state.node;
+            node->visited = true;
+
+            if (node->id == no_of_nodes - 1) {
+                break;
+            }
+
+            for (Node* neighbor : node->neighbors) {
+                if (!neighbor->visited) {
+                    neighbor->parent = node;
+                    q.push({neighbor});
+                }
+            }
+        }
+    }
+
     void dfs(Node* node, Component* component) {
         node->visited = true;
         component->nodes.push_back(node);
         node->component = component;
+
         for (Node* neighbor : node->neighbors) {
             if (!neighbor->visited) {
                 dfs(neighbor, component);
@@ -72,6 +105,7 @@ struct Graph {
         }
 
         int no_of_components = 0;
+
         for (Node* node : nodes) {
             if (!node->visited) {
                 Component* component = new Component(++no_of_components);
@@ -83,5 +117,20 @@ struct Graph {
         return no_of_components;
     }
 
+
+    bool is_cyclic(Node* node) {
+        for (Node* node : nodes) {
+            node->visited = false;
+        }
+
+        struct State {
+            Node* node;
+            Node* parent;
+            int cycle_length;
+        };
+
+        queue<State> q;
+        q.push({node, nullptr, 0});
+    }
     void solution();
 };

@@ -17,7 +17,7 @@ void test() {
 
     for (int& i : a) {
         cin >> i;
-    }
+}
 
     int res = 0;
     cout << res << endl;
