@@ -1,6 +1,3 @@
 {
-    "ruff.lineLength": 320,
-    "files.associations": {
-        "iostream": "cpp"
-    }
+    // "ruff.lineLength": 320,
 }
