@@ -22,28 +22,45 @@ typedef vector<vi> vvi;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
-#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+#define rep(_, n) \
+    int _;        \
+    for (_ = 0; _ < n; _++)
 
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) rep (_, sz (a)) { in (a[_]) }
-#define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
+#define vin(a)      \
+    rep(_, sz(a)) { \
+        in(a[_])    \
+    }
+#define vvin(r, c)            \
+    rep(__, r) {              \
+        rep(_, c) {           \
+            in(matrix[__][_]) \
+        }                     \
+    }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (int _ : __) { o (_) } br
-#define vvout(___)  for (vi __ : ___) { vout (__); }
+#define vout(__)       \
+    for (int _ : __) { \
+        o(_)           \
+    }                  \
+    br
+#define vvout(___)      \
+    for (vi __ : ___) { \
+        vout(__);       \
+    }
 
-#define oyes out("YES","\n")
+#define oyes out("YES", "\n")
 #define ono out("NO", "\n")
 
-bool valid(vector<tuple<int, int, int, int >> p, int m, int T) {
-    int n = sz (p);
+bool valid(vector<tuple<int, int, int, int>> p, int m, int T) {
+    int n = sz(p);
     ll no_balloons = 0;
-    rep (_, n) {
+    rep(_, n) {
         int t = get<0>(p[_]);
         int z = get<1>(p[_]);
         int y = get<2>(p[_]);
@@ -51,7 +68,7 @@ bool valid(vector<tuple<int, int, int, int >> p, int m, int T) {
         int cycle = z * t + y;
         no_balloons += z * floor(cT / cycle);
         cT %= cycle;
-        no_balloons += min(z, (ll) floor(cT / t));
+        no_balloons += min(z, (ll)floor(cT / t));
     }
 
     return no_balloons >= m;
@@ -60,11 +77,11 @@ bool valid(vector<tuple<int, int, int, int >> p, int m, int T) {
 int solve() {
     fastio;
     int req, n;
-    in2 (req, n);
-    vector<tuple<int, int, int, int >> p(n);
-    rep (__, n) {
+    in2(req, n);
+    vector<tuple<int, int, int, int>> p(n);
+    rep(__, n) {
         int t, z, y;
-        in3 (t, z, y);
+        in3(t, z, y);
         p[__] = {t, z, y, __};
     }
 
@@ -86,13 +103,13 @@ int solve() {
         }
     }
 
-    o (r);
+    o(r);
     br;
-    sort(all (p));
+    sort(all(p));
     int tno_balloons = 0;
     int T = r;
     vi ans(n, 0);
-    rep (_, n) {
+    rep(_, n) {
         int no_balloons = 0;
         int t = get<0>(p[_]);
         int z = get<1>(p[_]);
@@ -102,7 +119,7 @@ int solve() {
         int cycle = z * t + y;
         no_balloons += z * floor(cT / cycle);
         cT %= cycle;
-        no_balloons += min(z, (ll) floor(cT / t));
+        no_balloons += min(z, (ll)floor(cT / t));
         ans[index] = no_balloons;
         tno_balloons += no_balloons;
 
@@ -112,7 +129,7 @@ int solve() {
         }
     }
 
-    vout (ans);
+    vout(ans);
     return 0;
 }
 

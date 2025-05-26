@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -37,7 +37,7 @@ int solve() {
         }
     }
 
-    vector<tuple<int, int, int, int, char >> inp;
+    vector<tuple<int, int, int, int, char>> inp;
     while (q--) {
         char color;
         int r1, c1, r2, c2;

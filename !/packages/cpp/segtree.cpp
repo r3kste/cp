@@ -23,7 +23,8 @@ struct segtree {
     struct node {
         T val;
 
-        node(): val(0) {}
+        node()
+            : val(0) {}
     }
 
     int n;
@@ -32,9 +33,9 @@ struct segtree {
     string op;
     T DEFAULT_VAL;
 
-    segtree(vector<int>& array, string operation, T init_val) {
+    segtree(vector<int> &array, string operation, T init_val) {
         arr = array;
-        n = (int) array.size();
+        n = (int)array.size();
         int size = pow(2, ceil(log2(n)));
         tree.resize(2 * size);
         op = operation;
@@ -68,26 +69,26 @@ struct segtree {
 
     T build_operation(int left_vertex, int right_vertex) {
         switch (op) {
-        case "sum":
-            return tree[left_vertex].val + tree[right_vertex].val;
+            case "sum":
+                return tree[left_vertex].val + tree[right_vertex].val;
 
-        case "max":
-            return max(tree[left_vertex].val, tree[right_vertex].val);
+            case "max":
+                return max(tree[left_vertex].val, tree[right_vertex].val);
 
-        case "min":
-            return min(tree[left_vertex].val, tree[right_vertex].val);
+            case "min":
+                return min(tree[left_vertex].val, tree[right_vertex].val);
 
-        case "gcd":
-            return __gcd(tree[left_vertex].val, tree[right_vertex].val);
+            case "gcd":
+                return __gcd(tree[left_vertex].val, tree[right_vertex].val);
 
-        case "lcm":
-            return (tree[left_vertex].val * tree[right_vertex].val) / __gcd(tree[left_vertex].val, tree[right_vertex].val);
+            case "lcm":
+                return (tree[left_vertex].val * tree[right_vertex].val) / __gcd(tree[left_vertex].val, tree[right_vertex].val);
 
-        case "xor":
-            return tree[left_vertex].val ^ tree[right_vertex].val;
+            case "xor":
+                return tree[left_vertex].val ^ tree[right_vertex].val;
 
-        default:
-            return 0;
+            default:
+                return 0;
         }
     }
 
@@ -137,26 +138,26 @@ struct segtree {
 
     T query_operation(T left_subtree, T right_subtree) {
         switch (op) {
-        case "sum":
-            return left_subtree + right_subtree;
+            case "sum":
+                return left_subtree + right_subtree;
 
-        case "max":
-            return max(left_subtree, right_subtree);
+            case "max":
+                return max(left_subtree, right_subtree);
 
-        case "min":
-            return min(left_subtree, right_subtree);
+            case "min":
+                return min(left_subtree, right_subtree);
 
-        case "gcd":
-            return __gcd(left_subtree, right_subtree);
+            case "gcd":
+                return __gcd(left_subtree, right_subtree);
 
-        case "lcm":
-            return (left_subtree * right_subtree) / __gcd(left_subtree, right_subtree);
+            case "lcm":
+                return (left_subtree * right_subtree) / __gcd(left_subtree, right_subtree);
 
-        case "xor":
-            return left_subtree ^ right_subtree;
+            case "xor":
+                return left_subtree ^ right_subtree;
 
-        default:
-            return 0;
+            default:
+                return 0;
         }
     }
 

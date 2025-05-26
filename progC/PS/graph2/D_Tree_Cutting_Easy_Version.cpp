@@ -22,34 +22,38 @@ struct Graph {
 
     struct Node {
         int id;
-        vector<Node*> neighbors;
+        vector<Node *> neighbors;
         bool visited = false;
 
-        Component* component = nullptr;
+        Component *component = nullptr;
         Color color = NONE;
         int subtree_red = 0;
         int subtree_blue = 0;
 
-        Node(int id) : id(id) {}
+        Node(int id)
+            : id(id) {}
 
-        Node(int id, vector<Node*> neighbors) : id(id), neighbors(neighbors) {}
+        Node(int id, vector<Node *> neighbors)
+            : id(id), neighbors(neighbors) {}
     };
 
     struct Component {
         int id;
-        vector<Node*> nodes;
+        vector<Node *> nodes;
 
-        Component(int id) : id(id) {}
+        Component(int id)
+            : id(id) {}
 
-        Component(int id, vector<Node*> nodes) : id(id), nodes(nodes) {}
+        Component(int id, vector<Node *> nodes)
+            : id(id), nodes(nodes) {}
     };
 
     int no_of_nodes;
     int no_of_edges;
-    vector<Node*> nodes;
-    vector<Component*> components;
+    vector<Node *> nodes;
+    vector<Component *> components;
 
-    Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int >> edges) {
+    Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int>> edges) {
         this->no_of_nodes = no_of_nodes;
         this->no_of_edges = no_of_edges;
         for (int i = 0; i < no_of_nodes; i++) {
@@ -64,11 +68,11 @@ struct Graph {
         }
     }
 
-    void dfs(Node* node) {
+    void dfs(Node *node) {
         node->visited = true;
         int red = (node->color == RED);
         int blue = (node->color == BLUE);
-        for (Node* neighbor : node->neighbors) {
+        for (Node *neighbor : node->neighbors) {
             if (!neighbor->visited) {
                 dfs(neighbor);
                 red += neighbor->subtree_red;
@@ -95,7 +99,7 @@ void test() {
     }
 
     int m = n - 1;
-    vector<pair<int, int >> edges(m);
+    vector<pair<int, int>> edges(m);
     for (int i = 0; i < m; i++) {
         cin >> edges[i].first >> edges[i].second;
         edges[i].first--;
@@ -118,7 +122,7 @@ void test() {
     graph.dfs(graph.nodes[0]);
     int res = 0;
 
-    for (Graph::Node* node : graph.nodes) {
+    for (Graph::Node *node : graph.nodes) {
         if (node->subtree_red == total_red && node->subtree_blue == 0) {
             res++;
         }

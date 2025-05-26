@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -43,7 +43,7 @@ int solve() {
         z[i] = temp - x[i];
     }
 
-    sort(all (z));
+    sort(all(z));
     int l = 0;
     int r = n - 1;
     int ans = 0;

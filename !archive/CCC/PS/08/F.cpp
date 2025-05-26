@@ -3,7 +3,7 @@
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) -= c)
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) -= c)
 
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
@@ -34,17 +34,17 @@ int solve() {
     int n;
     cin >> n;
     vi a(n), o(n);
-    to (i, 0, n, 1) {
+    to(i, 0, n, 1) {
         cin >> a[i];
     }
 
-    to (i, 0, n, 1) {
+    to(i, 0, n, 1) {
         o[i] = i;
     }
 
-    to (i, 0, n + 1, 1) {
+    to(i, 0, n + 1, 1) {
         bool flag = true;
-        to (j, 0, n, 1) {
+        to(j, 0, n, 1) {
             if (a[j] != o[j]) {
                 flag = false;
                 break;
@@ -56,7 +56,7 @@ int solve() {
             return 0;
         }
 
-        to (j, 0, n, 1) {
+        to(j, 0, n, 1) {
             int e = (j % 2 == 0) ? 1 : -1;
             a[j] = (a[j] + e);
 

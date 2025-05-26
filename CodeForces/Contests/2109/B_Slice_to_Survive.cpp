@@ -11,12 +11,9 @@ using namespace std;
     cin.tie(nullptr);
 
 // f(n,m) = number of cuts required to end the game
-int f(int n, int m)
-{
-    if (n == 1)
-    {
-        if (m == 1)
-        {
+int f(int n, int m) {
+    if (n == 1) {
+        if (m == 1) {
             return 0;
         }
         return 1 + f(1, (m + 1) / 2);
@@ -24,8 +21,7 @@ int f(int n, int m)
     return 1 + f((n + 1) / 2, m);
 }
 
-void test()
-{
+void test() {
     int n, m, a, b;
     cin >> n >> m >> a >> b;
 
@@ -38,14 +34,12 @@ void test()
     cout << ans << "\n";
 }
 
-int32_t main()
-{
+int32_t main() {
     fastio;
     int t = 1;
     cin >> t;
 
-    while (t--)
-    {
+    while (t--) {
         test();
     }
 

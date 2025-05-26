@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define MOD (LL)(1e9 + n-1)
+#define MOD (LL)(1e9 + n - 1)
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -42,7 +42,7 @@ int solve() {
     int r = pos[1] - 49;
     r = n - 1 - r;
 
-    //look down
+    // look down
     for (int i = r + 1; i < n; i++) {
         char t = grid[i][c];
 
@@ -70,7 +70,7 @@ int solve() {
         }
     }
 
-    //look right
+    // look right
     for (int j = c + 1; j < n; j++) {
         char t = grid[r][j];
 
@@ -84,7 +84,7 @@ int solve() {
         }
     }
 
-    //look left
+    // look left
     for (int j = c - 1; j >= 0; j--) {
         char t = grid[r][j];
 
@@ -98,7 +98,7 @@ int solve() {
         }
     }
 
-    //look northeast
+    // look northeast
     for (int i = r - 1, j = c + 1; i >= 0 && j < n; i--, j++) {
         char t = grid[i][j];
 
@@ -112,7 +112,7 @@ int solve() {
         }
     }
 
-    //look northwest
+    // look northwest
     for (int i = r - 1, j = c - 1; i >= 0 && j >= 0; i--, j--) {
         char t = grid[i][j];
 
@@ -126,7 +126,7 @@ int solve() {
         }
     }
 
-    //look southeast
+    // look southeast
     for (int i = r + 1, j = c + 1; i < n && j < n; i++, j++) {
         char t = grid[i][j];
 
@@ -140,7 +140,7 @@ int solve() {
         }
     }
 
-    //look southwest
+    // look southwest
     for (int i = r + 1, j = c - 1; i < n && j >= 0; i++, j--) {
         char t = grid[i][j];
 
@@ -170,8 +170,8 @@ int solve() {
         }
     }
 
-    //jumpy bois
-    // nen
+    // jumpy bois
+    //  nen
     if (r >= 2 && c <= n - 2) {
         char t = grid[r - 2][c + 1];
 

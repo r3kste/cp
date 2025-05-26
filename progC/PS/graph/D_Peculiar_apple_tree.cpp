@@ -18,8 +18,9 @@ struct Node {
     int distance_from_s = 0;
     int distance_from_t = 0;
 
-public:
-    Node(int id, int parent) : id(id), parent(parent) {}
+  public:
+    Node(int id, int parent)
+        : id(id), parent(parent) {}
 
     Node() {
         this->id = -1;
@@ -36,7 +37,7 @@ class Graph {
     vector<Node> nodes;
     vector<int> visited;
 
-public:
+  public:
     Graph(int n, int m, int s, int t) {
         this->n = n;
         this->source = s - 1;
@@ -93,7 +94,7 @@ public:
         cout << res << endl;
     }
 
-private:
+  private:
     void dfs(int node) {
         for (int child : this->nodes[node].children) {
             this->dfs(child);
@@ -101,7 +102,7 @@ private:
     }
 
     void bfs(int node) {
-        queue<pair<int, int >> q;
+        queue<pair<int, int>> q;
         q.push({node, 0});
         visited[node] = 0;
         while (!q.empty()) {

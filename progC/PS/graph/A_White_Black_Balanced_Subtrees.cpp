@@ -17,7 +17,7 @@ struct Node {
     vector<int> children;
     int balance;
 
-public:
+  public:
     Node(int id, int parent, char color) {
         this->id = id;
         this->parent = parent;
@@ -30,8 +30,8 @@ class Graph {
     int n;
     vector<Node> nodes;
 
-public:
-    Graph(int n, const vector<int>& parents, const string &colors) {
+  public:
+    Graph(int n, const vector<int> &parents, const string &colors) {
         this->n = n;
         nodes.push_back(Node(0, -1, colors[0]));
 
@@ -57,7 +57,7 @@ public:
         return ans;
     }
 
-private:
+  private:
     void dfs(int node) {
         for (int child : nodes[node].children) {
             dfs(child);

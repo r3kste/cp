@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -36,20 +36,21 @@ int solve() {
         cin >> a[i];
 
         switch (a[i]) {
-        case 'A':
-            ca++;
-            break;
+            case 'A':
+                ca++;
+                break;
 
-        case 'D':
-            cd++;
-            break;
+            case 'D':
+                cd++;
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
     }
 
-    cout << ((ca > cd) ? "Anton" : (ca == cd) ? "Friendship" : "Danik");
+    cout << ((ca > cd) ? "Anton" : (ca == cd) ? "Friendship"
+                                              : "Danik");
     return 0;
 }
 

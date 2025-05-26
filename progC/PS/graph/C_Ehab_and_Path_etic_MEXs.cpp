@@ -13,7 +13,7 @@ using namespace std;
 void test() {
     int n;
     cin >> n;
-    vector<vector<int >> adj(n + 1);
+    vector<vector<int>> adj(n + 1);
     vector<int> mex_vals(n);
 
     for (int i = 1; i < n; i++) {

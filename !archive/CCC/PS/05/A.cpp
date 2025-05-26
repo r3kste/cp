@@ -16,8 +16,7 @@ using namespace std;
     int t = 1;        \
     if (itr)          \
         cin >> t;     \
-    z(i, t)           \
-    {                 \
+    z(i, t) {         \
         solve();      \
         cout << "\n"; \
     }
@@ -31,7 +30,7 @@ typedef pair<int, int> ii;
 void solve();
 
 int main() {
-    testitr (false);
+    testitr(false);
 }
 
 void solve() {
@@ -39,7 +38,7 @@ void solve() {
     int n, k;
     cin >> n >> k;
     int c = 0;
-    z (i, n) {
+    z(i, n) {
         int temp;
         cin >> temp;
         temp = temp + k;

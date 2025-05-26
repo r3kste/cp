@@ -5,7 +5,7 @@ using namespace std;
 #define nmod(m) n % m == 0
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < (b); (i) = (c))
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) = (c))
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) = (c))
 
 #define MOD (LL)(1e9 + 7)
 #define fastio                        \
@@ -50,6 +50,6 @@ int solve() {
     // }
     // TLE... rip
     cout << int(floor((n - y) / x)) * x +
-         y; // lol ok just find the m such that it satisfies k=mx+y and maximum would be when k is nearest to n.
+                y; // lol ok just find the m such that it satisfies k=mx+y and maximum would be when k is nearest to n.
     return 0;
 }

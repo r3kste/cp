@@ -5,7 +5,7 @@ using namespace std;
 #define nmod(m) n % m == 0
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < (b); (i) = (c))
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) = (c))
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) = (c))
 
 #define MOD (LL)(1e9 + 7)
 #define fastio                        \
@@ -66,7 +66,7 @@ LL ncr_m(LL n, LL r, LL mod) {
     }
 
     if (n - r < r) {
-        return ncr_m(n, n - r, mod);    // make sure r is the lower r
+        return ncr_m(n, n - r, mod); // make sure r is the lower r
     }
 
     LL o = 1;

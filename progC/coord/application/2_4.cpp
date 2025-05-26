@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
@@ -11,7 +11,7 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        vector <ll> a(n);
+        vector<ll> a(n);
         map<ll, ll> freq;
 
         for (int i = 0; i < n; i++) {

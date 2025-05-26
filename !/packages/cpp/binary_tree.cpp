@@ -13,17 +13,18 @@ using namespace std;
 struct BinaryTree {
     struct Node {
         int id;
-        Node* left;
-        Node* right;
+        Node *left;
+        Node *right;
 
-        Node(int id, Node *left, Node *right) : id(id), left(left), right(right) {}
+        Node(int id, Node *left, Node *right)
+            : id(id), left(left), right(right) {}
     };
 
     int no_of_nodes;
-    Node* root;
-    vector<Node*> nodes;
+    Node *root;
+    vector<Node *> nodes;
 
-    BinaryTree(int n, int root, vector<pair<int, int >> children) {
+    BinaryTree(int n, int root, vector<pair<int, int>> children) {
         no_of_nodes = n;
         for (int i = 0; i < n; i++) {
             nodes.push_back(new Node{i + 1, nullptr, nullptr});
@@ -64,7 +65,7 @@ struct BinaryTree {
 void test() {
     int n;
     cin >> n;
-    vector<pair<int, int >> children;
+    vector<pair<int, int>> children;
     for (int i = 0; i < n; i++) {
         int l, r;
         cin >> l >> r;

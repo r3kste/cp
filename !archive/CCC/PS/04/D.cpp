@@ -19,8 +19,8 @@ int main() {
         }
 
         sort(a.begin(), a.end());
-        long long p = (long long) a[a.size() - 1] * (long long) a[a.size() - 2];
-        long long q = (long long) a[0] * (long long) a[1];
+        long long p = (long long)a[a.size() - 1] * (long long)a[a.size() - 2];
+        long long q = (long long)a[0] * (long long)a[1];
         cout << ((p > q) ? p : q) << endl;
         a.clear();
     }

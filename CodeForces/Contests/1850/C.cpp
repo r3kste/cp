@@ -5,7 +5,7 @@ using namespace std;
 #define nmod(m) n % m == 0
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < (b); (i) = (c))
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) = (c))
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) = (c))
 
 #define MOD (LL)(1e9 + 7)
 #define fastio                        \
@@ -40,8 +40,8 @@ int solve() {
     fastio;
     char a[8][8];
     vector<char> o;
-    to (i, 0, 8, i + 1) {
-        to (j, 0, 8, j + 1) {
+    to(i, 0, 8, i + 1) {
+        to(j, 0, 8, j + 1) {
             cin >> a[i][j];
 
             if (a[i][j] != '.') {
@@ -50,7 +50,7 @@ int solve() {
         }
     }
 
-    to (i, 0, o.size(), i + 1) {
+    to(i, 0, o.size(), i + 1) {
         cout << o[i];
     }
 

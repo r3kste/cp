@@ -10,19 +10,15 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-void test()
-{
+void test() {
     int n, ret;
     cin >> n;
-    if (n == 81)
-    {
+    if (n == 81) {
         cout << "mul 999999999" << endl;
         cin >> ret;
         cout << "digit" << endl;
         cin >> ret;
-    }
-    else
-    {
+    } else {
         cout << "mul 999999999" << endl;
         cin >> ret;
         cout << "digit" << endl;
@@ -34,14 +30,12 @@ void test()
     cin >> ret;
 }
 
-int32_t main()
-{
+int32_t main() {
     // fastio;
     int t = 1;
     cin >> t;
 
-    while (t--)
-    {
+    while (t--) {
         test();
     }
 

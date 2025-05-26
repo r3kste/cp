@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -31,21 +31,27 @@ int solve() {
     cin >> n >> k;
 
     if (k % 3 == 1) {
-        cout << "Yes\n" << k;
+        cout << "Yes\n"
+             << k;
     } else if (k % 3 == 2) {
-        cout << "No\n" << k;
+        cout << "No\n"
+             << k;
     } else {
         if (n % 2 == 0) {
             if (k % 6 == 0) {
-                cout << "Yes\n" << n + k / 3;
+                cout << "Yes\n"
+                     << n + k / 3;
             } else {
-                cout << "No\n" << n + k / 3;
+                cout << "No\n"
+                     << n + k / 3;
             }
         } else {
             if (k % 6 == 0) {
-                cout << "No\n" << n + k / 3 + 1;
+                cout << "No\n"
+                     << n + k / 3 + 1;
             } else {
-                cout << "Yes\n" << n + k / 3 + 1;
+                cout << "Yes\n"
+                     << n + k / 3 + 1;
             }
         }
     }

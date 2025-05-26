@@ -21,27 +21,44 @@ typedef vector<vi> vvi;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
-#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+#define rep(_, n) \
+    int _;        \
+    for (_ = 0; _ < n; _++)
 
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) rep (_, sz (a)) { in (a[_]) }
-#define vvin(r, c) rep(__,r) { rep(_,c) { in (matrix[__][_]) } }
+#define vin(a)      \
+    rep(_, sz(a)) { \
+        in(a[_])    \
+    }
+#define vvin(r, c)            \
+    rep(__, r) {              \
+        rep(_, c) {           \
+            in(matrix[__][_]) \
+        }                     \
+    }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (int _ : __) { o (_) } br
-#define vvout(___)  for (vi __ : ___) { vout (__); }
+#define vout(__)       \
+    for (int _ : __) { \
+        o(_)           \
+    }                  \
+    br
+#define vvout(___)      \
+    for (vi __ : ___) { \
+        vout(__);       \
+    }
 
-#define oyes out("YES","\n")
+#define oyes out("YES", "\n")
 #define ono out("NO", "\n")
 
 bool find(vc s, string p, int n) {
-    map<char, deque<int >> l;
-    rep (__, n) {
+    map<char, deque<int>> l;
+    rep(__, n) {
         if (s[__] == '.') {
             continue;
         }
@@ -51,13 +68,13 @@ bool find(vc s, string p, int n) {
 
     int starti = l[p[0]].front();
     l[p[0]].pop_front();
-    for (int i = 1; i < sz (p); i++) {
-        if (sz (l[p[i]]) == 0) {
+    for (int i = 1; i < sz(p); i++) {
+        if (sz(l[p[i]]) == 0) {
             return false;
         }
 
-        int nexti = upper_bound(all (l[p[i]]), starti) - l[p[i]].begin();
-        if (nexti >= sz (l[p[i]])) {
+        int nexti = upper_bound(all(l[p[i]]), starti) - l[p[i]].begin();
+        if (nexti >= sz(l[p[i]])) {
             return false;
         }
 
@@ -72,7 +89,7 @@ bool find(vc s, string p, int n) {
 }
 
 bool valid(vc s, string p, vi a, int x, int n) {
-    rep (__, x) {
+    rep(__, x) {
         s[a[__] - 1] = '.';
     }
 
@@ -82,12 +99,12 @@ bool valid(vc s, string p, vi a, int x, int n) {
 int solve() {
     fastio;
     string t, p;
-    in2 (t, p);
-    int n = sz (t);
+    in2(t, p);
+    int n = sz(t);
     vc s(n);
-    rep (__, n) s[__] = t[__];
+    rep(__, n) s[__] = t[__];
     vi a(n);
-    vin (a);
+    vin(a);
     int l = 0;
     int r = n;
     int n_iter = 100;
@@ -102,7 +119,7 @@ int solve() {
         }
     }
 
-    o (l);
+    o(l);
     br;
     return 0;
 }

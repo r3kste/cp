@@ -10,56 +10,46 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-void test()
-{
+void test() {
     int n;
     cin >> n;
     vector<int> a(n);
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
 
     bool possible = true;
 
     int s = 1;
-    for (int i = 0; i < n - 1; i++)
-    {
+    for (int i = 0; i < n - 1; i++) {
         s &= a[i];
-        if (!(a[i] | a[i + 1]))
-        {
+        if (!(a[i] | a[i + 1])) {
             possible = false;
             break;
         }
     }
     s &= a[n - 1];
 
-    if (s != 0)
-    {
+    if (s != 0) {
         possible = false;
     }
 
-    if (possible)
-    {
+    if (possible) {
         cout << "NO";
-    }
-    else
-    {
+    } else {
         cout << "YES";
     }
 
     cout << "\n";
 }
 
-int32_t main()
-{
+int32_t main() {
     fastio;
     int t = 1;
     cin >> t;
 
-    while (t--)
-    {
+    while (t--) {
         test();
     }
 

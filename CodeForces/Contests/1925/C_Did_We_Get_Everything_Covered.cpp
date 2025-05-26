@@ -21,22 +21,43 @@ typedef vector<vi> vvi;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
-#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+#define rep(_, n) \
+    int _;        \
+    for (_ = 0; _ < n; _++)
 
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) { rep (_, sz (a)) { in (a[_]) }}
-#define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
+#define vin(a)          \
+    {                   \
+        rep(_, sz(a)) { \
+            in(a[_])    \
+        }               \
+    }
+#define vvin(r, c)                \
+    {                             \
+        rep(__, r) {              \
+            rep(_, c) {           \
+                in(matrix[__][_]) \
+            }                     \
+        }                         \
+    }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (auto _ : __) { o (_) } br
-#define vvout(___)  for (auto __ : ___) { vout (__); }
+#define vout(__)        \
+    for (auto _ : __) { \
+        o(_)            \
+    }                   \
+    br
+#define vvout(___)        \
+    for (auto __ : ___) { \
+        vout(__);         \
+    }
 
-#define oyes out("YES","\n")
+#define oyes out("YES", "\n")
 #define ono out("NO", "\n")
 
 bool isSubsequence(string s, string t) {
@@ -54,8 +75,7 @@ bool isSubsequence(string s, string t) {
 }
 
 int solve() {
-    fastio
-    int n, k, m;
+    fastio int n, k, m;
     in3(n, k, m);
     string s;
     in(s);
@@ -90,7 +110,7 @@ int solve() {
 int main() {
     fastio;
     int t = 1;
-    in (t);
+    in(t);
 
     while (t--) {
         solve();

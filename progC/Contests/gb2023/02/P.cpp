@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -35,7 +35,7 @@ int solve() {
         cin >> a[i];
     }
 
-    int l = 0, r = a[n - 1] / req + 1; //limits
+    int l = 0, r = a[n - 1] / req + 1; // limits
 
     while (l <= r) {
         int mid = (l + r) / 2;

@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -31,7 +31,7 @@ int solve() {
     cin >> a >> b >> c >> d;
     int mx = max(a, max(b, c));
     int mn = min(a, min(b, c));
-    yesno (mx + (a + b + c - mx - mn) >= d);
+    yesno(mx + (a + b + c - mx - mn) >= d);
     return 0;
 }
 

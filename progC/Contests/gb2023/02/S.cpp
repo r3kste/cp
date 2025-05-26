@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -42,8 +42,7 @@ int solve() {
         }
     }
 
-    yesno (suc >= req)
-    return 0;
+    yesno(suc >= req) return 0;
 }
 
 int main() {

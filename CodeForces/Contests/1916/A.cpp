@@ -12,7 +12,7 @@ using namespace std;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
 typedef long long int ll;
 typedef pair<int, int> ii;
@@ -42,7 +42,8 @@ int solve() {
     if (!flag) {
         cout << "NO";
     } else {
-        cout << "YES\n" << 2023 / p << " ";
+        cout << "YES\n"
+             << 2023 / p << " ";
 
         for (int i = 1; i < k; i++) {
             cout << 1 << " ";

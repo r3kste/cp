@@ -21,31 +21,52 @@ typedef vector<vi> vvi;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
-#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+#define rep(_, n) \
+    int _;        \
+    for (_ = 0; _ < n; _++)
 
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) { rep (_, sz (a)) { in (a[_]) }}
-#define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
+#define vin(a)          \
+    {                   \
+        rep(_, sz(a)) { \
+            in(a[_])    \
+        }               \
+    }
+#define vvin(r, c)                \
+    {                             \
+        rep(__, r) {              \
+            rep(_, c) {           \
+                in(matrix[__][_]) \
+            }                     \
+        }                         \
+    }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (auto _ : __) { o (_) } br
-#define vvout(___)  for (auto __ : ___) { vout (__); }
+#define vout(__)        \
+    for (auto _ : __) { \
+        o(_)            \
+    }                   \
+    br
+#define vvout(___)        \
+    for (auto __ : ___) { \
+        vout(__);         \
+    }
 
-#define oyes out("YES","\n")
+#define oyes out("YES", "\n")
 #define ono out("NO", "\n")
 
 #define x F
 #define y S
 int solve() {
-    fastio
-    int n;
-    in (n)
-    vector<tuple<ll, ll, ll, ll >> dirs;
+    fastio int n;
+    in(n)
+        vector<tuple<ll, ll, ll, ll>>
+            dirs;
     for (int i = 0; i < n; i++) {
         int X, Y;
         in2(X, Y);
@@ -64,7 +85,7 @@ int solve() {
     ll ans = 0;
 
     for (auto x : xdir) {
-        ans += x.S * (x.S - 1) / 2 ;
+        ans += x.S * (x.S - 1) / 2;
     }
     for (auto y : ydir) {
         ans += y.S * (y.S - 1) / 2;
@@ -75,14 +96,14 @@ int solve() {
     for (auto II : IIdir) {
         ans += II.S * (II.S - 1) / 2;
     }
-    o(ans * 2)br;
+    o(ans * 2) br;
     return 0;
 }
 
 int main() {
     fastio;
     int t = 1;
-    in (t);
+    in(t);
 
     while (t--) {
         solve();

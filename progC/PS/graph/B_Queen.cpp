@@ -16,16 +16,17 @@ struct Node {
     bool respects;
     vector<int> children;
 
-public:
-    Node(int id, int parent, bool respects) : id(id), parent(parent), respects(respects) {}
+  public:
+    Node(int id, int parent, bool respects)
+        : id(id), parent(parent), respects(respects) {}
 };
 
 class Graph {
     int n;
     vector<Node> nodes;
 
-public:
-    Graph(int n, const vector<int>& parents, const vector<bool>& respects) {
+  public:
+    Graph(int n, const vector<int> &parents, const vector<bool> &respects) {
         this->n = n;
 
         for (int i = 0; i < n; i++) {
@@ -85,7 +86,7 @@ public:
         cout << endl;
     }
 
-private:
+  private:
     void dfs(int node) {
         for (int child : this->nodes[node].children) {
             this->dfs(child);

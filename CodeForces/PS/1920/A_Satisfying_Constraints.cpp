@@ -21,28 +21,49 @@ typedef vector<vi> vvi;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
-#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+#define rep(_, n) \
+    int _;        \
+    for (_ = 0; _ < n; _++)
 
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) { rep (_, sz (a)) { in (a[_]) }}
-#define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
+#define vin(a)          \
+    {                   \
+        rep(_, sz(a)) { \
+            in(a[_])    \
+        }               \
+    }
+#define vvin(r, c)                \
+    {                             \
+        rep(__, r) {              \
+            rep(_, c) {           \
+                in(matrix[__][_]) \
+            }                     \
+        }                         \
+    }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (int _ : __) { o (_) } br
-#define vvout(___)  for (vi __ : ___) { vout (__); }
+#define vout(__)       \
+    for (int _ : __) { \
+        o(_)           \
+    }                  \
+    br
+#define vvout(___)      \
+    for (vi __ : ___) { \
+        vout(__);       \
+    }
 
-#define oyes out("YES","\n")
+#define oyes out("YES", "\n")
 #define ono out("NO", "\n")
 
 int solve() {
     fastio;
     int n;
-    in (n);
+    in(n);
     ll l = LLONG_MIN, r = LLONG_MAX;
     int exc = 0;
     vll ok;
@@ -50,26 +71,26 @@ int solve() {
     while (n--) {
         int type;
         ll x;
-        in2 (type, x);
+        in2(type, x);
 
         switch (type) {
-        case 1:
-            l = max(l, x);
-            break;
+            case 1:
+                l = max(l, x);
+                break;
 
-        case 2:
-            r = min(r, x);
-            break;
+            case 2:
+                r = min(r, x);
+                break;
 
-        case 3:
-            if (x <= r && x >= l) {
-                ok.pb(x);
-            }
+            case 3:
+                if (x <= r && x >= l) {
+                    ok.pb(x);
+                }
 
-            break;
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
     }
 
@@ -79,15 +100,14 @@ int solve() {
         }
     }
 
-    o (max(r - l + 1 - exc, 0LL))
-    br
-    return 0;
+    o(max(r - l + 1 - exc, 0LL))
+        br return 0;
 }
 
 int main() {
     fastio;
     int t = 1;
-    in (t);
+    in(t);
 
     while (t--) {
         solve();

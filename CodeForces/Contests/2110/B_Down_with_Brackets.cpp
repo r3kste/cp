@@ -10,8 +10,7 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-void test()
-{
+void test() {
     string s;
     cin >> s;
 
@@ -22,59 +21,45 @@ void test()
     int n = s.size();
     vector<int> a(n);
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         char c = s[i];
-        if (c == '(')
-        {
+        if (c == '(') {
             cnt++;
-        }
-        else
-        {
+        } else {
             cnt--;
         }
         a[i] = cnt;
     }
 
-    if (a[1] < a[0] && a[0] > 0)
-    {
+    if (a[1] < a[0] && a[0] > 0) {
         no_of_peaks++;
     }
-    for (int i = 2; i < n; i++)
-    {
-        if (a[i] < a[i - 1] && a[i - 1] > a[i - 2])
-        {
+    for (int i = 2; i < n; i++) {
+        if (a[i] < a[i - 1] && a[i - 1] > a[i - 2]) {
             no_of_peaks++;
         }
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == 0)
-        {
+    for (int i = 0; i < n; i++) {
+        if (a[i] == 0) {
             no_of_val++;
         }
     }
 
-    if (no_of_val == 1)
-    {
+    if (no_of_val == 1) {
         cout << "NO";
-    }
-    else
-    {
+    } else {
         cout << "YES";
     }
     cout << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     fastio;
     int t = 1;
     cin >> t;
 
-    while (t--)
-    {
+    while (t--) {
         test();
     }
 

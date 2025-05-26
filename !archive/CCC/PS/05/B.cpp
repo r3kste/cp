@@ -11,14 +11,13 @@ using namespace std;
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
-#define testitr(itr)  \
-    fastio;           \
-    int t = 1;        \
-    if (itr)          \
-        cin >> t;     \
-    z(i, t)           \
-    {                 \
-        solve();      \
+#define testitr(itr) \
+    fastio;          \
+    int t = 1;       \
+    if (itr)         \
+        cin >> t;    \
+    z(i, t) {        \
+        solve();     \
     }
 
 #define pb push_back
@@ -30,7 +29,7 @@ typedef pair<int, int> ii;
 void solve();
 
 int main() {
-    testitr (false);
+    testitr(false);
 }
 
 void solve() {
@@ -38,18 +37,18 @@ void solve() {
     ll n, q;
     cin >> n >> q;
     vi a(n);
-    z (i, n) {
+    z(i, n) {
         cin >> a[i];
     }
 
     sort(a.begin(), a.end());
     ll ps[n + 1];
     ps[0] = 0;
-    zr (i, 1, n + 1) {
+    zr(i, 1, n + 1) {
         ps[i] = a[i - 1] + ps[i - 1];
     }
 
-    z (i, q) {
+    z(i, q) {
         ll x, y;
         cin >> x >> y;
         cout << ps[n - x + y] - ps[n - x] << "\n";

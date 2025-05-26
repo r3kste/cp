@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -58,7 +58,7 @@ int solve() {
             a.erase(a.begin() + posi);
         }
 
-        reverse(all (ans));
+        reverse(all(ans));
 
         for (auto i : ans) {
             cout << i << " ";

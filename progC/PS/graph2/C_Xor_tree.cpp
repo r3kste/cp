@@ -16,34 +16,38 @@ struct Graph {
 
     struct Node {
         int id;
-        vector<Node*> neighbors;
+        vector<Node *> neighbors;
         bool visited = false;
 
-        Component* component = nullptr;
+        Component *component = nullptr;
         int state;
         int goal;
 
-        Node(int id) : id(id) {}
+        Node(int id)
+            : id(id) {}
 
-        Node(int id, vector<Node*> neighbors) : id(id), neighbors(neighbors) {}
+        Node(int id, vector<Node *> neighbors)
+            : id(id), neighbors(neighbors) {}
     };
 
     struct Component {
         int id;
-        vector<Node*> nodes;
+        vector<Node *> nodes;
 
-        Component(int id) : id(id) {}
+        Component(int id)
+            : id(id) {}
 
-        Component(int id, vector<Node*> nodes) : id(id), nodes(nodes) {}
+        Component(int id, vector<Node *> nodes)
+            : id(id), nodes(nodes) {}
     };
 
     int no_of_nodes;
     int no_of_edges;
-    vector<Node*> nodes;
-    vector<Component*> components;
+    vector<Node *> nodes;
+    vector<Component *> components;
     vector<int> res;
 
-    Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int >> edges) {
+    Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int>> edges) {
         this->no_of_nodes = no_of_nodes;
         this->no_of_edges = no_of_edges;
         for (int i = 0; i < no_of_nodes; i++) {
@@ -58,27 +62,27 @@ struct Graph {
         }
     }
 
-    void dfs(Node* node) {
+    void dfs(Node *node) {
         node->visited = true;
-        for (Node* neighbor : node->neighbors) {
+        for (Node *neighbor : node->neighbors) {
             if (!neighbor->visited) {
                 dfs(neighbor);
             }
         }
     }
 
-    void dfs(Node* node, Component* component) {
+    void dfs(Node *node, Component *component) {
         node->visited = true;
         component->nodes.push_back(node);
         node->component = component;
-        for (Node* neighbor : node->neighbors) {
+        for (Node *neighbor : node->neighbors) {
             if (!neighbor->visited) {
                 dfs(neighbor, component);
             }
         }
     }
 
-    void dfs(Node* node, int height, int even_toggles, int odd_toggles) {
+    void dfs(Node *node, int height, int even_toggles, int odd_toggles) {
         node->visited = true;
         if (height % 2 == 0) {
             node->state ^= even_toggles % 2;
@@ -98,7 +102,7 @@ struct Graph {
             }
         }
 
-        for (Node* neighbor : node->neighbors) {
+        for (Node *neighbor : node->neighbors) {
             if (!neighbor->visited) {
                 dfs(neighbor, height + 1, even_toggles, odd_toggles);
             }
@@ -106,14 +110,14 @@ struct Graph {
     }
 
     int connected_components() {
-        for (Node* node : nodes) {
+        for (Node *node : nodes) {
             node->visited = false;
         }
 
         int no_of_components = 0;
-        for (Node* node : nodes) {
+        for (Node *node : nodes) {
             if (!node->visited) {
-                Component* component = new Component(++no_of_components);
+                Component *component = new Component(++no_of_components);
                 components.push_back(component);
                 dfs(node, component);
             }
@@ -129,7 +133,7 @@ void test() {
     int n;
     cin >> n;
     int m = n - 1;
-    vector<pair<int, int >> edges(m);
+    vector<pair<int, int>> edges(m);
     for (int i = 0; i < m; i++) {
         cin >> edges[i].first >> edges[i].second;
         edges[i].first--;
@@ -148,7 +152,7 @@ void test() {
     Graph graph(n, m, edges);
 
     for (int i = 0; i < n; i++) {
-        Graph::Node* node = graph.nodes[i];
+        Graph::Node *node = graph.nodes[i];
         node->state = init[i];
         node->goal = goal[i];
     }

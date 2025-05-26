@@ -5,7 +5,7 @@ using namespace std;
 #define nmod(m) n % m == 0
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < (b); (i) = (c))
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) = (c))
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) = (c))
 
 #define MOD (LL)(1e9 + 7)
 #define fastio                        \
@@ -63,7 +63,7 @@ int solve() {
             alt = ceil((m - a) / double(ck));
         }
 
-        cout << min(alt, (ll) ((m / ck) + (m % ck)));
+        cout << min(alt, (ll)((m / ck) + (m % ck)));
     }
 
     return 0;

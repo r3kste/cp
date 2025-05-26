@@ -3,7 +3,7 @@
 using namespace std;
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < b; (i) += c)
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) -= c)
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) -= c)
 
 #define fastio                        \
     ios_base::sync_with_stdio(false); \
@@ -39,7 +39,7 @@ int solve() {
     ll c = 0;
     ll o = 0;
     vll temps;
-    to (i, 0, n, 1) {
+    to(i, 0, n, 1) {
         cin >> a[i];
 
         if (a[i] <= q) {

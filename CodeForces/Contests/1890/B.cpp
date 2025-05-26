@@ -17,7 +17,7 @@ typedef pair<int, int> ii;
 #define enl cout << endl;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 typedef vector<unsigned long long int> vLL;
 

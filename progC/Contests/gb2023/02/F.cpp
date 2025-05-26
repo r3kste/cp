@@ -22,16 +22,16 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
     fastio;
     int n, k;
     cin >> n >> k;
-    ll log2k = (ll) floor(log2(k)) + 1;
+    ll log2k = (ll)floor(log2(k)) + 1;
     ll limitk = pow(2, log2k);
-    ll log2n = (ll) ceil(log2(n));
+    ll log2n = (ll)ceil(log2(n));
 
     if (n <= limitk) {
         cout << log2n;

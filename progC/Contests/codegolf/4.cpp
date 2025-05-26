@@ -1,30 +1,30 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 int main() {
     int t;
     cin >> t;
 
-    while(t--) {
+    while (t--) {
         int n, m, k = 1, c = 0;
         cin >> n >> m;
         int a[n + m][m + n];
         int i = 0, j = 0;
 
-        while(true) {
+        while (true) {
             a[i][j] = k;
 
             if (i < n && j < m) {
                 k++;
             }
 
-            if(i == n - 1 && j == m - 1) {
+            if (i == n - 1 && j == m - 1) {
                 break;
             }
 
-            if(i == 0) {
+            if (i == 0) {
                 i = j + 1;
 
-                if(j + 1 >= n) {
+                if (j + 1 >= n) {
                     i = n - 1;
                     c++;
                 }

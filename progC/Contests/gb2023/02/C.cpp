@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -35,7 +35,7 @@ int solve() {
         cin >> a[i];
     }
 
-    sort(all (a));
+    sort(all(a));
 
     if (a[n - 1] - a[n - 2] <= 1) {
         cout << "YES";

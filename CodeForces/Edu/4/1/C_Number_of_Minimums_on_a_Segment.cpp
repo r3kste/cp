@@ -21,22 +21,43 @@ typedef vector<vi> vvi;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
-#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+#define rep(_, n) \
+    int _;        \
+    for (_ = 0; _ < n; _++)
 
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) { rep (_, sz (a)) { in (a[_]) }}
-#define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
+#define vin(a)          \
+    {                   \
+        rep(_, sz(a)) { \
+            in(a[_])    \
+        }               \
+    }
+#define vvin(r, c)                \
+    {                             \
+        rep(__, r) {              \
+            rep(_, c) {           \
+                in(matrix[__][_]) \
+            }                     \
+        }                         \
+    }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (auto _ : __) { o (_) } br
-#define vvout(___)  for (auto __ : ___) { vout (__); }
+#define vout(__)        \
+    for (auto _ : __) { \
+        o(_)            \
+    }                   \
+    br
+#define vvout(___)        \
+    for (auto __ : ___) { \
+        vout(__);         \
+    }
 
-#define oyes out("YES","\n")
+#define oyes out("YES", "\n")
 #define ono out("NO", "\n")
 
 struct range {
@@ -57,7 +78,7 @@ struct segtree {
     string update_op;
     string query_op;
 
-    segtree(vector<int>& array, int no_of_elements, const string &update, const string &query) {
+    segtree(vector<int> &array, int no_of_elements, const string &update, const string &query) {
         n = no_of_elements;
         arr = array;
         tree.resize(4 * n + 1);
@@ -90,7 +111,7 @@ struct segtree {
     }
 
     class Combine {
-    public:
+      public:
         T add(T left_subtree, T right_subtree) {
             return left_subtree + right_subtree;
         }
@@ -284,12 +305,11 @@ struct segtree {
 };
 
 int solve() {
-    fastio
-    int n, m;
+    fastio int n, m;
     in2(n, m);
     vi a(n);
-    vin (a);
-    segtree <ii> st(a, n, "assign", "min_count");
+    vin(a);
+    segtree<ii> st(a, n, "assign", "min_count");
 
     while (m--) {
         int op;

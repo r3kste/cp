@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -35,24 +35,24 @@ int solve() {
         cin >> a[i];
     }
 
-//     vll length;
-//     vi x(n);
-//     int xk=0;
-//     vi y(n);
-//     int yk=0;
-//
-//     for(int i=0;i<2*n;i++) {
-//         xk=0;
-//         x[xk++]=i;
-//         for(int j=0;j<2*n;j++) {
-//             if(i!=j){
-//                 for(int k=0;k<2*n;k++) {
-//
-//                 }
-//             }
-//         }
-//     }
-    sort(all (a));
+    //     vll length;
+    //     vi x(n);
+    //     int xk=0;
+    //     vi y(n);
+    //     int yk=0;
+    //
+    //     for(int i=0;i<2*n;i++) {
+    //         xk=0;
+    //         x[xk++]=i;
+    //         for(int j=0;j<2*n;j++) {
+    //             if(i!=j){
+    //                 for(int k=0;k<2*n;k++) {
+    //
+    //                 }
+    //             }
+    //         }
+    //     }
+    sort(all(a));
     // int l=0;
     // int r=n-1;
     vi x;

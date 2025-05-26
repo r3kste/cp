@@ -208,7 +208,7 @@ T difftree<T>::lazy_operation(T value, int vertex, range borders) {
 int main() {
     long long int n, q;
     cin >> n >> q;
-    vector<tuple<int, int, int, int >> queries;
+    vector<tuple<int, int, int, int>> queries;
     map<long long int, long long int> splits;
 
     while (q--) {

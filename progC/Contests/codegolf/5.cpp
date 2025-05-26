@@ -1,11 +1,11 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 int main() {
     int n, a = 0, b = 0;
     cin >> n;
     int ans;
 
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             int x;
             cin >> x;
@@ -14,9 +14,9 @@ int main() {
                 continue;
             }
 
-            if(!a) {
+            if (!a) {
                 a = x;
-            } else if(!b) {
+            } else if (!b) {
                 b = x;
                 ans = __gcd(a, b);
             } else {

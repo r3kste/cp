@@ -13,21 +13,17 @@ using namespace std;
 map<pair<int, int>, int> dp;
 map<pair<int, int>, bool> dpd;
 
-int f(int i, int last, vector<int> &a)
-{
-    if (i == a.size())
-    {
+int f(int i, int last, vector<int> &a) {
+    if (i == a.size()) {
         return 0;
     }
 
-    if (dpd[{i, last}])
-    {
+    if (dpd[{i, last}]) {
         return dp[{i, last}];
     }
 
     int ans = 0;
-    if (a[i] > last + 1)
-    {
+    if (a[i] > last + 1) {
         ans = 1;
         last = a[i];
     }
@@ -41,23 +37,19 @@ int f(int i, int last, vector<int> &a)
     return ans;
 }
 
-void test()
-{
+void test() {
     int n;
     cin >> n;
     vector<int> a(n);
 
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
 
     int last = -1;
     int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] > last + 1)
-        {
+    for (int i = 0; i < n; i++) {
+        if (a[i] > last + 1) {
             ans++;
             last = a[i];
         }
@@ -71,14 +63,12 @@ void test()
     // cout << res << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
     fastio;
     int t = 1;
     cin >> t;
 
-    while (t--)
-    {
+    while (t--) {
         test();
     }
 

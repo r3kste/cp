@@ -4,7 +4,7 @@ int main() {
     int t;
     cin >> t;
 
-    while(t--) {
+    while (t--) {
         int a, b, c, d, e, f;
         cin >> a >> b >> c >> d >> e >> f;
         double area = 0.5 * abs((a * (d - f) + c * (f - b) + e * (b - d)));

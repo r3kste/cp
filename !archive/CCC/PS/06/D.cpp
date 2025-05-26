@@ -56,23 +56,23 @@ int main() {
     //         prims[i + 2] = true;
     //     }
     // }
-    z (i, t) {
+    z(i, t) {
         int n;
         ll o = 1;
         cin >> n;
         vi a(n);
-        z (i, n) {
+        z(i, n) {
             cin >> a[i];
         }
 
         vector<ll> ps(n + 1);
         vector<ll> ss(n + 1);
-        zr (i, 1, n + 1) {
+        zr(i, 1, n + 1) {
             ps[i] = ps[i - 1] + a[i - 1];
             ss[n - i] = ss[n - i + 1] + a[n - i];
         }
 
-        zr (i, 1, n)o = max(o, __gcd(ps[i], ss[i]));
+        zr(i, 1, n) o = max(o, __gcd(ps[i], ss[i]));
         // ll k = ps[n];
         // if (isPrime(ps[n]))
         // {

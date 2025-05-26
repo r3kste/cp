@@ -6,7 +6,7 @@ using namespace std;
 Unweighted Graph
 */
 struct Graph {
-    vector<vector<int >> adj;
+    vector<vector<int>> adj;
     int n;
     vector<bool> visited;
     vector<int> roots;
@@ -222,7 +222,7 @@ Weighted Graph
 #define INF 100000000000000000
 struct Graph_EV {
     using pii = pair<int, int>;
-    vector<vector<pii >> adj;
+    vector<vector<pii>> adj;
     // vector<vector<int>> mat;
     int n;
     vector<bool> visited;
@@ -330,11 +330,11 @@ struct Graph_EV {
     //     }
     // }
 
-    void dijkstra(int start, vector<long long int>& distance, vector<int>& parents) {
+    void dijkstra(int start, vector<long long int> &distance, vector<int> &parents) {
         distance.assign(n, INF);
         parents.assign(n, -1);
         distance[start] = 0;
-        priority_queue<pii, vector<pii>, greater< >> q;
+        priority_queue<pii, vector<pii>, greater<>> q;
         q.emplace(0, start);
         while (!q.empty()) {
             int node = q.top().second;

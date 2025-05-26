@@ -22,13 +22,13 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 ll tonum(vll a) {
     ll ans = 0;
     vll b = a;
-    reverse(all (b));
+    reverse(all(b));
     ll m = 1;
 
     for (auto i : b) {
@@ -46,7 +46,7 @@ int solve() {
     ll n, d;
     cin >> n >> d;
     vll a(n);
-    vector<pair<ll, ll >> b;
+    vector<pair<ll, ll>> b;
     for (int i = 0; i < n; i++) {
         cin >> a[i];
         // if (a[i] == 0)
@@ -66,8 +66,8 @@ int solve() {
     // }
     // else
     // {}
-    sort(all (b));
-    reverse(all (b));
+    sort(all(b));
+    reverse(all(b));
     ll i = 0;
 
     while (i < b.size()) {

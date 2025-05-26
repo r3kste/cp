@@ -32,12 +32,12 @@ void test() {
         for (int i = n; i >= 2; i -= 2) {
             cout << i << " ";
         }
-    } else  {
+    } else {
         for (int i = n; i >= 1; i -= 2) {
             cout << i << " ";
         }
 
-        for (int i = n - 1; i >= 2  ; i -= 2) {
+        for (int i = n - 1; i >= 2; i -= 2) {
             cout << i << " ";
         }
     }

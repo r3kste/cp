@@ -12,7 +12,7 @@ using namespace std;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
 typedef long long int ll;
 typedef pair<int, int> ii;
@@ -23,8 +23,7 @@ typedef vector<bool> vb;
 typedef vector<ll> vll;
 
 int solve() {
-    fastio
-    int n;
+    fastio int n;
     cin >> n;
     vi a(n);
 
@@ -36,8 +35,7 @@ int solve() {
 }
 
 int main() {
-    fastio
-    int t = 1;
+    fastio int t = 1;
     cin >> t;
 
     while (t--) {

@@ -5,7 +5,7 @@ using namespace std;
 #define nmod(m) n % m == 0
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < (b); (i) = (c))
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) = (c))
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) = (c))
 
 #define MOD (LL)(1e9 + 7)
 #define fastio                        \
@@ -43,12 +43,12 @@ int solve() {
     vi a(n);
     map<int, int> mp;
     ll max = -MOD;
-    to (i, 0, n, i + 1) {
+    to(i, 0, n, i + 1) {
         cin >> a[i];
         mp[a[i]]++;
     }
 
-    to (i, 0, n, i + 1) {
+    to(i, 0, n, i + 1) {
         if (mp[a[i]] > max) {
             max = mp[a[i]];
         }

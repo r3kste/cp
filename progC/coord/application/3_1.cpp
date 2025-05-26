@@ -1,7 +1,7 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 class Person {
-public:
+  public:
     std::string name;
     int age;
     std::string id;
@@ -26,18 +26,20 @@ class Student;
 class Teacher;
 class Marks;
 
-class Student: public Person {
-public:
-    Student(std::string name = "", int age = -1, std::string id = "", std::string department = ""): Person(name, age, id, department) {}
+class Student : public Person {
+  public:
+    Student(std::string name = "", int age = -1, std::string id = "", std::string department = "")
+        : Person(name, age, id, department) {}
 
-    int get_mark(Marks& marks);
+    int get_mark(Marks &marks);
 };
 
-class Teacher: public Person {
-public:
-    Teacher(std::string name = "", int age = -1, std::string id = "", std::string department = ""): Person(name, age, id, department) {}
+class Teacher : public Person {
+  public:
+    Teacher(std::string name = "", int age = -1, std::string id = "", std::string department = "")
+        : Person(name, age, id, department) {}
 
-    bool check_auth(Student& student) {
+    bool check_auth(Student &student) {
         if (this->department != student.department) {
             std::cerr << "Error: Department mismatch!\n";
             std::cerr << "Student department: " << student.department << "\n";
@@ -48,28 +50,28 @@ public:
         return true;
     }
 
-    void set_mark(Marks& marks, Student& student, int new_mark);
-    int get_mark(Marks& marks, Student& student);
+    void set_mark(Marks &marks, Student &student, int new_mark);
+    int get_mark(Marks &marks, Student &student);
 };
 
 class Marks {
     friend class Teacher;
 
-private:
+  private:
     std::map<std::string, int> marks;
-    void set_mark(Teacher& teacher, Student& student, int new_mark);
+    void set_mark(Teacher &teacher, Student &student, int new_mark);
 
-public:
-    int get_mark(Student& student);
+  public:
+    int get_mark(Student &student);
 };
 
-void Marks::set_mark(Teacher& teacher, Student& student, int new_mark) {
+void Marks::set_mark(Teacher &teacher, Student &student, int new_mark) {
     if (teacher.check_auth(student)) {
         marks[student.id] = new_mark;
     }
 }
 
-int Marks::get_mark(Student& student) {
+int Marks::get_mark(Student &student) {
     if (marks.find(student.id) == marks.end()) {
         std::cerr << "Error: Marks not found! for student\n";
         return -1;
@@ -78,15 +80,15 @@ int Marks::get_mark(Student& student) {
     return marks[student.id];
 }
 
-int Student::get_mark(Marks& marks) {
+int Student::get_mark(Marks &marks) {
     return marks.get_mark(*this);
 }
 
-int Teacher::get_mark(Marks& marks, Student& student) {
+int Teacher::get_mark(Marks &marks, Student &student) {
     return marks.get_mark(student);
 }
 
-void Teacher::set_mark(Marks& marks, Student& student, int new_mark) {
+void Teacher::set_mark(Marks &marks, Student &student, int new_mark) {
     marks.set_mark(*this, student, new_mark);
 }
 
@@ -109,9 +111,9 @@ int main() {
     db.add_student(Student("Anton", 18, "me23b015", "ME"));
     db.add_teacher(Teacher("Prof. Jack", 44, "john", "ME"));
     db.add_teacher(Teacher("Dr. Will", 46, "smith", "CS"));
-    Teacher& teacher0 = db.teachers[0];
-    Teacher& teacher1 = db.teachers[1];
-    Student& student0 = db.students[0];
+    Teacher &teacher0 = db.teachers[0];
+    Teacher &teacher1 = db.teachers[1];
+    Student &student0 = db.students[0];
     teacher0.set_mark(db.marks, student0, 93);
     std::cout << student0.get_mark(db.marks) << "\n";
     teacher1.set_mark(db.marks, student0, 95);

@@ -13,25 +13,27 @@ using namespace std;
 struct Graph {
     struct Node {
         int id;
-        vector<Node*> neighbors;
+        vector<Node *> neighbors;
 
         int component_id = -1;
 
-        Node(int id) : id(id) {}
+        Node(int id)
+            : id(id) {}
 
-        Node(int id, vector<Node*> neighbors) : id(id), neighbors(neighbors) {}
+        Node(int id, vector<Node *> neighbors)
+            : id(id), neighbors(neighbors) {}
     };
 
     int no_of_nodes;
     int no_of_edges;
-    vector<Node*> nodes;
+    vector<Node *> nodes;
 
-    vector<Node*> roots;
+    vector<Node *> roots;
     vector<bool> visited;
 
     int no_of_components = 0;
 
-    Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int >> edges) {
+    Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int>> edges) {
         this->no_of_nodes = no_of_nodes;
         this->no_of_edges = no_of_edges;
         for (int i = 0; i < no_of_nodes; i++) {
@@ -52,10 +54,10 @@ struct Graph {
         visited.assign(no_of_nodes, false);
     }
 
-    void dfs(Node* node, int component_id) {
+    void dfs(Node *node, int component_id) {
         visited[node->id] = true;
         node->component_id = component_id;
-        for (Node* neighbor : node->neighbors) {
+        for (Node *neighbor : node->neighbors) {
             if (!visited[neighbor->id]) {
                 dfs(neighbor, component_id);
             }
@@ -86,11 +88,10 @@ void Graph::solution() {
     }
 }
 
-
 void test() {
     int n, m;
     cin >> n >> m;
-    vector<pair<int, int >> edges(m);
+    vector<pair<int, int>> edges(m);
     for (int i = 0; i < m; i++) {
         cin >> edges[i].first >> edges[i].second;
         edges[i].first--;

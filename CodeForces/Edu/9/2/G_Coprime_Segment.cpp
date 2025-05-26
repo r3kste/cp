@@ -21,22 +21,43 @@ typedef vector<vi> vvi;
 #define mp make_pair
 #define pb push_back
 #define all(a) (a).begin(), (a).end()
-#define sz(a) ((int) (a).size())
+#define sz(a) ((int)(a).size())
 
-#define rep(_, n) int _; for(_ = 0; _ < n; _++)
+#define rep(_, n) \
+    int _;        \
+    for (_ = 0; _ < n; _++)
 
 #define in(_) cin >> _;
 #define in2(_0, _1) cin >> _0 >> _1;
 #define in3(_0, _1, _2) cin >> _0 >> _1 >> _2;
-#define vin(a) { rep (_, sz (a)) { in (a[_]) }}
-#define vvin(r, c) { rep(__,r) { rep(_,c) { in (matrix[__][_]) } } }
+#define vin(a)          \
+    {                   \
+        rep(_, sz(a)) { \
+            in(a[_])    \
+        }               \
+    }
+#define vvin(r, c)                \
+    {                             \
+        rep(__, r) {              \
+            rep(_, c) {           \
+                in(matrix[__][_]) \
+            }                     \
+        }                         \
+    }
 #define br cout << "\n";
 #define out(_, __) cout << _ << __;
 #define o(_) out(_, " ")
-#define vout(__) for (auto _ : __) { o (_) } br
-#define vvout(___)  for (auto __ : ___) { vout (__); }
+#define vout(__)        \
+    for (auto _ : __) { \
+        o(_)            \
+    }                   \
+    br
+#define vvout(___)        \
+    for (auto __ : ___) { \
+        vout(__);         \
+    }
 
-#define oyes out("YES","\n")
+#define oyes out("YES", "\n")
 #define ono out("NO", "\n")
 template<typename T>
 struct segtree {
@@ -65,9 +86,9 @@ struct segtree {
     vector<ll> arr;
     vector<node> tree;
 
-    explicit segtree(vector<ll>& array) {
+    explicit segtree(vector<ll> &array) {
         arr = array;
-        n = (int) array.size();
+        n = (int)array.size();
         tree.resize(4 * n + 1);
         build();
     }
@@ -258,10 +279,10 @@ T segtree<T>::lazy_operation(T value, int vertex, range borders) {
 
 int solve() {
     fastio
-    ll n;
-    in (n)
-    vll a(n);
-    vin (a);
+        ll n;
+    in(n)
+        vll a(n);
+    vin(a);
     segtree<ll> st(a);
     int l = 0;
     int res = INT32_MAX;
@@ -279,8 +300,7 @@ int solve() {
         o(res)
     }
 
-    br
-    return 0;
+    br return 0;
 }
 
 int main() {

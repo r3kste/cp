@@ -10,16 +10,14 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-void test()
-{
+void test() {
     int n, k;
     cin >> n >> k;
     string s;
     cin >> s;
 
     map<char, int> freq;
-    for (char c : s)
-    {
+    for (char c : s) {
         freq[c]++;
     }
 
@@ -31,30 +29,24 @@ void test()
 
     int parity = min_pairs % 2;
 
-    if (k % 2 != parity)
-    {
+    if (k % 2 != parity) {
         cout << "NO" << endl;
         return;
     }
 
-    if (min_pairs > k || max_pairs < k)
-    {
+    if (min_pairs > k || max_pairs < k) {
         cout << "NO" << endl;
-    }
-    else
-    {
+    } else {
         cout << "YES" << endl;
     }
 }
 
-int32_t main()
-{
+int32_t main() {
     fastio;
     int t = 1;
     cin >> t;
 
-    while (t--)
-    {
+    while (t--) {
         test();
     }
 

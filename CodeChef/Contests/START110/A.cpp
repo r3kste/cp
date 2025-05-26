@@ -22,15 +22,14 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
     fastio;
     int n, m;
     cin >> n >> m;
-    yesno (n >= 60 && m <= 130)
-    return 0;
+    yesno(n >= 60 && m <= 130) return 0;
 }
 
 int main() {

@@ -5,7 +5,7 @@ using namespace std;
 #define nmod(m) n % m == 0
 
 #define to(i, a, b, c) for (int(i) = (a); (i) < (b); (i) = (c))
-#define fro(i, a, b, c) for (int(i) = (b)-1; (i) >= (a); (i) = (c))
+#define fro(i, a, b, c) for (int(i) = (b) - 1; (i) >= (a); (i) = (c))
 
 #define MOD (LL)(1e9 + 7)
 #define fastio                        \
@@ -43,7 +43,7 @@ int solve() {
     // vi a(n);
     ll max = 0;
     ll mi = -1;
-    to (i, 0, m, i + 1) {
+    to(i, 0, m, i + 1) {
         ll a, q;
         cin >> a >> q;
         ll no = n / q;

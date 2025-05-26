@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -30,7 +30,7 @@ int solve() {
     int a, b;
     cin >> a >> b;
     int co = a ^ b;
-    yesno (co != (a + b));
+    yesno(co != (a + b));
     cout << "\n";
     return 0;
 }

@@ -10,8 +10,7 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr);
 
-void test()
-{
+void test() {
     int n, ret;
     cin >> n;
     cout << "digit" << endl;
@@ -52,14 +51,12 @@ void test()
     cin >> ret;
 }
 
-int32_t main()
-{
+int32_t main() {
     // fastio;
     int t = 1;
     cin >> t;
 
-    while (t--)
-    {
+    while (t--) {
         test();
     }
 

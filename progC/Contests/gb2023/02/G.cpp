@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -36,7 +36,7 @@ int solve() {
         a[i].S = i + 1;
     }
 
-    sort(all (a));
+    sort(all(a));
     int top = a.back().F;
     int stop = a[n - 2].F;
 
@@ -48,7 +48,7 @@ int solve() {
             vi ans;
             ans.pb(a[lb].S);
             a[lb].F--;
-            sort(all (a));
+            sort(all(a));
 
             for (auto wow : ans) {
                 cout << wow << " ";

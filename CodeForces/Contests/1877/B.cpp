@@ -44,7 +44,7 @@ int solve() {
         cin >> a[i].second;
     }
 
-    sort(a.begin(), a.end(), [](ii & a, ii & b) {
+    sort(a.begin(), a.end(), [](ii &a, ii &b) {
         return a.second < b.second;
     });
 
@@ -83,10 +83,10 @@ int solve() {
         // cost += (min(a[i].first, n - np) * a[i].second);
         // np += a[i].first;
         if (a[i].first > n - np) {
-            cost += max((ll) 0, (n - np)) * min(p, (ll) a[i].second);
+            cost += max((ll)0, (n - np)) * min(p, (ll)a[i].second);
             break;
         } else {
-            cost += a[i].first * min(p, (ll) a[i].second);
+            cost += a[i].first * min(p, (ll)a[i].second);
             np += a[i].first;
         }
     }

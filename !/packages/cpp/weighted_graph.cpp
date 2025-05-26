@@ -10,16 +10,19 @@ struct Weighted_Graph {
     struct Weight {
         int weight;
 
-        Weight() : weight(0) {}
+        Weight()
+            : weight(0) {}
 
-        Weight(int weight) : weight(weight) {}
+        Weight(int weight)
+            : weight(weight) {}
     };
 
     struct Edge {
-        Node* neighbor;
+        Node *neighbor;
         Weight weight;
 
-        Edge(Node* neighbor, Weight weight) : neighbor(neighbor), weight(weight) {}
+        Edge(Node *neighbor, Weight weight)
+            : neighbor(neighbor), weight(weight) {}
     };
 
     struct Node {
@@ -27,28 +30,29 @@ struct Weighted_Graph {
         vector<Edge> neighbors;
         bool visited = false;
 
-        Component* component = nullptr;
+        Component *component = nullptr;
 
-        Node(int id) : id(id) {}
+        Node(int id)
+            : id(id) {}
     };
-
-
 
     struct Component {
         int id;
-        vector<Node*> nodes;
+        vector<Node *> nodes;
 
-        Component(int id) : id(id) {}
+        Component(int id)
+            : id(id) {}
 
-        Component(int id, vector<Node*> nodes) : id(id), nodes(nodes) {}
+        Component(int id, vector<Node *> nodes)
+            : id(id), nodes(nodes) {}
     };
 
     int no_of_nodes;
     int no_of_edges;
-    vector<Node*> nodes;
-    vector<Component*> components;
+    vector<Node *> nodes;
+    vector<Component *> components;
 
-    Weighted_Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int, int >> edges) {
+    Weighted_Graph(int no_of_nodes, int no_of_edges, vector<pair<int, int, int>> edges) {
         this->no_of_nodes = no_of_nodes;
         this->no_of_edges = no_of_edges;
         for (int i = 0; i < no_of_nodes; i++) {
@@ -64,20 +68,20 @@ struct Weighted_Graph {
         }
     }
 
-    void dfs(Node* node) {
+    void dfs(Node *node) {
         node->visited = true;
-        for (Node* neighbor : node->neighbors) {
+        for (Node *neighbor : node->neighbors) {
             if (!neighbor->visited) {
                 dfs(neighbor);
             }
         }
     }
 
-    void dfs(Node* node, Component* component) {
+    void dfs(Node *node, Component *component) {
         node->visited = true;
         component->nodes.push_back(node);
         node->component = component;
-        for (Node* neighbor : node->neighbors) {
+        for (Node *neighbor : node->neighbors) {
             if (!neighbor->visited) {
                 dfs(neighbor, component);
             }
@@ -85,14 +89,14 @@ struct Weighted_Graph {
     }
 
     int connected_components() {
-        for (Node* node : nodes) {
+        for (Node *node : nodes) {
             node->visited = false;
         }
 
         int no_of_components = 0;
-        for (Node* node : nodes) {
+        for (Node *node : nodes) {
             if (!node->visited) {
-                Component* component = new Component(++no_of_components);
+                Component *component = new Component(++no_of_components);
                 components.push_back(component);
                 dfs(node, component);
             }

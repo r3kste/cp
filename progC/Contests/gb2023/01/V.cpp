@@ -22,7 +22,7 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
@@ -34,7 +34,8 @@ int solve() {
     ll ts = 60 * m + s + p;
     ts *= n;
     ts -= p;
-    cout << ts / 60 << "\n" << ts % 60;
+    cout << ts / 60 << "\n"
+         << ts % 60;
     return 0;
 }
 

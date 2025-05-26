@@ -22,14 +22,14 @@ typedef unsigned long long int LL;
 typedef pair<int, int> ii;
 
 typedef vector<int> vi;
-typedef vector<pair<int, int >> vii;
+typedef vector<pair<int, int>> vii;
 typedef vector<long long int> vll;
 
 int solve() {
     fastio;
     int n, m;
     cin >> n >> m;
-    vector<vector<int >> a(n, vector<int>(m, 0));
+    vector<vector<int>> a(n, vector<int>(m, 0));
     set<int> uselessr;
     set<int> uselessc;
 
