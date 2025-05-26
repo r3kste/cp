@@ -21,8 +21,35 @@ void test()
         cin >> a[i];
     }
 
-    int res = 0;
-    cout << res << endl;
+    bool possible = true;
+
+    int s = 1;
+    for (int i = 0; i < n - 1; i++)
+    {
+        s &= a[i];
+        if (!(a[i] | a[i + 1]))
+        {
+            possible = false;
+            break;
+        }
+    }
+    s &= a[n - 1];
+
+    if (s != 0)
+    {
+        possible = false;
+    }
+
+    if (possible)
+    {
+        cout << "NO";
+    }
+    else
+    {
+        cout << "YES";
+    }
+
+    cout << "\n";
 }
 
 int32_t main()
